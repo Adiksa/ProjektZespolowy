@@ -47,18 +47,18 @@ namespace ProjektZespolowy
                     userPassword = userPassword.Text
                 };
                 FireBaseConnector connection = new FireBaseConnector();
-                if (connection.connected)
+                if (login.login.Length > 0 && login.userPassword.Length > 0)
                 {
-                    if (connection.checkLogin(login) && login.login.Length > 0 && login.userPassword.Length > 0)
+                    if(connection.checkLogin(login) == 1)
                     {
                         Finish();
                         StartActivity(typeof(MainActivity));
                     }
-                    else
+                    if(connection.checkLogin(login) == -1)
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                        alertDialog.SetTitle("Bład logowania.");
-                        alertDialog.SetMessage("Dodasz wszystko jak trzeba?");
+                        alertDialog.SetTitle("Brak neta.");
+                        alertDialog.SetMessage("Podepniesz sie do neta?");
                         alertDialog.SetNeutralButton("No dobra.", delegate
                         {
                             alertDialog.Dispose();
@@ -68,37 +68,21 @@ namespace ProjektZespolowy
                 }
                 else
                 {
-                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                    alertDialog.SetTitle("Brak neta.");
-                    alertDialog.SetMessage("Podepniesz sie do neta?");
-                    alertDialog.SetNeutralButton("No dobra.", delegate
-                    {
-                        alertDialog.Dispose();
-                    });
-                    alertDialog.Show();
+                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
+                        alertDialog.SetTitle("Bład logowania.");
+                        alertDialog.SetMessage("Dodasz wszystko jak trzeba?");
+                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        {
+                            alertDialog.Dispose();
+                        });
+                        alertDialog.Show();
                 }
             };
             signupBtn.Click += delegate
             {
-                FireBaseConnector connection = new FireBaseConnector();
-                if (connection.connected)
-                {
-                    var transaction = FragmentManager.BeginTransaction();
-                    Dialog_SignUp signUpDialog = new Dialog_SignUp();
-                    signUpDialog.Show(transaction, "dialog fragment");
-
-                }
-                else
-                {
-                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                    alertDialog.SetTitle("Brak neta.");
-                    alertDialog.SetMessage("Podepniesz sie do neta?");
-                    alertDialog.SetNeutralButton("No dobra.", delegate
-                    {
-                        alertDialog.Dispose();
-                    });
-                    alertDialog.Show();
-                }
+                var transaction = FragmentManager.BeginTransaction();
+                Dialog_SignUp signUpDialog = new Dialog_SignUp();
+                signUpDialog.Show(transaction, "dialog fragment");
             };
         }
     }

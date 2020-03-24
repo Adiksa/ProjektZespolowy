@@ -19,7 +19,6 @@ namespace ProjektZespolowy
     {
         private IFirebaseConfig fcon;
         private IFirebaseClient client;
-        public bool connected = false;
         public FireBaseConnector()
         {
             fcon = new FirebaseConfig()
@@ -30,43 +29,63 @@ namespace ProjektZespolowy
             try
             {
                 client = new FireSharp.FirebaseClient(fcon);
-                connected = true;
             }
             catch
             {
-                connected = false;
             }
         }
-        public void dataInsert(userLogins obj)
+        public int dataInsert(userLogins obj)
         {
-            var setter = client.Set("Login/" + obj.login, obj);
-        }
-        public bool checkLogin(userLogins login)
-        {
-            var resault = client.Get("Login/" + login.login);
-            userLogins res = resault.ResultAs<userLogins>();
-            if (res != null)
+            try
             {
-                System.Console.WriteLine(res.login + " " + res.userPassword);
-                if (login.login == res.login && login.userPassword == res.userPassword)
+                var setter = client.Set("Login/" + obj.login, obj);
+                return 1;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        public int checkLogin(userLogins login)
+        {
+            try
+            {
+                var resault = client.Get("Login/" + login.login);
+                userLogins res = resault.ResultAs<userLogins>();
+                if (res != null)
                 {
-                    return true;
-                }
-                else
-                {
-                    return false;
+                    System.Console.WriteLine(res.login + " " + res.userPassword);
+                    if (login.login == res.login && login.userPassword == res.userPassword)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return false;
+            catch
+            {
+                return -1;
+            }
+            return -1;
         }
-        public bool checkLoginPossibility(userLogins login)
+        public int checkLoginPossibility(userLogins login)
         {
-            var resault = client.Get("Login/" + login.login);
-            userLogins res = resault.ResultAs<userLogins>();
-            if (res == null)
-                return true;
-            else
-                return false;
+            try
+            {
+                var resault = client.Get("Login/" + login.login);
+                userLogins res = resault.ResultAs<userLogins>();
+                if (res == null)
+                    return 1;
+                else
+                    return 0;
+            }
+            catch
+            {
+                return -1;
+            }
         }
         public void test()
         {

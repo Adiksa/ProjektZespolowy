@@ -65,56 +65,53 @@ namespace ProjektZespolowy.Fragments
                     userPassword = signUpPassword.Text
                 };
                 FireBaseConnector connector = new FireBaseConnector();
-                if (!connector.connected)
+                if (login.login.Length > 0 && login.userPassword.Length > 0)
                 {
-                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                    alertDialog.SetTitle("Brak neta.");
-                    alertDialog.SetMessage("Podepniesz sie do neta?");
-                    alertDialog.SetNeutralButton("No dobra.", delegate
+                    if (connector.checkLoginPossibility(login) == 1)
                     {
-                        alertDialog.Dispose();
-                    });
-                    alertDialog.Show();
-                }
-                else
-                {
-                    if (login.login.Length > 0 && login.userPassword.Length > 0)
-                    {
-                        if (connector.checkLoginPossibility(login))
+                        connector.dataInsert(login);
+                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                        alertDialog.SetTitle("Konto utworzone.");
+                        alertDialog.SetMessage("Utworzone konto o loginie " + login.login);
+                        alertDialog.SetNeutralButton("Gitara.", delegate
                         {
-                            connector.dataInsert(login);
-                            Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                            alertDialog.SetTitle("Konto utworzone.");
-                            alertDialog.SetMessage("Utworzone konto o loginie " + login.login);
-                            alertDialog.SetNeutralButton("Gitara.", delegate
-                            {
-                                alertDialog.Dispose();
-                            });
-                            alertDialog.Show();
-                        }
-                        else
-                        {
-                            Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                            alertDialog.SetTitle("Zajety login.");
-                            alertDialog.SetMessage("Zmienisz login?");
-                            alertDialog.SetNeutralButton("No dobra.", delegate
-                            {
-                                alertDialog.Dispose();
-                            });
-                            alertDialog.Show();
-                        }
+                            alertDialog.Dispose();
+                        });
+                        alertDialog.Show();
                     }
-                    else
+                    if (connector.checkLoginPossibility(login) == 0)
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                        alertDialog.SetTitle("Bład rejestrowania.");
-                        alertDialog.SetMessage("Dodasz wszystko jak trzeba?");
+                        alertDialog.SetTitle("Zajety login.");
+                        alertDialog.SetMessage("Zmienisz login?");
                         alertDialog.SetNeutralButton("No dobra.", delegate
                         {
                             alertDialog.Dispose();
                         });
                         alertDialog.Show();
                     }
+                    if (connector.checkLoginPossibility(login) == -1)
+                    {
+                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                        alertDialog.SetTitle("Brak neta.");
+                        alertDialog.SetMessage("Podepniesz sie do neta?");
+                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        {
+                            alertDialog.Dispose();
+                        });
+                        alertDialog.Show();
+                    }
+                }
+                else
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                    alertDialog.SetTitle("Bład rejestrowania.");
+                    alertDialog.SetMessage("Dodasz wszystko jak trzeba?");
+                    alertDialog.SetNeutralButton("No dobra.", delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
                 }
             };
         }
