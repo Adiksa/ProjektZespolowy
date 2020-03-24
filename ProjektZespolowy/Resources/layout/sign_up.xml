@@ -1,0 +1,43 @@
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center">
+    <EditText
+        android:inputType="textPersonName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:minWidth="100dp"
+        android:hint="login"
+        android:id="@+id/signUpLogin" />
+    <EditText
+        android:inputType="textPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="100dp"
+        android:minHeight="25px"
+        android:hint="password"
+        android:id="@+id/signUpPassword" />
+    <RelativeLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/signUpButtons"
+        android:layout_centerHorizontal="true">
+        <Button
+            android:text="Sign UP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signUpAccept" />
+        <Button
+            android:text="@android:string/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/signUpCancel"
+            android:layout_toRightOf="@+id/signUpAccept"/>
+    </RelativeLayout>
+</LinearLayout>

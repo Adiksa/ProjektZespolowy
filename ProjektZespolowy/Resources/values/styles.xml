@@ -17,4 +17,14 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="dialog_animation">
+      <item name="android:windowEnterAnimation">@anim/slide_up</item>
+      <item name="android:windowExitAnimation">@anim/slide_right</item>
+    </style>
+
+    <style name="fragment_animation">
+      <item name="android:fragmentOpenEnterAnimation">@anim/slide_up</item>
+      <item name="android:fragmentOpenExitAnimation">@anim/slide_right</item>
+    </style>
+
 </resources>
