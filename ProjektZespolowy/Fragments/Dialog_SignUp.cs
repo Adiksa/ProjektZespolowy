@@ -23,8 +23,6 @@ namespace ProjektZespolowy.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your fragment here
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -62,7 +60,8 @@ namespace ProjektZespolowy.Fragments
                 UserLogins login = new UserLogins()
                 {
                     login = signUpLogin.Text,
-                    userPassword = signUpPassword.Text
+                    userPassword = signUpPassword.Text,
+                    admin = false
                 };
                 FireBaseConnector connector = new FireBaseConnector();
                 if (login.login.Length > 0 && login.userPassword.Length > 0)

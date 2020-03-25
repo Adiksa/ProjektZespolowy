@@ -57,9 +57,14 @@ namespace ProjektZespolowy
                     System.Console.WriteLine(res.login + " " + res.userPassword);
                     if (login.login == res.login && login.userPassword == res.userPassword)
                     {
-                        if (login.admin)
+                        if (res.admin == true)
+                        {
                             return 2;
-                        return 1;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                     else
                     {

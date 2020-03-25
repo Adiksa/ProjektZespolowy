@@ -16,6 +16,6 @@ namespace ProjektZespolowy
     {
         public string login { get; set; }
         public string userPassword { get; set; }
-        public bool admin = false;
+        public bool admin { get; set; }
     }
 }
