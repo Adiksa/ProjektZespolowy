@@ -67,6 +67,17 @@ namespace ProjektZespolowy.Fragments
                 FireBaseConnector connector = new FireBaseConnector();
                 if (login.login.Length > 0 && login.userPassword.Length > 0)
                 {
+                    if (connector.checkLoginPossibility(login) == 0)
+                    {
+                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                        alertDialog.SetTitle("Zajety login.");
+                        alertDialog.SetMessage("Zmienisz login?");
+                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        {
+                            alertDialog.Dispose();
+                        });
+                        alertDialog.Show();
+                    }
                     if (connector.checkLoginPossibility(login) == 1)
                     {
                         connector.dataInsert(login);
@@ -74,17 +85,6 @@ namespace ProjektZespolowy.Fragments
                         alertDialog.SetTitle("Konto utworzone.");
                         alertDialog.SetMessage("Utworzone konto o loginie " + login.login);
                         alertDialog.SetNeutralButton("Gitara.", delegate
-                        {
-                            alertDialog.Dispose();
-                        });
-                        alertDialog.Show();
-                    }
-                    if (connector.checkLoginPossibility(login) == 0)
-                    {
-                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                        alertDialog.SetTitle("Zajety login.");
-                        alertDialog.SetMessage("Zmienisz login?");
-                        alertDialog.SetNeutralButton("No dobra.", delegate
                         {
                             alertDialog.Dispose();
                         });
