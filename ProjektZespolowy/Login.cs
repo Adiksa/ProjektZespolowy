@@ -50,7 +50,12 @@ namespace ProjektZespolowy
                 FireBaseConnector connection = new FireBaseConnector();
                 if (login.login.Length > 0 && login.userPassword.Length > 0)
                 {
-                    if(connection.checkLogin(login) == 1)
+                    if (connection.checkLogin(login) == 2)
+                    {
+                        Finish();
+                        StartActivity(typeof(Admin));
+                    }
+                    if (connection.checkLogin(login) == 1)
                     {
                         Finish();
                         StartActivity(typeof(MainActivity));

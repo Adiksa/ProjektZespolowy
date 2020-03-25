@@ -18,8 +18,19 @@ namespace ProjektZespolowy
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.admin);
+            ComponentLocalizer();
+            ActionHooker();
+        }
 
-            // Create your application here
+        private void ActionHooker()
+        {
+
+        }
+
+        private void ComponentLocalizer()
+        {
+
         }
     }
 }
