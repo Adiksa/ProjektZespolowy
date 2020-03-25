@@ -7,4 +7,6 @@
   <string name="hintPassword">HASŁO</string>
   <string name="noAccount">Nie masz konta?\nKliknij poniższy przycisk.</string>
   <string name="hello">Witaj, zaloguj się.</string>
+  <string name="logoITM">ITM Software House</string>
+  <string name="logoCentre">Logo</string>
 </resources>
