@@ -34,7 +34,7 @@ namespace ProjektZespolowy
             {
             }
         }
-        public int dataInsert(userLogins obj)
+        public int dataInsert(UserLogins obj)
         {
             try
             {
@@ -46,12 +46,12 @@ namespace ProjektZespolowy
                 return -1;
             }
         }
-        public int checkLogin(userLogins login)
+        public int checkLogin(UserLogins login)
         {
             try
             {
                 var resault = client.Get("Login/" + login.login);
-                userLogins res = resault.ResultAs<userLogins>();
+                UserLogins res = resault.ResultAs<UserLogins>();
                 if (res != null)
                 {
                     System.Console.WriteLine(res.login + " " + res.userPassword);
@@ -71,12 +71,12 @@ namespace ProjektZespolowy
             }
             return -1;
         }
-        public int checkLoginPossibility(userLogins login)
+        public int checkLoginPossibility(UserLogins login)
         {
             try
             {
                 var resault = client.Get("Login/" + login.login);
-                userLogins res = resault.ResultAs<userLogins>();
+                UserLogins res = resault.ResultAs<UserLogins>();
                 if (res == null)
                     return 1;
                 else
@@ -90,9 +90,9 @@ namespace ProjektZespolowy
         public void test()
         {
             var resault = client.Get("Login");
-            Dictionary<string, userLogins> userDictionary;
-            List<userLogins> listauser = new List<userLogins>();
-            userDictionary = resault.ResultAs<Dictionary<string, userLogins>>();
+            Dictionary<string, UserLogins> userDictionary;
+            List<UserLogins> listauser = new List<UserLogins>();
+            userDictionary = resault.ResultAs<Dictionary<string, UserLogins>>();
             if (userDictionary != null)
             {
                 foreach (var item in userDictionary)

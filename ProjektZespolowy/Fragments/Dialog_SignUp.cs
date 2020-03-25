@@ -59,7 +59,7 @@ namespace ProjektZespolowy.Fragments
             };
             signUpAccept.Click += delegate
             {
-                userLogins login = new userLogins()
+                UserLogins login = new UserLogins()
                 {
                     login = signUpLogin.Text,
                     userPassword = signUpPassword.Text

@@ -56,7 +56,7 @@ namespace ProjektZespolowy
             }
             else
             {
-                Snackbar.Make(rootview, "Bład wczytywanai tagu nfc.", Snackbar.LengthShort).Show();
+                Snackbar.Make(rootview, "Bład wczytywania tagu nfc.", Snackbar.LengthShort).Show();
             }
             mainFragment = new MainFragment();
             InitNewFragment(mainFragment);

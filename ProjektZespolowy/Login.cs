@@ -42,7 +42,7 @@ namespace ProjektZespolowy
         {
             loginBtn.Click += delegate
             {
-                userLogins login = new userLogins()
+                UserLogins login = new UserLogins()
                 {
                     login = userLogin.Text,
                     userPassword = userPassword.Text
