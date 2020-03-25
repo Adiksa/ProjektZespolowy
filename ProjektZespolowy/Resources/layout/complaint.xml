@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/mainSection">
+    <TextView
+      android:text="@string/problemHey"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:id="@+id/problemHey" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:id="@+id/problemDesc"
+        android:hint="@string/writeHere"
+        android:layout_below="@id/problemHey"/>
+    <ImageView
+      android:src="@android:drawable/ic_menu_gallery"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:contentDescription="@string/photoDesc"
+      android:minHeight="500px"
+      android:minWidth="500px"
+      android:layout_below="@id/problemDesc"
+      android:id="@+id/photoPreview" />
+  </RelativeLayout>
+  <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/buttons"
+    android:layout_below="@id/mainSection"
+    android:layout_centerHorizontal="true">
+    <Button
+      android:text="@string/btn1text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/photoPreview"
+      android:id="@+id/btn1Complaint" />
+    <Button
+      android:text="@string/btn2text"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/btn1Complaint"
+      android:id="@+id/btn2Complaint" />
+  </RelativeLayout>
+</RelativeLayout>
