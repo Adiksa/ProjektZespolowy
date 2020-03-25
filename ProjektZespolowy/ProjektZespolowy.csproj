@@ -62,7 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FireBaseConnector.cs" />
+    <Compile Include="Fragments\Complaint.cs" />
+    <Compile Include="Fragments\Complaint_Progress.cs" />
     <Compile Include="Fragments\Dialog_SignUp.cs" />
+    <Compile Include="Fragments\Scan_Success_View.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
