@@ -61,6 +61,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin.cs" />
     <Compile Include="FireBaseConnector.cs" />
     <Compile Include="Fragments\Complaint.cs" />
     <Compile Include="Fragments\Complaint_Progress.cs" />
