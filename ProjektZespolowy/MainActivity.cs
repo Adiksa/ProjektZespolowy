@@ -11,7 +11,7 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using Plugin.NFC;
-
+using ProjektZespolowy.Fragments;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace ProjektZespolowy
