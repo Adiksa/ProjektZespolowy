@@ -11,6 +11,7 @@ using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using Plugin.NFC;
+using ProjektZespolowy.Fragments;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace ProjektZespolowy
@@ -19,6 +20,7 @@ namespace ProjektZespolowy
     public class MainActivity : AppCompatActivity
     {
         private SupportFragment currentFragment;
+        private MainFragment mainFragment;
         private CoordinatorLayout rootview;
         private TextView skanText;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -27,8 +29,7 @@ namespace ProjektZespolowy
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             ComponentLocalizer();
-            Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong)
-                        .SetAction("Action", (Android.Views.View.IOnClickListener)null).Show();
+            Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong).Show();
             CrossNFC.Init(this);
             ActionHooker();
         }
@@ -48,7 +49,18 @@ namespace ProjektZespolowy
             Vibrator vibrator = (Vibrator)this.GetSystemService(Context.VibratorService);
             vibrator.Vibrate(100);
             var memory = tagInfo.Records.AsMemory();
-            //memory.Span.ToArray()[0]
+            if (memory.Span.ToArray().Length>0)
+            {
+                string furnitureId = memory.Span.ToArray()[0].MimeType;
+                Snackbar.Make(rootview, furnitureId, Snackbar.LengthShort).Show();
+            }
+            else
+            {
+                Snackbar.Make(rootview, "Bład wczytywanai tagu nfc.", Snackbar.LengthShort).Show();
+            }
+            mainFragment = new MainFragment();
+            InitNewFragment(mainFragment);
+            skanText.Visibility = ViewStates.Invisible;
             
         }
 
