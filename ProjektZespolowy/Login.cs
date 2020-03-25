@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.PM;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -14,7 +15,7 @@ using ProjektZespolowy.Fragments;
 
 namespace ProjektZespolowy
 {
-    [Activity(Label = "Login", MainLauncher = true)]
+    [Activity(Label = "Login", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class Login : Activity
     {
         private EditText userLogin;
