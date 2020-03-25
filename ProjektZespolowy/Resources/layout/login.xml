@@ -1,14 +1,27 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <EditText
+  <ImageView
+    android:src="@drawable/ITM"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    android:layout_above="@id/logoCentre"
+    android:id="@+id/logoITM"/>
+  <ImageView
+    android:src="@drawable/logo1"
+    android:layout_width="100dp"
+    android:layout_height="100dp"
+    android:layout_centerHorizontal="true"
+    android:layout_above="@id/login"
+    android:id="@+id/logoCentre" />
+  <EditText
         android:inputType="text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="100dp"
         android:minHeight="25px"
-        android:hint="login"
+        android:hint="@string/hintLogin"
         android:layout_centerHorizontal="true"
         android:id="@+id/login"
         android:layout_above="@id/password"/>
@@ -17,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:minWidth="100dp"
-        android:hint="password"
+        android:hint="@string/hintPassword"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:id="@+id/password" />
@@ -28,18 +41,30 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/password"
         android:id="@+id/loginButtons"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true">
         <Button
-            android:text="Login"
+            android:text="@string/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
             android:id="@+id/loginButton" />
-        <Button
-            android:text="Sign Up"
+        <TextView
+            android:id="@+id/NoAccount"
+            android:text="@string/noAccount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/singUpButton"
-            android:layout_toRightOf="@+id/loginButton"/>
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/loginButton"/>
+        <Button
+            android:text="@string/btnSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/signUpButton"
+            android:layout_below="@+id/NoAccount"/>
         </RelativeLayout>>
     
+
+
 </RelativeLayout>

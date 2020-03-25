@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">ProjektZespolowy</string>
-    <string name="action_settings">Settings</string>
+  <string name="app_name">ProjektZespolowy</string>
+  <string name="action_settings">Settings</string>
+  <string name="btnLogin">ZALOGUJ</string>
+  <string name="btnSignUp">ZAŁÓŻ KONTO</string>
+  <string name="hintLogin">LOGIN</string>
+  <string name="hintPassword">HASŁO</string>
+  <string name="noAccount">Nie masz konta?\nKliknij poniższy przycisk.</string>
+  <string name="hello">Witaj, zaloguj się.</string>
 </resources>

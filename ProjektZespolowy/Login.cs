@@ -34,7 +34,7 @@ namespace ProjektZespolowy
             userLogin = FindViewById<EditText>(Resource.Id.login);
             userPassword = FindViewById<EditText>(Resource.Id.password);
             loginBtn = FindViewById<Button>(Resource.Id.loginButton);
-            signupBtn = FindViewById<Button>(Resource.Id.singUpButton);
+            signupBtn = FindViewById<Button>(Resource.Id.signUpButton);
         }
 
         private void ActionHooker()
