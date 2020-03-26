@@ -23,6 +23,7 @@ namespace ProjektZespolowy
         private MainFragment mainFragment;
         private CoordinatorLayout rootview;
         private TextView skanText;
+        private Furniture furniture;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -52,15 +53,25 @@ namespace ProjektZespolowy
             if (memory.Span.ToArray().Length>0)
             {
                 string furnitureId = memory.Span.ToArray()[0].MimeType;
-                Snackbar.Make(rootview, furnitureId, Snackbar.LengthShort).Show();
+                FireBaseConnector fcon = new FireBaseConnector();
+                furniture = fcon.getFurniture(furnitureId);
+                if(furniture==null)
+                {
+                    Snackbar.Make(rootview, "Mebel o podanym id nie istnieje w naszej bazie.", Snackbar.LengthShort).Show();
+                }
+                else
+                {
+                    mainFragment = new MainFragment();
+                    mainFragment.furniture = furniture;
+                    InitNewFragment(mainFragment);
+                    skanText.Visibility = ViewStates.Invisible;
+                }
             }
             else
             {
                 Snackbar.Make(rootview, "Bład wczytywania tagu nfc.", Snackbar.LengthShort).Show();
             }
-            mainFragment = new MainFragment();
-            InitNewFragment(mainFragment);
-            skanText.Visibility = ViewStates.Invisible;
+            
             
         }
 

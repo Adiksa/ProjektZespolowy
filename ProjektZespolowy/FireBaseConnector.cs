@@ -58,6 +58,18 @@ namespace ProjektZespolowy
                 return -1;
             }
         }
+        public Furniture getFurniture(string id)
+        {
+            try
+            {
+                var resault = client.Get("Furniture/" + id);
+                return resault.ResultAs<Furniture>();
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public int checkLogin(UserLogins login)
         {
             try

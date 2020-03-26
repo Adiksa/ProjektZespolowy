@@ -20,6 +20,7 @@ namespace ProjektZespolowy.Fragments
         private TextView itemName;
         private ImageView photoPreview;
         private TextView description;
+        public Furniture furniture;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -30,6 +31,9 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.scan_successfull_view,container,false);
             ComponentsLocalizer();
             ActionHooker();
+            description.Text = furniture.warentyText;
+            itemName.Text = furniture.id;
+            photoPreview.SetImageBitmap(furniture.convertBase64ToBitmap(furniture.warentyImage));
             return view;
         }
 
@@ -44,5 +48,6 @@ namespace ProjektZespolowy.Fragments
         {
 
         }
+
     }
 }

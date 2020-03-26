@@ -1,9 +1,11 @@
 ﻿using Android.Graphics;
 using Android.Widget;
+using System;
+using System.Buffers.Text;
 
 namespace ProjektZespolowy
 {
-    class Furniture
+    public class Furniture
     {
         public string id { get; set; }
         public string warentyImage { get; set; }
@@ -24,6 +26,11 @@ namespace ProjektZespolowy
             if (this.specText == "")
                 return false;
             return true;
+        }
+        public Bitmap convertBase64ToBitmap(String b64)
+        {
+            byte[] imageAsBytes = Convert.FromBase64String(b64);
+            return BitmapFactory.DecodeByteArray(imageAsBytes, 0, imageAsBytes.Length);
         }
     }
 }
