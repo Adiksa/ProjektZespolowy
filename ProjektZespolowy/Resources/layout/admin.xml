@@ -22,21 +22,21 @@
       android:orientation="vertical"
       android:layout_toRightOf="@id/communicate">
     <Button
-      android:text="btn1"
+      android:text="scan NFC"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
       android:layout_toRightOf="@id/photo1"
       android:id="@+id/scan" />
     <Button
-      android:text="btn2"
+      android:text="From camera"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
       android:layout_below="@id/scan"
       android:id="@+id/camera" />
     <Button
-      android:text="btn3"
+      android:text="From galery"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
@@ -45,9 +45,9 @@
   </RelativeLayout>
     <EditText
         android:inputType="textMultiLine"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="test shit test"
+        android:hint="warenty"
         android:layout_below="@id/photo1"
         android:id="@+id/editText1" />
     <ImageView
@@ -64,14 +64,14 @@
     android:layout_toRightOf="@id/photo2"
     android:layout_below="@id/editText1">
     <Button
-        android:text="btn4"
+        android:text="From Camera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/photo2"
         android:id="@+id/btn4" />
     <Button
-        android:text="btn5"
+        android:text="From Galery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -80,9 +80,16 @@
     </RelativeLayout>
     <EditText
         android:inputType="textMultiLine"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="test shit test"
+        android:hint="dane techniczne"
         android:layout_below="@id/photo2"
         android:id="@+id/txtEdit2" />
+    <Button
+        android:text="dodaj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtEdit2"
+        android:layout_alignParentRight="true"
+        android:id="@+id/furAdd" />
 </RelativeLayout>

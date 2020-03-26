@@ -46,6 +46,18 @@ namespace ProjektZespolowy
                 return -1;
             }
         }
+        public int dataInsert(Furniture obj)
+        {
+            try
+            {
+                var setter = client.Set("Furniture/" + obj.id, obj);
+                return 1;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
         public int checkLogin(UserLogins login)
         {
             try
@@ -84,6 +96,22 @@ namespace ProjektZespolowy
             {
                 var resault = client.Get("Login/" + login.login);
                 UserLogins res = resault.ResultAs<UserLogins>();
+                if (res == null)
+                    return 1;
+                else
+                    return 0;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+        public int checkFurniturePossibility(Furniture obj)
+        {
+            try
+            {
+                var resault = client.Get("Furniture/" + obj.id);
+                Furniture res = resault.ResultAs<Furniture>();
                 if (res == null)
                     return 1;
                 else
