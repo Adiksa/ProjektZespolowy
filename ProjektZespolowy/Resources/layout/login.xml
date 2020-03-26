@@ -62,6 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/buttonlog"
             android:id="@+id/loginButton" />
         <TextView
             android:id="@+id/NoAccount"
@@ -76,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:background="@drawable/buttonlog"
             android:id="@+id/signUpButton"
             android:layout_below="@+id/NoAccount"/>
         </RelativeLayout>>
