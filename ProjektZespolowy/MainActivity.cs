@@ -52,7 +52,8 @@ namespace ProjektZespolowy
             var memory = tagInfo.Records.AsMemory();
             if (memory.Span.ToArray().Length>0)
             {
-                string furnitureId = memory.Span.ToArray()[0].MimeType;
+                string furnitureId = memory.Span.ToArray()[0].Message;
+                skanText.Text = memory.Span.ToArray()[0].Message;
                 FireBaseConnector fcon = new FireBaseConnector();
                 furniture = fcon.getFurniture(furnitureId);
                 if(furniture==null)

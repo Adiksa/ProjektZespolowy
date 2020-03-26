@@ -135,7 +135,7 @@ namespace ProjektZespolowy
             var memory = tagInfo.Records.AsMemory();
             if (memory.Span.ToArray().Length > 0)
             {
-                nfcText.Text = memory.Span.ToArray()[0].MimeType;
+                nfcText.Text = memory.Span.ToArray()[0].Message;
             }
             else
             {
