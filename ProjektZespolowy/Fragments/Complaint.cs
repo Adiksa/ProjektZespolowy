@@ -13,6 +13,7 @@ using Android.Widget;
 
 namespace ProjektZespolowy.Fragments
 {
+    [Activity(Label = "Complaint", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class Complaint : Android.Support.V4.App.Fragment
     {
         private View view;

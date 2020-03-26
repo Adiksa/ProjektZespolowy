@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace ProjektZespolowy
 {
-    [Activity(Label = "Admin")]
+    [Activity(Label = "Admin", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class Admin : Activity
     {
         protected override void OnCreate(Bundle savedInstanceState)

@@ -12,6 +12,7 @@ using Android.Widget;
 
 namespace ProjektZespolowy.Fragments
 {
+    [Activity(Label = "Complaint_Progress", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class Complaint_Progress : Android.Support.V4.App.Fragment
     {
         private View view;

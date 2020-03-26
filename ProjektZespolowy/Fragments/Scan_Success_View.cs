@@ -13,6 +13,7 @@ using Android.Widget;
 
 namespace ProjektZespolowy.Fragments
 {
+    [Activity(Label = "Scan_Success_View", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class Scan_Success_View : Android.Support.V4.App.Fragment
     {
         private View view;
