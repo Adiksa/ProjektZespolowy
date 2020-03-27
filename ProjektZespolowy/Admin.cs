@@ -55,6 +55,11 @@ namespace ProjektZespolowy
                 Bitmap bitmap = (Bitmap)data.Extras.Get("data");
                 specImage.SetImageBitmap(bitmap);
             }
+            if ((requestCode == 2) && (resultCode == Result.Ok) && (data != null))
+            {
+                Android.Net.Uri uri = data.Data;
+                warentyImage.SetImageURI(uri);
+            }
         }
 
         protected override void OnNewIntent(Intent intent)
@@ -79,14 +84,13 @@ namespace ProjektZespolowy
             };
             warentyFromGallery.Click += delegate
             {
-                Intent intent = new Intent();
+                Intent = new Intent();
                 Intent.SetType("image/*");
                 Intent.SetAction(Intent.ActionGetContent);
                 StartActivityForResult(Intent.CreateChooser(Intent, "Select picture"), 2);
             };
             furAdd.Click += FurAdd_Click;
         }
-
         private void FurAdd_Click(object sender, EventArgs e)
         {
             Furniture furniture = new Furniture()
