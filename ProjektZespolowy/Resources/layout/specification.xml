@@ -1,0 +1,36 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/topOfPage">
+    <Button
+      android:text="@string/btnReturn"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceLarge"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentRight="true"
+      android:id="@+id/btnReturn" />
+    <ImageView
+      android:src="@android:drawable/ic_menu_gallery"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:minHeight="500px"
+      android:minWidth="500px"
+      android:layout_below="@id/btnReturn"
+      android:id="@+id/photoPreview" />
+    <TextView
+      android:text="@string/description"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:layout_below="@id/photoPreview"
+      android:id="@+id/desc" />
+  </RelativeLayout>
+</RelativeLayout>

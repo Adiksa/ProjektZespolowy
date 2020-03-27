@@ -21,4 +21,6 @@
   <string name="photoDesc">Opis zdjęcia</string>
   <!--Ekran przebiegu reklamacji-->
   <string name="ComProgress">Przebieg reklamacji:</string>
+  <!--Ekran specyfikacji-->
+  <string name="btnReturn">Powrót</string>
 </resources>
