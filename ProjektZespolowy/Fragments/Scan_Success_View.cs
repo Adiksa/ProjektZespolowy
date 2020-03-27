@@ -32,7 +32,7 @@ namespace ProjektZespolowy.Fragments
             ComponentsLocalizer();
             ActionHooker();
             description.Text = furniture.warentyText;
-            itemName.Text = furniture.id;
+            itemName.Text = furniture.name;
             photoPreview.SetImageBitmap(furniture.convertBase64ToBitmap(furniture.warentyImage));
             return view;
         }

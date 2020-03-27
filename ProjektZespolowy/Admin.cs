@@ -31,6 +31,7 @@ namespace ProjektZespolowy
         private ImageView specImage;
         private EditText warentyText;
         private EditText specText;
+        private EditText name;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -76,6 +77,13 @@ namespace ProjektZespolowy
                 Intent intent = new Intent(MediaStore.ActionImageCapture);
                 StartActivityForResult(intent, 1);
             };
+            warentyFromGallery.Click += delegate
+            {
+                Intent intent = new Intent();
+                Intent.SetType("image/*");
+                Intent.SetAction(Intent.ActionGetContent);
+                StartActivityForResult(Intent.CreateChooser(Intent, "Select picture"), 2);
+            };
             furAdd.Click += FurAdd_Click;
         }
 
@@ -87,7 +95,8 @@ namespace ProjektZespolowy
                 warentyImage = ImageViewToBase64String(warentyImage),
                 warentyText = warentyText.Text,
                 specImage = ImageViewToBase64String(specImage),
-                specText = specText.Text
+                specText = specText.Text,
+                name = name.Text
             };
             if(furniture.Correct())
             {
@@ -169,6 +178,7 @@ namespace ProjektZespolowy
             specImage = FindViewById<ImageView>(Resource.Id.photo2);
             warentyText = FindViewById<EditText>(Resource.Id.editText1);
             specText = FindViewById<EditText>(Resource.Id.txtEdit2);
+            name = FindViewById<EditText>(Resource.Id.txtEdit3);
         }
 
         private string ImageViewToBase64String(ImageView obj)

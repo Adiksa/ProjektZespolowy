@@ -12,6 +12,7 @@ namespace ProjektZespolowy
         public string warentyText { get; set; }
         public string specImage { get; set; }
         public string specText { get; set; }
+        public string name { get; set; }
 
         public bool Correct()
         {
@@ -24,6 +25,8 @@ namespace ProjektZespolowy
             if (this.specImage == null)
                 return false;
             if (this.specText == "")
+                return false;
+            if (this.name == "")
                 return false;
             return true;
         }
