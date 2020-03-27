@@ -3929,28 +3929,31 @@ namespace ProjektZespolowy
 			public const int txtEdit2 = 2131230950;
 			
 			// aapt resource value: 0x7F0800E7
-			public const int uniform = 2131230951;
+			public const int txtEdit3 = 2131230951;
 			
 			// aapt resource value: 0x7F0800E8
-			public const int unlabeled = 2131230952;
+			public const int uniform = 2131230952;
 			
 			// aapt resource value: 0x7F0800E9
-			public const int up = 2131230953;
+			public const int unlabeled = 2131230953;
 			
 			// aapt resource value: 0x7F0800EA
-			public const int useLogo = 2131230954;
+			public const int up = 2131230954;
 			
 			// aapt resource value: 0x7F0800EB
-			public const int view_offset_helper = 2131230955;
+			public const int useLogo = 2131230955;
 			
 			// aapt resource value: 0x7F0800EC
-			public const int visible = 2131230956;
+			public const int view_offset_helper = 2131230956;
 			
 			// aapt resource value: 0x7F0800ED
-			public const int withText = 2131230957;
+			public const int visible = 2131230957;
 			
 			// aapt resource value: 0x7F0800EE
-			public const int wrap_content = 2131230958;
+			public const int withText = 2131230958;
+			
+			// aapt resource value: 0x7F0800EF
+			public const int wrap_content = 2131230959;
 			
 			static Id()
 			{
