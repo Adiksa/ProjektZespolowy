@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/TopLeft">
   <TextView
-    android:text="eNeFCe here"
+    android:text=""
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/communicate" />
@@ -85,11 +85,18 @@
         android:hint="dane techniczne"
         android:layout_below="@id/photo2"
         android:id="@+id/txtEdit2" />
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="nazwa"
+        android:layout_below="@+id/txtEdit2"
+        android:id="@+id/txtEdit3" />
     <Button
         android:text="dodaj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtEdit2"
+        android:layout_below="@id/txtEdit3"
         android:layout_alignParentRight="true"
         android:id="@+id/furAdd" />
 </RelativeLayout>
