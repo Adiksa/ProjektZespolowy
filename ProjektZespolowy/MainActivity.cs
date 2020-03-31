@@ -40,6 +40,18 @@ namespace ProjektZespolowy
             base.OnResume();
             CrossNFC.Current.StartListening();
         }
+
+        public override void OnBackPressed()
+        {
+            if(mainFragment!=null && !mainFragment.IsMainScreen())
+            {
+                InitNewFragment(mainFragment);
+            }
+            else
+            {
+                base.OnBackPressed();
+            }
+        }
         private void ActionHooker()
         {
             CrossNFC.Current.OnMessageReceived += Current_OnMessageReceived;

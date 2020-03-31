@@ -19,8 +19,12 @@ namespace ProjektZespolowy.Fragments
     {
         private SupportFragment currentFragment;
         private Scan_Success_View scan_Success_View;
-        private View view;
+        private Specification specification;
         public Furniture furniture;
+        private View view;
+        private Button specBtn;
+        private Button complaintListBtn;
+        private Button shopBtn;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,11 +38,25 @@ namespace ProjektZespolowy.Fragments
             scan_Success_View.furniture = furniture;
             InitNewFragment(scan_Success_View);
             ComponentsLocalizer();
+            ActionHooker();
             return view;
+        }
+
+        private void ActionHooker()
+        {
+            specBtn.Click += SpecBtn_Click;
+        }
+
+        private void SpecBtn_Click(object sender, EventArgs e)
+        {
+            specification = new Specification();
+            specification.furniture = furniture;
+            InitNewFragment(specification);
         }
 
         private void ComponentsLocalizer()
         {
+            specBtn = view.FindViewById<Button>(Resource.Id.specBtn);
 
         }
 
@@ -62,6 +80,13 @@ namespace ProjektZespolowy.Fragments
 
             transaction.Commit();
             currentFragment = fragment;
+        }
+
+        public bool IsMainScreen()
+        {
+            if (currentFragment == scan_Success_View)
+                return true;
+            return false;
         }
     }
 }

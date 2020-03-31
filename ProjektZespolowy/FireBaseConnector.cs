@@ -17,8 +17,8 @@ namespace ProjektZespolowy
 {
     class FireBaseConnector
     {
-        private IFirebaseConfig fcon;
-        private IFirebaseClient client;
+        private readonly IFirebaseConfig fcon;
+        private readonly IFirebaseClient client;
         public FireBaseConnector()
         {
             fcon = new FirebaseConfig()

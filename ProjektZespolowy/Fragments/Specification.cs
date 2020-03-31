@@ -31,8 +31,8 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.scan_successfull_view, container, false);
             ComponentsLocalizer();
             ActionHooker();
-            description.Text = furniture.warentyText;
-            photoPreview.SetImageBitmap(furniture.convertBase64ToBitmap(furniture.warentyImage));
+            description.Text = furniture.specText;
+            photoPreview.SetImageBitmap(furniture.convertBase64ToBitmap(furniture.specImage));
             return view;
         }
 

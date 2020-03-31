@@ -45,19 +45,21 @@ namespace ProjektZespolowy
         protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            if(requestCode == 0)
+            if((requestCode == 0) && (resultCode == Result.Ok) && (data != null))
             {
-                Bitmap bitmap = (Bitmap)data.Extras.Get("data");
-                warentyImage.SetImageBitmap(bitmap);
+                //Bitmap bitmap = (Bitmap)data.Extras.Get("data");
+                //warentyImage.SetImageURI(uri);
             }
-            if (requestCode == 1)
+            if ((requestCode == 1) && (resultCode == Result.Ok) && (data != null))
             {
-                Bitmap bitmap = (Bitmap)data.Extras.Get("data");
-                specImage.SetImageBitmap(bitmap);
+                // Bitmap bitmap = (Bitmap)data.Extras.Get("data");
+                Android.Net.Uri uri = data.Data;
+                specImage.SetImageURI(uri);
             }
             if ((requestCode == 2) && (resultCode == Result.Ok) && (data != null))
             {
                 Android.Net.Uri uri = data.Data;
+                
                 warentyImage.SetImageURI(uri);
             }
         }
@@ -75,11 +77,13 @@ namespace ProjektZespolowy
             warentyFromCamera.Click += delegate
             {
                 Intent intent = new Intent(MediaStore.ActionImageCapture);
+                intent.PutExtra(MediaStore.ExtraOutput, 1);
                 StartActivityForResult(intent, 0);
             };
             specFromCamera.Click += delegate
             {
                 Intent intent = new Intent(MediaStore.ActionImageCapture);
+                intent.PutExtra(MediaStore.ExtraVideoQuality, 1);
                 StartActivityForResult(intent, 1);
             };
             warentyFromGallery.Click += delegate
