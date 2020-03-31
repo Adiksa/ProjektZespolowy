@@ -1,0 +1,24 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="30px"
+    android:minHeight="30px"
+    android:paddingLeft="5dp"
+    android:padding="2dp"
+    android:paddingTop="2dp">
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/imageComplaint" 
+        android:layout_weight="20"/>
+    <TextView
+        android:text="Model"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="20"
+        android:id="@+id/textModel" />
+</LinearLayout>
