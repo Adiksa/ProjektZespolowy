@@ -3497,7 +3497,7 @@ namespace ProjektZespolowy
 			public const int forever = 2131230813;
 			
 			// aapt resource value: 0x7F08005E
-			public const int fragmentConatiner = 2131230814;
+			public const int fragmentContainer = 2131230814;
 			
 			// aapt resource value: 0x7F08005F
 			public const int fragmentContainerMain = 2131230815;

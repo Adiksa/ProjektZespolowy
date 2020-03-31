@@ -16,8 +16,8 @@
   <!--Ekran zgłaszania problemu-->
   <string name="problemHey">Opisz nam swój problem:</string>
   <string name="writeHere">Kliknij tu, by zacząć pisać.</string>
-  <string name="btn1text">KURWA</string>
-  <string name="btn2text">MAĆ</string>
+  <string name="btn1text">PRZYCISK</string>
+  <string name="btn2text">GUZIK</string>
   <string name="photoDesc">Opis zdjęcia</string>
   <!--Ekran przebiegu reklamacji-->
   <string name="ComProgress">Przebieg reklamacji:</string>
