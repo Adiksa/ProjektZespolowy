@@ -75,7 +75,7 @@ namespace ProjektZespolowy.Fragments
             else
             {
                 transaction.SetCustomAnimations(Resource.Animation.slide_up, Resource.Animation.slide_right);
-                transaction.Add(Resource.Id.fragmentConatiner, fragment, $"{fragment}");
+                transaction.Add(Resource.Id.fragmentContainer, fragment, $"{fragment}");
             }
 
             transaction.Commit();
