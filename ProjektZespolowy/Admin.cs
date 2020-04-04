@@ -47,14 +47,13 @@ namespace ProjektZespolowy
             base.OnActivityResult(requestCode, resultCode, data);
             if((requestCode == 0) && (resultCode == Result.Ok) && (data != null))
             {
-                //Bitmap bitmap = (Bitmap)data.Extras.Get("data");
-                //warentyImage.SetImageURI(uri);
+                Bitmap bitmap = (Bitmap)data.Extras.Get("data");
+                warentyImage.SetImageBitmap(bitmap);
             }
             if ((requestCode == 1) && (resultCode == Result.Ok) && (data != null))
             {
-                // Bitmap bitmap = (Bitmap)data.Extras.Get("data");
-                Android.Net.Uri uri = data.Data;
-                specImage.SetImageURI(uri);
+                Bitmap bitmap = (Bitmap)data.Extras.Get("data");
+                specImage.SetImageBitmap(bitmap);
             }
             if ((requestCode == 2) && (resultCode == Result.Ok) && (data != null))
             {

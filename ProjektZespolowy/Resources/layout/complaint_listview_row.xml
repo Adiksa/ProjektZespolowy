@@ -11,14 +11,13 @@
     <ImageView
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:id="@+id/imageComplaint" 
-        android:layout_weight="20"/>
+        android:layout_height="50dp"
+        android:id="@+id/imageComplaint" />
     <TextView
-        android:text="Model"
+        android:text="Reklamacja"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="20"
-        android:id="@+id/textModel" />
+        android:id="@+id/textComplaintId" />
 </LinearLayout>
