@@ -6,7 +6,6 @@
     android:src="@drawable/ITM"
     android:layout_width="100dp"
     android:layout_height="25dp"
-    android:layout_above="@id/logoCentre"
     android:layout_marginTop="5px"
     android:layout_marginLeft="5px"
     android:contentDescription="@string/logoITM"
