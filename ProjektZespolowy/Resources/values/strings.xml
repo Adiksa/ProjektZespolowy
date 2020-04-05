@@ -23,4 +23,6 @@
   <string name="ComProgress">Przebieg reklamacji:</string>
   <!--Ekran specyfikacji-->
   <string name="btnReturn">Powrót</string>
+  <!--Ekran tworzenia reklamacji-->
+  <string name="complaintCreate">Utwórz reklamację</string>
 </resources>
