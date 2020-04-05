@@ -2,6 +2,7 @@
 using Android.Widget;
 using System;
 using System.Buffers.Text;
+using System.Collections.Generic;
 
 namespace ProjektZespolowy
 {
@@ -13,6 +14,7 @@ namespace ProjektZespolowy
         public string specImage { get; set; }
         public string specText { get; set; }
         public string name { get; set; }
+        public List<string> complaintList { get; set; }
 
         public bool Correct()
         {

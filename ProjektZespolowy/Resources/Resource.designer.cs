@@ -3359,46 +3359,46 @@ namespace ProjektZespolowy
 			public const int btnReturn = 2131230769;
 			
 			// aapt resource value: 0x7F080032
-			public const int button2 = 2131230770;
+			public const int button3 = 2131230770;
 			
 			// aapt resource value: 0x7F080033
-			public const int button3 = 2131230771;
+			public const int buttonPanel = 2131230771;
 			
 			// aapt resource value: 0x7F080034
-			public const int buttonPanel = 2131230772;
+			public const int buttons = 2131230772;
 			
 			// aapt resource value: 0x7F080035
-			public const int buttons = 2131230773;
+			public const int camera = 2131230773;
 			
 			// aapt resource value: 0x7F080036
-			public const int camera = 2131230774;
+			public const int center = 2131230774;
 			
 			// aapt resource value: 0x7F080037
-			public const int center = 2131230775;
+			public const int center_horizontal = 2131230775;
 			
 			// aapt resource value: 0x7F080038
-			public const int center_horizontal = 2131230776;
+			public const int center_vertical = 2131230776;
 			
 			// aapt resource value: 0x7F080039
-			public const int center_vertical = 2131230777;
+			public const int checkbox = 2131230777;
 			
 			// aapt resource value: 0x7F08003A
-			public const int checkbox = 2131230778;
+			public const int chronometer = 2131230778;
 			
 			// aapt resource value: 0x7F08003B
-			public const int chronometer = 2131230779;
+			public const int clip_horizontal = 2131230779;
 			
 			// aapt resource value: 0x7F08003C
-			public const int clip_horizontal = 2131230780;
+			public const int clip_vertical = 2131230780;
 			
 			// aapt resource value: 0x7F08003D
-			public const int clip_vertical = 2131230781;
+			public const int collapseActionView = 2131230781;
 			
 			// aapt resource value: 0x7F08003E
-			public const int collapseActionView = 2131230782;
+			public const int communicate = 2131230782;
 			
 			// aapt resource value: 0x7F08003F
-			public const int communicate = 2131230783;
+			public const int complaintBtn = 2131230783;
 			
 			// aapt resource value: 0x7F080003
 			public const int ComProgress = 2131230723;
@@ -3862,6 +3862,9 @@ namespace ProjektZespolowy
 			// aapt resource value: 0x7F0800D2
 			public const int text2 = 2131230930;
 			
+			// aapt resource value: 0x7F0800D3
+			public const int textComplaintId = 2131230931;
+			
 			// aapt resource value: 0x7F0800D8
 			public const int textinput_counter = 2131230936;
 			
@@ -3870,9 +3873,6 @@ namespace ProjektZespolowy
 			
 			// aapt resource value: 0x7F0800DA
 			public const int textinput_helper_text = 2131230938;
-			
-			// aapt resource value: 0x7F0800D3
-			public const int textModel = 2131230931;
 			
 			// aapt resource value: 0x7F0800D4
 			public const int textSpacerNoButtons = 2131230932;

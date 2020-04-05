@@ -62,8 +62,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Admin.cs" />
+    <Compile Include="Complaint.cs" />
+    <Compile Include="ComplaintListViewAdapter.cs" />
     <Compile Include="FireBaseConnector.cs" />
-    <Compile Include="Fragments\Complaint.cs" />
+    <Compile Include="Fragments\ComplaintCreate.cs" />
     <Compile Include="Fragments\Complaint_Progress.cs" />
     <Compile Include="Fragments\Dialog_SignUp.cs" />
     <Compile Include="Fragments\MainFragment.cs" />

@@ -20,10 +20,11 @@ namespace ProjektZespolowy.Fragments
         private SupportFragment currentFragment;
         private Scan_Success_View scan_Success_View;
         private Specification specification;
+        private ComplaintCreate complaint;
         public Furniture furniture;
         private View view;
         private Button specBtn;
-        private Button complaintListBtn;
+        private Button complaintBtn;
         private Button shopBtn;
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -45,6 +46,13 @@ namespace ProjektZespolowy.Fragments
         private void ActionHooker()
         {
             specBtn.Click += SpecBtn_Click;
+            complaintBtn.Click += ComplaintBtn_Click;
+        }
+
+        private void ComplaintBtn_Click(object sender, EventArgs e)
+        {
+            complaint = new ComplaintCreate();
+            InitNewFragment(complaint);
         }
 
         private void SpecBtn_Click(object sender, EventArgs e)
@@ -57,7 +65,7 @@ namespace ProjektZespolowy.Fragments
         private void ComponentsLocalizer()
         {
             specBtn = view.FindViewById<Button>(Resource.Id.specBtn);
-
+            complaintBtn = view.FindViewById<Button>(Resource.Id.complaintBtn);
         }
 
         private void InitNewFragment(SupportFragment fragment)
