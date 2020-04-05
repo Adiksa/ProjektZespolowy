@@ -58,6 +58,75 @@ namespace ProjektZespolowy
                 return -1;
             }
         }
+
+        public int dataInsert(Complaint obj)
+        {
+            try
+            {
+                if (obj.Correct())
+                {
+                    obj.id = getComplaintLastId();
+                    var setter = client.Set("Complaint/" + obj.id, obj);
+                    List<String> complaintList = getFurnitureComplaintList(obj.furnitureId);
+                    complaintList.Add(obj.id);
+                    setter = client.Set("Furniture/" + obj.furnitureId + "/complaintList", complaintList);
+                    return 1;
+                }
+                else
+                    return 0;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
+        public List<Complaint> GetComplaints(List<String> furnitureComplaintList)
+        {
+            try
+            {
+                var resault = client.Get("Complaint/");
+                List<Complaint> complaintList = new List<Complaint>();
+                complaintList = resault.ResultAs<List<Complaint>>();
+                List<Complaint> list = new List<Complaint>();
+                foreach (Complaint item in complaintList)
+                {
+                    if (item != null)
+                    {
+                        if (furnitureComplaintList.Contains(item.id))
+                            list.Add(item);
+                    }
+                }
+                return list;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        public List<String> getFurnitureComplaintList(string id)
+        {
+            var resault = client.Get("Furniture/" + id + "/complaintList");
+            var res = resault.ResultAs<List<String>>();
+            if (res == null)
+            {
+                return new List<String>();
+            }
+            else
+                return res;
+        }
+        public string getComplaintLastId()
+        {
+            var resault = client.Get("Complaintid/id");
+            var res = resault.ResultAs<string>();
+            if (res != null)
+            {
+                client.Set("Complaintid/id", (int.Parse(res) + 1).ToString());
+                return (int.Parse(res) + 1).ToString();
+            }
+            client.Set("Complaintid/id", "0");
+            return 0.ToString();
+        }
         public Furniture getFurniture(string id)
         {
             try

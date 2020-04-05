@@ -1,7 +1,7 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
   <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -11,6 +11,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
+    android:minHeight="30dp"
     android:weightSum="30">
     <Button
       android:text="Button"

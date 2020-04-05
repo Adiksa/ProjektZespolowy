@@ -51,8 +51,9 @@ namespace ProjektZespolowy.Fragments
 
         private void ComplaintBtn_Click(object sender, EventArgs e)
         {
-            complaint = new ComplaintCreate();
-            InitNewFragment(complaint);
+            ComplaintList complaintList = new ComplaintList();
+            complaintList.furniture = furniture;
+            InitNewFragment(complaintList);
         }
 
         private void SpecBtn_Click(object sender, EventArgs e)

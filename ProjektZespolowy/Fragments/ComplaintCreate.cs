@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -16,18 +17,24 @@ using static Android.Graphics.Bitmap;
 
 namespace ProjektZespolowy.Fragments
 {
-    [Activity(Label = "Complaint", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
-    public class ComplaintCreate : Android.Support.V4.App.Fragment
+    public class ComplaintCreate : DialogFragment
     {
         private View view;
         private EditText problemDesc;
         private ImageView photoPreview;
         private Button btn1Complaint;
         private Button btn2Complaint;
+        public Furniture furniture;
         
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+        }
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
+            base.OnActivityCreated(savedInstanceState);
+            Dialog.Window.Attributes.WindowAnimations = Resource.Style.dialog_animation;
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
@@ -47,15 +54,15 @@ namespace ProjektZespolowy.Fragments
             btn2Complaint = view.FindViewById<Button>(Resource.Id.btn2Complaint);
         }
 
-        public override void OnActivityResult(int requestCode, int resultCode, Intent data)
+        public override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
         {
             base.OnActivityResult(requestCode, resultCode, data);
-            if ((requestCode == 0) && (data != null))
+            if ((requestCode == 0) && (resultCode == Result.Ok) && (data != null))
             {
                 Bitmap bitmap = (Bitmap)data.Extras.Get("data");
                 photoPreview.SetImageBitmap(bitmap);
             }
-            if ((requestCode == 1) && (resultCode == 1) && (data != null))
+            if ((requestCode == 1) && (resultCode == Result.Ok) && (data != null))
             {
                 Android.Net.Uri uri = data.Data;
 
@@ -78,6 +85,79 @@ namespace ProjektZespolowy.Fragments
                 intent.PutExtra(MediaStore.ExtraOutput, 1);
                 StartActivityForResult(intent, 0);
             };
+            btn2Complaint.Click += delegate
+            {
+                Complaint complaint = new Complaint()
+                {
+                    furnitureId = furniture.id,
+                    description = problemDesc.Text,
+                    photo = ImageViewToBase64String(photoPreview)
+                };
+                FireBaseConnector connector = new FireBaseConnector();
+                var res = connector.dataInsert(complaint);
+                if (res == 0)
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                    alertDialog.SetTitle("Błąd danych.");
+                    alertDialog.SetMessage("Dodaj wszystkie dane poprawnie.");
+                    alertDialog.SetNeutralButton("Ok", delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
+                }
+                if (res == -1)
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                    alertDialog.SetTitle("Brak połączenia internetowego.");
+                    alertDialog.SetMessage("Sprawdź swoje połączenie.");
+                    alertDialog.SetNeutralButton("Ok", delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
+                }
+                if (res == 1)
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                    alertDialog.SetTitle("Reklamacja dodana poprawnie.");
+                    alertDialog.SetMessage("Reklamacja została dodana poprawnie, sprawdź jej status klikając na liste reklamacji.");
+                    alertDialog.SetNeutralButton("Ok", delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
+                    this.Dispose();
+                }
+            };
+        }
+        private string ImageViewToBase64String(ImageView obj)
+        {
+            Android.Graphics.Drawables.BitmapDrawable bd1 = (Android.Graphics.Drawables.BitmapDrawable)obj.Drawable;
+            Bitmap bitmap = bd1.Bitmap;
+            if(bitmap.Height > 2000 || bitmap.Width > 2000)
+            {
+                if(bitmap.Height > bitmap.Width)
+                {
+                    int newWidth = Convert.ToInt32((double)bitmap.Width / (double)bitmap.Height * 2000.0);
+                    if (newWidth>0)
+                    {
+                        bitmap = Bitmap.CreateScaledBitmap(bitmap, newWidth, 2000, true);
+                    }
+                }
+                else
+                {
+                    int newHeight = Convert.ToInt32((double)bitmap.Height / (double)bitmap.Width * 2000.0);
+                    if (newHeight>0)
+                    {
+                        bitmap = Bitmap.CreateScaledBitmap(bitmap, 2000, newHeight, true);
+                    }
+                }
+            }
+            MemoryStream ms = new MemoryStream();
+            bitmap.Compress(CompressFormat.Png, 100, ms);
+            byte[] bb = ms.ToArray();
+            return Convert.ToBase64String(bb);
         }
     }
 }

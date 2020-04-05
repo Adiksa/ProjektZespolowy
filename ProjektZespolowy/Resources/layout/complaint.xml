@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
   <RelativeLayout
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_centerHorizontal="true"
     android:id="@+id/mainSection">
@@ -20,15 +20,16 @@
         android:inputType="textMultiLine"
         android:id="@+id/problemDesc"
         android:hint="@string/writeHere"
-        android:layout_below="@id/problemHey"/>
+        android:layout_below="@id/problemHey"
+        android:maxHeight="200dp"/>
     <ImageView
       android:src="@android:drawable/ic_menu_gallery"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_centerHorizontal="true"
       android:contentDescription="@string/photoDesc"
-      android:minHeight="500px"
-      android:minWidth="500px"
+      android:adjustViewBounds="true"
+      android:scaleType="fitCenter"
       android:layout_below="@id/problemDesc"
       android:id="@+id/photoPreview" />
   </RelativeLayout>

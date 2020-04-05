@@ -22,6 +22,7 @@ namespace ProjektZespolowy.Fragments
         private View view;
         private ListView complaints;
         private Button createButton;
+        public Furniture furniture;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -34,6 +35,13 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.complaint_list, container, false);
             ComponentsLocalizer();
             ActionHooker();
+            FireBaseConnector connector = new FireBaseConnector();
+            List<Complaint> complaintList = connector.GetComplaints(connector.getFurnitureComplaintList(furniture.id));
+            if(complaintList != null)
+            {
+                ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
+                complaints.Adapter = adapter;
+            }
             return view;
         }
 
@@ -50,7 +58,20 @@ namespace ProjektZespolowy.Fragments
 
         private void ActionHooker()
         {
-
+            createButton.Click += delegate
+            {
+                var transaction = this.Activity.FragmentManager.BeginTransaction();
+                ComplaintCreate create = new ComplaintCreate();
+                create.furniture = furniture;
+                create.Show(transaction, "create complaint dialog");
+                FireBaseConnector connector = new FireBaseConnector();
+                List<Complaint> complaintList = connector.GetComplaints(connector.getFurnitureComplaintList(furniture.id));
+                if (complaintList != null)
+                {
+                    ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
+                    complaints.Adapter = adapter;
+                }
+            };
         }
 
     }
