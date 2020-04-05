@@ -12,6 +12,7 @@
   <string name="logoCentre">Logo</string>
   <!--Ekran oczekiwania na tag NFC-->
   <string name="scanning">Zbliż tag NFC do czujnika</string>
+  <string name="scanDesc">Skanowanie</string>
   <!--Ekran po zeskanowaniu NFC-->
   <string name="itemName">Nazwa mebla</string>
   <string name="description">Opis mebla here</string>

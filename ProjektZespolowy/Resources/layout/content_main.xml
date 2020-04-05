@@ -11,8 +11,8 @@
       android:layout_height="wrap_content"
       android:id="@+id/waitingForScan"
       android:layout_centerInParent="true"
-      android:src="@drawable/scan_nfc"
-      />
+      android:contentDescription="@string/scanDesc"
+      android:src="@drawable/scan_nfc"/>
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

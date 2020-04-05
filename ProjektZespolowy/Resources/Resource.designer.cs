@@ -4556,16 +4556,19 @@ namespace ProjektZespolowy
 			public const int problemHey = 2131624006;
 			
 			// aapt resource value: 0x7F0E0047
-			public const int scanning = 2131624007;
+			public const int scanDesc = 2131624007;
 			
 			// aapt resource value: 0x7F0E0048
-			public const int search_menu_title = 2131624008;
+			public const int scanning = 2131624008;
 			
 			// aapt resource value: 0x7F0E0049
-			public const int status_bar_notification_info_overflow = 2131624009;
+			public const int search_menu_title = 2131624009;
 			
 			// aapt resource value: 0x7F0E004A
-			public const int writeHere = 2131624010;
+			public const int status_bar_notification_info_overflow = 2131624010;
+			
+			// aapt resource value: 0x7F0E004B
+			public const int writeHere = 2131624011;
 			
 			static String()
 			{
