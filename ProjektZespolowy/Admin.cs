@@ -17,6 +17,7 @@ using static Android.Graphics.Bitmap;
 
 namespace ProjektZespolowy
 {
+    ///Activity zrobione do testowania dodawania nowych tagów. 
     [Activity(Label = "Admin", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
     public class Admin : Activity
     {
@@ -61,6 +62,12 @@ namespace ProjektZespolowy
                 
                 warentyImage.SetImageURI(uri);
             }
+            if ((requestCode == 3) && (resultCode == Result.Ok) && (data != null))
+            {
+                Android.Net.Uri uri = data.Data;
+
+                specImage.SetImageURI(uri);
+            }
         }
 
         protected override void OnNewIntent(Intent intent)
@@ -91,6 +98,13 @@ namespace ProjektZespolowy
                 Intent.SetType("image/*");
                 Intent.SetAction(Intent.ActionGetContent);
                 StartActivityForResult(Intent.CreateChooser(Intent, "Select picture"), 2);
+            };
+            specFromGalery.Click += delegate
+            {
+                Intent = new Intent();
+                Intent.SetType("image/*");
+                Intent.SetAction(Intent.ActionGetContent);
+                StartActivityForResult(Intent.CreateChooser(Intent, "Select picture"), 3);
             };
             furAdd.Click += FurAdd_Click;
         }

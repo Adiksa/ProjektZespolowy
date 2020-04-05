@@ -39,11 +39,6 @@ namespace ProjektZespolowy
             Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong).Show();
             CrossNFC.Init(this);
             ActionHooker();
-
-            //Android.Views.Animations.Animation myAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.anim);
-            //animImageView.Animate().SetDuration(1000).SetStartDelay(0).Start();
-            //animImageView.StartAnimation(myAnimation);
-            //animImageView.SetBackgroundResource(Resource.Drawable.anim);
             animation = (AnimationDrawable)animImageView.Background;
             animation.Start();
         }

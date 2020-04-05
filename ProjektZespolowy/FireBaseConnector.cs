@@ -206,23 +206,5 @@ namespace ProjektZespolowy
                 return -1;
             }
         }
-        public void test()
-        {
-            var resault = client.Get("Login");
-            Dictionary<string, UserLogins> userDictionary;
-            List<UserLogins> listauser = new List<UserLogins>();
-            userDictionary = resault.ResultAs<Dictionary<string, UserLogins>>();
-            if (userDictionary != null)
-            {
-                foreach (var item in userDictionary)
-                {
-                    listauser.Add(item.Value);
-                }
-            }
-            foreach (var x in listauser)
-            {
-                System.Console.WriteLine(x.login);
-            }
-        }
     }
 }
