@@ -23,6 +23,8 @@ namespace ProjektZespolowy.Fragments
         private ListView complaints;
         private Button createButton;
         public Furniture furniture;
+        private List<Complaint> complaintList;
+        private List<string> complaintIdList;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -35,8 +37,9 @@ namespace ProjektZespolowy.Fragments
             ComponentsLocalizer();
             ActionHooker();
             FireBaseConnector connector = new FireBaseConnector();
-            List<Complaint> complaintList = connector.GetComplaints(connector.getFurnitureComplaintList(furniture.id));
-            if(complaintList != null)
+            complaintIdList = connector.getFurnitureComplaintList(furniture.id);
+            complaintList = connector.GetComplaints(complaintIdList);
+            if (complaintList != null)
             {
                 ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
                 complaints.Adapter = adapter;
@@ -47,11 +50,15 @@ namespace ProjektZespolowy.Fragments
         {
             base.OnResume();
             FireBaseConnector connector = new FireBaseConnector();
-            List<Complaint> complaintList = connector.GetComplaints(connector.getFurnitureComplaintList(furniture.id));
-            if (complaintList != null)
+            if(connector.getFurnitureComplaintList(furniture.id) != complaintIdList)
             {
-                ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
-                complaints.Adapter = adapter;
+                complaintIdList = connector.getFurnitureComplaintList(furniture.id);
+                List<Complaint> complaintList = connector.GetComplaints(complaintIdList);
+                if (complaintList != null)
+                {
+                    ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
+                    complaints.Adapter = adapter;
+                }
             }
         }
 
@@ -76,7 +83,15 @@ namespace ProjektZespolowy.Fragments
                 create.Show(transaction, "create complaint dialog");
                 this.OnResume();
             };
+            complaints.ItemClick += Complaints_ItemClick;
         }
 
+        private void Complaints_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            var transaction = this.Activity.FragmentManager.BeginTransaction();
+            Complaint_Progress progress = new Complaint_Progress();
+            progress.complaintProgress = complaintList[e.Position].complaintProgress;
+            progress.Show(transaction, "create complaint progress dialog");
+        }
     }
 }

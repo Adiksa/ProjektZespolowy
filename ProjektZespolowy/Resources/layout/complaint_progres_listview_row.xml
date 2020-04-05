@@ -1,4 +1,3 @@
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
     android:layout_width="fill_parent"
@@ -8,20 +7,10 @@
     android:paddingLeft="5dp"
     android:padding="2dp"
     android:paddingTop="2dp">
-    <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:id="@+id/imageComplaint" 
-        android:layout_weight="1"
-        android:adjustViewBounds="true"
-        android:scaleType="fitStart"/>
     <TextView
         android:text="Reklamacja"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_weight="10"
-        android:gravity="end"
-        android:id="@+id/textComplaintId" />
+        android:id="@+id/textComplaintProgress" />
 </LinearLayout>

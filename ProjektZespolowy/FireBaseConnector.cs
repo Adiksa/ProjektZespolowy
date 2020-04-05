@@ -66,6 +66,9 @@ namespace ProjektZespolowy
                 if (obj.Correct())
                 {
                     obj.id = getComplaintLastId();
+                    List<string> complaintProgress = new List<string>();
+                    complaintProgress.Add(DateTime.Now.ToString() + " - Dodano reklamację.");
+                    obj.complaintProgress = complaintProgress;
                     var setter = client.Set("Complaint/" + obj.id, obj);
                     List<String> complaintList = getFurnitureComplaintList(obj.furnitureId);
                     complaintList.Add(obj.id);

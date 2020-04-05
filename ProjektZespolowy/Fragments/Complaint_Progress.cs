@@ -12,11 +12,11 @@ using Android.Widget;
 
 namespace ProjektZespolowy.Fragments
 {
-    [Activity(Label = "Complaint_Progress", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false)]
-    public class Complaint_Progress : Android.Support.V4.App.Fragment
+    public class Complaint_Progress : DialogFragment
     {
         private View view;
         private ListView listProgress;
+        public List<String> complaintProgress;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,7 +28,19 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.complaint_progress, container, false);
             ComponentsLocalizer();
             ActionHooker();
+            if(complaintProgress!=null)
+            {
+                ComplaintProgressListViewAdapter adapter = new ComplaintProgressListViewAdapter(this.Activity, complaintProgress);
+                listProgress.Adapter = adapter;
+            }
             return view;
+        }
+
+        public override void OnActivityCreated(Bundle savedInstanceState)
+        {
+            Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
+            base.OnActivityCreated(savedInstanceState);
+            Dialog.Window.Attributes.WindowAnimations = Resource.Style.dialog_animation;
         }
 
         private void ComponentsLocalizer()
