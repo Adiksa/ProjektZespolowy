@@ -6,11 +6,19 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/activity_main">
+  <ImageView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/waitingForScan"
+      android:layout_centerInParent="true"
+      android:src="@drawable/scan_nfc"
+      />
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_centerInParent="true"
-    android:text="Skanuje" 
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/waitingForScan"
+    android:text="@string/scanning" 
     android:id="@+id/skanText"/>
   <FrameLayout
     android:layout_width="match_parent"

@@ -10,6 +10,8 @@
   <string name="hello">Witaj, zaloguj się.</string>
   <string name="logoITM">ITM Software House</string>
   <string name="logoCentre">Logo</string>
+  <!--Ekran oczekiwania na tag NFC-->
+  <string name="scanning">Zbliż tag NFC do czujnika</string>
   <!--Ekran po zeskanowaniu NFC-->
   <string name="itemName">Nazwa mebla</string>
   <string name="description">Opis mebla here</string>
