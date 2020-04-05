@@ -125,9 +125,10 @@ namespace ProjektZespolowy.Fragments
                     alertDialog.SetNeutralButton("Ok", delegate
                     {
                         alertDialog.Dispose();
+                        this.Dismiss();
                     });
                     alertDialog.Show();
-                    this.Dispose();
+                    
                 }
             };
         }

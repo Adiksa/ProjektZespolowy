@@ -44,6 +44,18 @@ namespace ProjektZespolowy.Fragments
             }
             return view;
         }
+        public override void OnResume()
+        {
+            base.OnResume();
+            FireBaseConnector connector = new FireBaseConnector();
+            List<Complaint> complaintList = connector.GetComplaints(connector.getFurnitureComplaintList(furniture.id));
+            if (complaintList != null)
+            {
+                ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
+                complaints.Adapter = adapter;
+            }
+            return view;
+        }
 
         private void ComponentsLocalizer()
         {
@@ -64,13 +76,6 @@ namespace ProjektZespolowy.Fragments
                 ComplaintCreate create = new ComplaintCreate();
                 create.furniture = furniture;
                 create.Show(transaction, "create complaint dialog");
-                FireBaseConnector connector = new FireBaseConnector();
-                List<Complaint> complaintList = connector.GetComplaints(connector.getFurnitureComplaintList(furniture.id));
-                if (complaintList != null)
-                {
-                    ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
-                    complaints.Adapter = adapter;
-                }
             };
         }
 
