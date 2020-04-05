@@ -54,7 +54,6 @@ namespace ProjektZespolowy.Fragments
                 ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
                 complaints.Adapter = adapter;
             }
-            return view;
         }
 
         private void ComponentsLocalizer()

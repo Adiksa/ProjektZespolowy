@@ -23,7 +23,7 @@ namespace ProjektZespolowy.Fragments
         private EditText problemDesc;
         private ImageView photoPreview;
         private Button btn1Complaint;
-        private Button btn2Complaint;
+        public Button btn2Complaint;
         public Furniture furniture;
         
         public override void OnCreate(Bundle savedInstanceState)
