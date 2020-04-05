@@ -11,6 +11,7 @@ using Android.Media;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
+using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
 using static Android.Graphics.Bitmap;
@@ -23,7 +24,7 @@ namespace ProjektZespolowy.Fragments
         private EditText problemDesc;
         private ImageView photoPreview;
         private Button btn1Complaint;
-        public Button btn2Complaint;
+        private Button btn2Complaint;
         public Furniture furniture;
         
         public override void OnCreate(Bundle savedInstanceState)
@@ -124,8 +125,8 @@ namespace ProjektZespolowy.Fragments
                     alertDialog.SetMessage("Reklamacja została dodana poprawnie, sprawdź jej status klikając na liste reklamacji.");
                     alertDialog.SetNeutralButton("Ok", delegate
                     {
-                        alertDialog.Dispose();
-                        this.Dismiss();
+                    alertDialog.Dispose();
+                    this.Dismiss();
                     });
                     alertDialog.Show();
                     
