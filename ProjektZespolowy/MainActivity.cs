@@ -38,9 +38,13 @@ namespace ProjektZespolowy
             Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong).Show();
             CrossNFC.Init(this);
             ActionHooker();
-            //Android.Views.Animations.Animation myAnimation = AnimationUtils.LoadAnimation(this,Resource.Animator.anim);
+
+            //Android.Views.Animations.Animation myAnimation = AnimationUtils.LoadAnimation(this, Resource.Animation.anim);
             //animImageView.Animate().SetDuration(1000).SetStartDelay(0).Start();
             //animImageView.StartAnimation(myAnimation);
+            //animImageView.SetBackgroundResource(Resource.Drawable.anim);
+            AnimationDrawable animation = (AnimationDrawable)animImageView.Background;
+            animation.Start();
         }
 
         protected override void OnResume()
@@ -107,7 +111,7 @@ namespace ProjektZespolowy
         {
             rootview = FindViewById<CoordinatorLayout>(Resource.Id.coordinatorLayout1);
             skanText = FindViewById<TextView>(Resource.Id.skanText);
-            ImageView animImageView = FindViewById<ImageView>(Resource.Id.waitingForScan);
+            animImageView = FindViewById<ImageView>(Resource.Id.waitingForScan);
         }
 
         private void InitNewFragment(SupportFragment fragment)
