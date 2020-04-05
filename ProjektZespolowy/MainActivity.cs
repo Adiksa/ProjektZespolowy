@@ -3,15 +3,19 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Graphics.Drawables;
+using Android.Media;
 using Android.Nfc;
 using Android.OS;
 using Android.Runtime;
+using Android.Support.Design.Animation;
 using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
 using Plugin.NFC;
 using ProjektZespolowy.Fragments;
+using AnimationUtils = Android.Views.Animations.AnimationUtils;
 using SupportFragment = Android.Support.V4.App.Fragment;
 
 namespace ProjektZespolowy
@@ -24,6 +28,7 @@ namespace ProjektZespolowy
         private CoordinatorLayout rootview;
         private TextView skanText;
         private Furniture furniture;
+        private ImageView animImageView;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -33,6 +38,9 @@ namespace ProjektZespolowy
             Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong).Show();
             CrossNFC.Init(this);
             ActionHooker();
+            //Android.Views.Animations.Animation myAnimation = AnimationUtils.LoadAnimation(this,Resource.Animator.anim);
+            //animImageView.Animate().SetDuration(1000).SetStartDelay(0).Start();
+            //animImageView.StartAnimation(myAnimation);
         }
 
         protected override void OnResume()
@@ -99,6 +107,7 @@ namespace ProjektZespolowy
         {
             rootview = FindViewById<CoordinatorLayout>(Resource.Id.coordinatorLayout1);
             skanText = FindViewById<TextView>(Resource.Id.skanText);
+            ImageView animImageView = FindViewById<ImageView>(Resource.Id.waitingForScan);
         }
 
         private void InitNewFragment(SupportFragment fragment)

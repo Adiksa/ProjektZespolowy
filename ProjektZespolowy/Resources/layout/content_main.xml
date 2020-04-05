@@ -12,7 +12,7 @@
       android:id="@+id/waitingForScan"
       android:layout_centerInParent="true"
       android:contentDescription="@string/scanDesc"
-      android:src="@drawable/scan_nfc"/>
+      android:src="@drawable/anim"/>
   <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
