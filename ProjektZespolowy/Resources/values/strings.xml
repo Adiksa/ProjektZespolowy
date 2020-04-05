@@ -19,7 +19,7 @@
   <string name="itemName">Nazwa mebla</string>
   <string name="description">Opis mebla</string>
   <!--Fragment główny - przyciski na dole ekranu-->
-  <string name="btnSuc1">Zdjęcie</string>
+  <string name="btnSuc1">Specyfikacja</string>
   <string name="btnSuc2">Reklamacje</string>
   <string name="btnSuc3">Sklep?</string>
   <!--Ekran zgłaszania problemu-->

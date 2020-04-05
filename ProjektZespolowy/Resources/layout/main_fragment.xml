@@ -14,22 +14,28 @@
     android:paddingTop="5dp"
     android:minHeight="30dp"
     android:weightSum="30">
-    <Button
+    <ImageButton
       android:text="@string/btnSuc1"
+      android:src="@drawable/icon1"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="50dp"
+      android:scaleType="fitCenter"
       android:id="@+id/specBtn"
       android:layout_weight="10"/>
-    <Button
+    <ImageButton
       android:text="@string/btnSuc2"
+      android:src="@drawable/icon2"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="50dp"
+      android:scaleType="fitCenter"
       android:id="@+id/complaintBtn" 
       android:layout_weight="10"/>
-    <Button
+    <ImageButton
       android:text="@string/btnSuc3"
+      android:src="@drawable/icon4"      
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
+      android:layout_height="50dp"
+      android:scaleType="fitCenter"
       android:id="@+id/button3" 
       android:layout_weight="10"/>
       </LinearLayout>

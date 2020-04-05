@@ -15,7 +15,7 @@ using ProjektZespolowy.Fragments;
 
 namespace ProjektZespolowy
 {
-    [Activity(Label = "Login", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "Meble NFC", Icon="@drawable/icon5", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class Login : Activity
     {
         private EditText userLogin;

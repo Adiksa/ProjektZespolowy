@@ -23,9 +23,9 @@ namespace ProjektZespolowy.Fragments
         private ComplaintList complaintList;
         public Furniture furniture;
         private View view;
-        private Button specBtn;
-        private Button complaintBtn;
-        private Button shopBtn;
+        private ImageButton specBtn;
+        private ImageButton complaintBtn;
+        private ImageButton shopBtn;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -65,8 +65,8 @@ namespace ProjektZespolowy.Fragments
 
         private void ComponentsLocalizer()
         {
-            specBtn = view.FindViewById<Button>(Resource.Id.specBtn);
-            complaintBtn = view.FindViewById<Button>(Resource.Id.complaintBtn);
+            specBtn = view.FindViewById<ImageButton>(Resource.Id.specBtn);
+            complaintBtn = view.FindViewById<ImageButton>(Resource.Id.complaintBtn);
         }
 
         private void InitNewFragment(SupportFragment fragment)
