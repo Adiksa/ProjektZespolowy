@@ -50,21 +50,33 @@ namespace ProjektZespolowy
                 FireBaseConnector connection = new FireBaseConnector();
                 if (login.login.Length > 0 && login.userPassword.Length > 0)
                 {
-                    if (connection.checkLogin(login) == 2)
+                    var res = connection.checkLogin(login);
+                    if (res == 2)
                     {
                         Finish();
                         StartActivity(typeof(Admin));
                     }
-                    if (connection.checkLogin(login) == 1)
+                    if (res == 1)
                     {
                         Finish();
                         StartActivity(typeof(MainActivity));
                     }
-                    if(connection.checkLogin(login) == -1)
+                    if(res == -1)
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                         alertDialog.SetTitle("Brak neta.");
                         alertDialog.SetMessage("Podepniesz sie do neta?");
+                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        {
+                            alertDialog.Dispose();
+                        });
+                        alertDialog.Show();
+                    }
+                    if(res == 0)
+                    {
+                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
+                        alertDialog.SetTitle("Bład logowania.");
+                        alertDialog.SetMessage("Dodasz wszystko jak trzeba?");
                         alertDialog.SetNeutralButton("No dobra.", delegate
                         {
                             alertDialog.Dispose();
