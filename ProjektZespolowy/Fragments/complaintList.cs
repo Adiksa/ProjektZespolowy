@@ -23,7 +23,6 @@ namespace ProjektZespolowy.Fragments
         private ListView complaints;
         private Button createButton;
         public Furniture furniture;
-
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -75,6 +74,7 @@ namespace ProjektZespolowy.Fragments
                 ComplaintCreate create = new ComplaintCreate();
                 create.furniture = furniture;
                 create.Show(transaction, "create complaint dialog");
+                this.OnResume();
             };
         }
 

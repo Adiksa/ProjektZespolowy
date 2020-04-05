@@ -20,7 +20,7 @@ namespace ProjektZespolowy.Fragments
         private SupportFragment currentFragment;
         private Scan_Success_View scan_Success_View;
         private Specification specification;
-        private ComplaintCreate complaint;
+        private ComplaintList complaintList;
         public Furniture furniture;
         private View view;
         private Button specBtn;
@@ -37,6 +37,10 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.main_fragment, container, false);
             scan_Success_View = new Scan_Success_View();
             scan_Success_View.furniture = furniture;
+            specification = new Specification();
+            specification.furniture = furniture;
+            complaintList = new ComplaintList();
+            complaintList.furniture = furniture;
             InitNewFragment(scan_Success_View);
             ComponentsLocalizer();
             ActionHooker();
@@ -51,15 +55,11 @@ namespace ProjektZespolowy.Fragments
 
         private void ComplaintBtn_Click(object sender, EventArgs e)
         {
-            ComplaintList complaintList = new ComplaintList();
-            complaintList.furniture = furniture;
             InitNewFragment(complaintList);
         }
 
         private void SpecBtn_Click(object sender, EventArgs e)
         {
-            specification = new Specification();
-            specification.furniture = furniture;
             InitNewFragment(specification);
         }
 
