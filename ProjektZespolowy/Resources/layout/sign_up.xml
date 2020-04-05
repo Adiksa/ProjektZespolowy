@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:minWidth="100dp"
-        android:hint="login"
+        android:hint="@string/hintLogin"
         android:id="@+id/signUpLogin" />
     <EditText
         android:inputType="textPassword"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:minWidth="100dp"
         android:minHeight="25px"
-        android:hint="password"
+        android:hint="@string/hintPassword"
         android:id="@+id/signUpPassword" />
     <RelativeLayout
         android:minWidth="25px"
@@ -29,13 +29,13 @@
         android:id="@+id/signUpButtons"
         android:layout_centerHorizontal="true">
         <Button
-            android:text="Sign UP"
+            android:text="@string/register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/buttonlog"
             android:id="@+id/signUpAccept" />
         <Button
-            android:text="@android:string/cancel"
+            android:text="@string/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/signUpCancel"

@@ -27,11 +27,20 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_centerHorizontal="true"
+      android:minHeight="200px"
+      android:minWidth="200px"
       android:contentDescription="@string/photoDesc"
       android:adjustViewBounds="true"
       android:scaleType="fitCenter"
       android:layout_below="@id/problemDesc"
       android:id="@+id/photoPreview" />
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:id="@+id/txtClickToPick"
+      android:text="@string/txtClickToPick"
+      android:layout_below="@id/photoPreview"/>
   </RelativeLayout>
   <RelativeLayout
     android:layout_width="wrap_content"

@@ -5,7 +5,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/TopLeft">
   <TextView
-    android:text=""
+    android:text="@string/comm"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/communicate" />
@@ -22,21 +22,21 @@
       android:orientation="vertical"
       android:layout_toRightOf="@id/communicate">
     <Button
-      android:text="scan NFC"
+      android:text="@string/btnScanNFC"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
       android:layout_toRightOf="@id/photo1"
       android:id="@+id/scan" />
     <Button
-      android:text="From camera"
+      android:text="@string/btnFromCamera"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
       android:layout_below="@id/scan"
       android:id="@+id/camera" />
     <Button
-      android:text="From galery"
+      android:text="@string/btnFromGallery"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
@@ -47,7 +47,7 @@
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="warenty"
+        android:hint="@string/warenty"
         android:layout_below="@id/photo1"
         android:id="@+id/editText1" />
     <ImageView
@@ -64,14 +64,14 @@
     android:layout_toRightOf="@id/photo2"
     android:layout_below="@id/editText1">
     <Button
-        android:text="From Camera"
+        android:text="@string/btnFromCamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/photo2"
         android:id="@+id/btn4" />
     <Button
-        android:text="From Galery"
+        android:text="@string/btnFromGallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -82,18 +82,18 @@
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="dane techniczne"
+        android:hint="@string/specs"
         android:layout_below="@id/photo2"
         android:id="@+id/txtEdit2" />
     <EditText
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="nazwa"
+        android:hint="@string/name"
         android:layout_below="@+id/txtEdit2"
         android:id="@+id/txtEdit3" />
     <Button
-        android:text="dodaj"
+        android:text="@string/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtEdit3"
