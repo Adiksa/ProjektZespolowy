@@ -29,6 +29,7 @@ namespace ProjektZespolowy
         private TextView skanText;
         private Furniture furniture;
         private ImageView animImageView;
+        private AnimationDrawable animation;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -43,7 +44,7 @@ namespace ProjektZespolowy
             //animImageView.Animate().SetDuration(1000).SetStartDelay(0).Start();
             //animImageView.StartAnimation(myAnimation);
             //animImageView.SetBackgroundResource(Resource.Drawable.anim);
-            AnimationDrawable animation = (AnimationDrawable)animImageView.Background;
+            animation = (AnimationDrawable)animImageView.Background;
             animation.Start();
         }
 
@@ -90,6 +91,8 @@ namespace ProjektZespolowy
                     mainFragment.furniture = furniture;
                     InitNewFragment(mainFragment);
                     skanText.Visibility = ViewStates.Invisible;
+                    animation.Stop();
+                    animImageView.Visibility = ViewStates.Invisible;
                 }
             }
             else
