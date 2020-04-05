@@ -66,6 +66,7 @@
     <Compile Include="ComplaintListViewAdapter.cs" />
     <Compile Include="FireBaseConnector.cs" />
     <Compile Include="Fragments\ComplaintCreate.cs" />
+    <Compile Include="Fragments\ComplaintList.cs" />
     <Compile Include="Fragments\Complaint_Progress.cs" />
     <Compile Include="Fragments\Dialog_SignUp.cs" />
     <Compile Include="Fragments\MainFragment.cs" />
@@ -183,6 +184,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\complaint_listview_row.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\complaint_list.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
