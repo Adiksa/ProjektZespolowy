@@ -49,8 +49,19 @@ namespace ProjektZespolowy.Fragments
         public override void OnResume()
         {
             base.OnResume();
+            
+        }
+
+        private void ComponentsLocalizer()
+        {
+            complaints = view.FindViewById<ListView>(Resource.Id.complaintList);
+            createButton = view.FindViewById<Button>(Resource.Id.complaintCreate);
+        }
+
+        public void OnComplaintCreated(object o, EventArgs e)
+        {
             FireBaseConnector connector = new FireBaseConnector();
-            if(connector.getFurnitureComplaintList(furniture.id) != complaintIdList)
+            if (connector.getFurnitureComplaintList(furniture.id) != complaintIdList)
             {
                 complaintIdList = connector.getFurnitureComplaintList(furniture.id);
                 List<Complaint> complaintList = connector.GetComplaints(complaintIdList);
@@ -62,23 +73,13 @@ namespace ProjektZespolowy.Fragments
             }
         }
 
-        private void ComponentsLocalizer()
-        {
-            complaints = view.FindViewById<ListView>(Resource.Id.complaintList);
-            createButton = view.FindViewById<Button>(Resource.Id.complaintCreate);
-        }
-
-        public override void OnActivityResult(int requestCode, int resultCode, Intent data)
-        {
-
-        }
-
         private void ActionHooker()
         {
             createButton.Click += delegate
             {
                 var transaction = this.Activity.FragmentManager.BeginTransaction();
                 ComplaintCreate create = new ComplaintCreate();
+                create.ComplaintCreated += this.OnComplaintCreated;
                 create.furniture = furniture;
                 create.Show(transaction, "create complaint dialog");
                 this.OnResume();
@@ -93,5 +94,6 @@ namespace ProjektZespolowy.Fragments
             progress.complaintProgress = complaintList[e.Position].complaintProgress;
             progress.Show(transaction, "create complaint progress dialog");
         }
+
     }
 }

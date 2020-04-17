@@ -26,6 +26,7 @@ namespace ProjektZespolowy.Fragments
         private Button btn1Complaint;
         private Button btn2Complaint;
         public Furniture furniture;
+        public event EventHandler ComplaintCreated;
         
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -71,20 +72,75 @@ namespace ProjektZespolowy.Fragments
             }
         }
 
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            if(requestCode == 0 || requestCode == 1)
+            {
+                if(requestCode==0)
+                {
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
+                    {
+                        Toast.MakeText(this.Activity, "Brak uprawnień.", ToastLength.Short).Show();
+                    }
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
+                    {
+                        Intent intent = new Intent(MediaStore.ActionImageCapture);
+                        intent.PutExtra(MediaStore.ExtraOutput, 1);
+                        StartActivityForResult(intent, 0);
+                    }
+                }
+                if(requestCode==1)
+                {
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
+                    {
+                        Toast.MakeText(this.Activity, "Brak uprawnień.", ToastLength.Short).Show();
+                    }
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
+                    {
+                        this.Activity.Intent = new Intent();
+                        this.Activity.Intent.SetType("image/*");
+                        this.Activity.Intent.SetAction(Intent.ActionGetContent);
+                        StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
+                    }
+                }
+            }
+            else
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
+
         private void ActionHooker()
         {
             photoPreview.Click += delegate
             {
-                this.Activity.Intent = new Intent();
-                this.Activity.Intent.SetType("image/*");
-                this.Activity.Intent.SetAction(Intent.ActionGetContent);
-                StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
+                if (this.Activity.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.ReadExternalStorage) == Android.Content.PM.Permission.Granted)
+                {
+                    this.Activity.Intent = new Intent();
+                    this.Activity.Intent.SetType("image/*");
+                    this.Activity.Intent.SetAction(Intent.ActionGetContent);
+                    StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
+                }
+                else
+                {
+                    var requiredPermissions = new String[] { Android.Manifest.Permission.ReadExternalStorage };
+                    RequestPermissions(requiredPermissions, 1);
+                }
             };
             btn1Complaint.Click += delegate
             {
-                Intent intent = new Intent(MediaStore.ActionImageCapture);
-                intent.PutExtra(MediaStore.ExtraOutput, 1);
-                StartActivityForResult(intent, 0);
+                if (this.Activity.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.Camera) == Android.Content.PM.Permission.Granted)
+                {
+                    Intent intent = new Intent(MediaStore.ActionImageCapture);
+                    intent.PutExtra(MediaStore.ExtraOutput, 1);
+                    StartActivityForResult(intent, 0);
+                }
+                else
+                {
+                    var requiredPermissions = new String[] { Android.Manifest.Permission.Camera };
+                    RequestPermissions(requiredPermissions, 0);
+                }
+
             };
             btn2Complaint.Click += delegate
             {
@@ -126,6 +182,7 @@ namespace ProjektZespolowy.Fragments
                     alertDialog.SetNeutralButton("Ok", delegate
                     {
                     alertDialog.Dispose();
+                    this.OnComplaintCreated();
                     this.Dismiss();
                     });
                     alertDialog.Show();
@@ -160,6 +217,11 @@ namespace ProjektZespolowy.Fragments
             bitmap.Compress(CompressFormat.Png, 100, ms);
             byte[] bb = ms.ToArray();
             return Convert.ToBase64String(bb);
+        }
+
+        protected virtual void OnComplaintCreated()
+        {
+            ComplaintCreated(this, EventArgs.Empty);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -30,14 +31,15 @@ namespace ProjektZespolowy
         private Furniture furniture;
         private ImageView animImageView;
         private AnimationDrawable animation;
+        private ProgressBar progressBar;
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            CrossNFC.Init(this);
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             ComponentLocalizer();
             Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong).Show();
-            CrossNFC.Init(this);
             ActionHooker();
             animation = (AnimationDrawable)animImageView.Background;
             animation.Start();
@@ -45,8 +47,8 @@ namespace ProjektZespolowy
 
         protected override void OnResume()
         {
-            base.OnResume();
             CrossNFC.Current.StartListening();
+            base.OnResume();
         }
 
         public override void OnBackPressed()
@@ -60,42 +62,20 @@ namespace ProjektZespolowy
                 base.OnBackPressed();
             }
         }
+
         private void ActionHooker()
         {
             CrossNFC.Current.OnMessageReceived += Current_OnMessageReceived;
         }
 
-        private void Current_OnMessageReceived(ITagInfo tagInfo)
+        private async void Current_OnMessageReceived(ITagInfo tagInfo)
         {
-            Vibrator vibrator = (Vibrator)this.GetSystemService(Context.VibratorService);
-            vibrator.Vibrate(100);
-            var memory = tagInfo.Records.AsMemory();
-            if (memory.Span.ToArray().Length>0)
-            {
-                string furnitureId = memory.Span.ToArray()[0].Message;
-                skanText.Text = memory.Span.ToArray()[0].Message;
-                FireBaseConnector fcon = new FireBaseConnector();
-                furniture = fcon.getFurniture(furnitureId);
-                if(furniture==null)
-                {
-                    Snackbar.Make(rootview, "Mebel o podanym id nie istnieje w naszej bazie.", Snackbar.LengthShort).Show();
-                }
-                else
-                {
-                    mainFragment = new MainFragment();
-                    mainFragment.furniture = furniture;
-                    InitNewFragment(mainFragment);
-                    skanText.Visibility = ViewStates.Invisible;
-                    animation.Stop();
-                    animImageView.Visibility = ViewStates.Invisible;
-                }
-            }
-            else
-            {
-                Snackbar.Make(rootview, "Bład wczytywania tagu nfc.", Snackbar.LengthShort).Show();
-            }
-            
-            
+            progressBar.Visibility = ViewStates.Visible;
+            animation.Stop();
+            skanText.Visibility = ViewStates.Invisible;
+            animImageView.Visibility = ViewStates.Invisible;
+            await Task.Run(() => ScanNFC(tagInfo));
+            progressBar.Visibility = ViewStates.Invisible;
         }
 
         protected override void OnNewIntent(Intent intent)
@@ -110,6 +90,7 @@ namespace ProjektZespolowy
             rootview = FindViewById<CoordinatorLayout>(Resource.Id.coordinatorLayout1);
             skanText = FindViewById<TextView>(Resource.Id.skanText);
             animImageView = FindViewById<ImageView>(Resource.Id.waitingForScan);
+            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarMain);
         }
 
         private void InitNewFragment(SupportFragment fragment)
@@ -129,10 +110,42 @@ namespace ProjektZespolowy
                 transaction.SetCustomAnimations(Resource.Animation.slide_up, Resource.Animation.slide_right);
                 transaction.Add(Resource.Id.fragmentContainerMain, fragment, $"{fragment}");
             }
-
             transaction.Commit();
             currentFragment = fragment;
         }
+
+        private async Task ScanNFC(ITagInfo tagInfo)
+        {
+            Vibrator vibrator = (Vibrator)this.GetSystemService(Context.VibratorService);
+            vibrator.Vibrate(100);
+            var memory = tagInfo.Records.AsMemory();
+            if (memory.Span.ToArray().Length > 0)
+            {
+                animation.Stop();
+                string furnitureId = memory.Span.ToArray()[0].Message;
+                FireBaseConnector fcon = new FireBaseConnector();
+                furniture = fcon.getFurniture(furnitureId);
+                if (furniture == null)
+                {
+                    animation.Start();
+                    skanText.Visibility = ViewStates.Visible;
+                    animImageView.Visibility = ViewStates.Visible;
+                    Snackbar.Make(rootview, "Mebel o podanym id nie istnieje w naszej bazie.", Snackbar.LengthShort).Show();
+                }
+                else
+                {
+                    mainFragment = new MainFragment();
+                    mainFragment.furniture = furniture;
+                    InitNewFragment(mainFragment);
+                    
+                }
+            }
+            else
+            {
+                Snackbar.Make(rootview, "Bład wczytywania tagu nfc.", Snackbar.LengthShort).Show();
+            }
+        }
+        
     }
 }
 
