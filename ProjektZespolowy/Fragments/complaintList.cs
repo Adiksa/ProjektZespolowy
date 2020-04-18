@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -25,6 +25,7 @@ namespace ProjektZespolowy.Fragments
         public Furniture furniture;
         private List<Complaint> complaintList;
         private List<string> complaintIdList;
+        private ProgressBar progressBar;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -36,40 +37,30 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.complaint_list, container, false);
             ComponentsLocalizer();
             ActionHooker();
-            FireBaseConnector connector = new FireBaseConnector();
-            complaintIdList = connector.getFurnitureComplaintList(furniture.id);
-            complaintList = connector.GetComplaints(complaintIdList);
-            if (complaintList != null)
-            {
-                ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
-                complaints.Adapter = adapter;
-            }
             return view;
         }
         public override void OnResume()
         {
             base.OnResume();
-            
+            OnComplaintCreated(this, EventArgs.Empty);
         }
 
         private void ComponentsLocalizer()
         {
             complaints = view.FindViewById<ListView>(Resource.Id.complaintList);
             createButton = view.FindViewById<Button>(Resource.Id.complaintCreate);
+            progressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarComplaintList);
         }
 
-        public void OnComplaintCreated(object o, EventArgs e)
+        public async void OnComplaintCreated(object o, EventArgs e)
         {
-            FireBaseConnector connector = new FireBaseConnector();
-            if (connector.getFurnitureComplaintList(furniture.id) != complaintIdList)
+            progressBar.Visibility = ViewStates.Visible;
+            await Task.Run(() => RefreshComplaintList());
+            progressBar.Visibility = ViewStates.Invisible;
+            if (complaintList != null)
             {
-                complaintIdList = connector.getFurnitureComplaintList(furniture.id);
-                List<Complaint> complaintList = connector.GetComplaints(complaintIdList);
-                if (complaintList != null)
-                {
-                    ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
-                    complaints.Adapter = adapter;
-                }
+                ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
+                complaints.Adapter = adapter;
             }
         }
 
@@ -95,5 +86,14 @@ namespace ProjektZespolowy.Fragments
             progress.Show(transaction, "create complaint progress dialog");
         }
 
+        private async Task RefreshComplaintList()
+        {
+            FireBaseConnector connector = new FireBaseConnector();
+            if (connector.getFurnitureComplaintList(furniture.id) != complaintIdList)
+            {
+                complaintIdList = connector.getFurnitureComplaintList(furniture.id);
+                complaintList = connector.GetComplaints(complaintIdList);
+            }
+        }
     }
 }
