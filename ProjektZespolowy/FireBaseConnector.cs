@@ -12,6 +12,7 @@ using Android.Widget;
 using FireSharp.Config;
 using FireSharp.Response;
 using FireSharp.Interfaces;
+using System.Threading.Tasks;
 
 namespace ProjektZespolowy
 {
@@ -88,18 +89,23 @@ namespace ProjektZespolowy
         {
             try
             {
-                var resault = client.Get("Complaint/");
-                List<Complaint> complaintList = new List<Complaint>();
-                complaintList = resault.ResultAs<List<Complaint>>();
                 List<Complaint> list = new List<Complaint>();
-                foreach (Complaint item in complaintList)
+                Task[] tasks = new Task[furnitureComplaintList.Count];
+                int i = 0;
+                foreach (String item in furnitureComplaintList)
                 {
-                    if (item != null)
+                    tasks[i] = Task.Run(async () =>
                     {
-                        if (furnitureComplaintList.Contains(item.id))
-                            list.Add(item);
-                    }
+                        var resault = await client.GetAsync("Complaint/" + item);
+                        if (resault.ResultAs<Complaint>() != null)
+                        {
+                            list.Add(resault.ResultAs<Complaint>());
+                        }
+                    });
+                    i++;
                 }
+                Task.WaitAll(tasks);
+                list.Sort(Comparer<Complaint>.Create((x, y) => (x.id.CompareTo(y.id))));
                 return list;
             }
             catch
