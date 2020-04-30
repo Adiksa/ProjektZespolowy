@@ -138,9 +138,12 @@ namespace ProjektZespolowy
                 furniture = fcon.getFurniture(furnitureId);
                 if (furniture == null)
                 {
-                    animation.Start();
-                    skanText.Visibility = ViewStates.Visible;
-                    animImageView.Visibility = ViewStates.Visible;
+                    this.RunOnUiThread(() =>
+                    {
+                        animation.Start();
+                        skanText.Visibility = ViewStates.Visible;
+                        animImageView.Visibility = ViewStates.Visible;
+                    });
                     Snackbar.Make(rootview, "Mebel o podanym id nie istnieje w naszej bazie.", Snackbar.LengthShort).Show();
                 }
                 else
@@ -153,7 +156,13 @@ namespace ProjektZespolowy
             }
             else
             {
-                Snackbar.Make(rootview, "Bład wczytywania tagu nfc.", Snackbar.LengthShort).Show();
+                this.RunOnUiThread(() =>
+                {
+                    animation.Start();
+                    skanText.Visibility = ViewStates.Visible;
+                    animImageView.Visibility = ViewStates.Visible;
+                });
+                Snackbar.Make(rootview, "Bład wczytywania tagu nfc. Zbliż poprawny tag.", Snackbar.LengthShort).Show();
             }
         }
         

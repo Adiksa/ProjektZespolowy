@@ -16,7 +16,10 @@ namespace ProjektZespolowy.Fragments
     {
         private View view;
         private ListView listProgress;
-        public List<String> complaintProgress;
+        public Complaint complaint;
+        private ImageView complaintImage;
+        private TextView complaintText;
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -28,11 +31,13 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.complaint_progress, container, false);
             ComponentsLocalizer();
             ActionHooker();
-            if(complaintProgress!=null)
+            if(complaint.complaintProgress!=null)
             {
-                ComplaintProgressListViewAdapter adapter = new ComplaintProgressListViewAdapter(this.Activity, complaintProgress);
+                ComplaintProgressListViewAdapter adapter = new ComplaintProgressListViewAdapter(this.Activity, complaint.complaintProgress);
                 listProgress.Adapter = adapter;
             }
+            complaintImage.SetImageBitmap(complaint.convertBase64ToBitmap(complaint.photo));
+            complaintText.Text = complaint.description;
             return view;
         }
 
@@ -46,6 +51,8 @@ namespace ProjektZespolowy.Fragments
         private void ComponentsLocalizer()
         {
             listProgress = view.FindViewById<ListView>(Resource.Id.listProgress);
+            complaintImage = view.FindViewById<ImageView>(Resource.Id.imageComplaintProgress);
+            complaintText = view.FindViewById<TextView>(Resource.Id.ComProgresComplaint);
         }
 
         private void ActionHooker()

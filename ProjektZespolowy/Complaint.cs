@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace ProjektZespolowy
 {
-    class Complaint
+    public class Complaint
     {
         public string id { get; set; }
         public string description { get; set; }

@@ -82,7 +82,7 @@ namespace ProjektZespolowy.Fragments
         {
             var transaction = this.Activity.FragmentManager.BeginTransaction();
             Complaint_Progress progress = new Complaint_Progress();
-            progress.complaintProgress = complaintList[e.Position].complaintProgress;
+            progress.complaint = complaintList[e.Position];
             progress.Show(transaction, "create complaint progress dialog");
         }
 
