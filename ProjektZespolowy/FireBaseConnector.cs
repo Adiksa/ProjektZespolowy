@@ -105,7 +105,7 @@ namespace ProjektZespolowy
                     i++;
                 }
                 Task.WaitAll(tasks);
-                list.Sort(Comparer<Complaint>.Create((x, y) => (x.id.CompareTo(y.id))));
+                list.Sort(Comparer<Complaint>.Create((x, y) => (int.Parse(x.id).CompareTo(int.Parse(y.id)))));
                 return list;
             }
             catch

@@ -53,9 +53,20 @@ namespace ProjektZespolowy
 
         public override void OnBackPressed()
         {
-            if(mainFragment!=null && !mainFragment.IsMainScreen())
+            if(mainFragment!=null)
             {
-                InitNewFragment(mainFragment);
+                if(!mainFragment.IsMainScreen()) InitNewFragment(mainFragment);
+                else
+                {
+                    var transaction = SupportFragmentManager.BeginTransaction();
+                    transaction.Detach(currentFragment);
+                    transaction.Commit();
+                    currentFragment = null;
+                    mainFragment = null;
+                    animation.Start();
+                    skanText.Visibility = ViewStates.Visible;
+                    animImageView.Visibility = ViewStates.Visible;
+                }
             }
             else
             {
