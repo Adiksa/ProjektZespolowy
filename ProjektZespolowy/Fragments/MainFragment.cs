@@ -21,6 +21,7 @@ namespace ProjektZespolowy.Fragments
         private Scan_Success_View scan_Success_View;
         private Specification specification;
         private ComplaintList complaintList;
+        private Shop shop;
         public Furniture furniture;
         private View view;
         private ImageButton specBtn;
@@ -41,6 +42,7 @@ namespace ProjektZespolowy.Fragments
             specification.furniture = furniture;
             complaintList = new ComplaintList();
             complaintList.furniture = furniture;
+            shop = new Shop();
             InitNewFragment(scan_Success_View);
             ComponentsLocalizer();
             ActionHooker();
@@ -51,6 +53,7 @@ namespace ProjektZespolowy.Fragments
         {
             specBtn.Click += SpecBtn_Click;
             complaintBtn.Click += ComplaintBtn_Click;
+            shopBtn.Click += ShopBtn_Click;
         }
 
         private void ComplaintBtn_Click(object sender, EventArgs e)
@@ -62,11 +65,16 @@ namespace ProjektZespolowy.Fragments
         {
             InitNewFragment(specification);
         }
+        private void ShopBtn_Click(object sender, EventArgs e)
+        {
+            InitNewFragment(shop);
+        }
 
         private void ComponentsLocalizer()
         {
             specBtn = view.FindViewById<ImageButton>(Resource.Id.specBtn);
             complaintBtn = view.FindViewById<ImageButton>(Resource.Id.complaintBtn);
+            shopBtn = view.FindViewById<ImageButton>(Resource.Id.shopBtn);
         }
 
         private void InitNewFragment(SupportFragment fragment)

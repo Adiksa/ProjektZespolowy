@@ -72,12 +72,14 @@
     <Compile Include="Fragments\Dialog_SignUp.cs" />
     <Compile Include="Fragments\MainFragment.cs" />
     <Compile Include="Fragments\Scan_Success_View.cs" />
+    <Compile Include="Fragments\Shop.cs" />
     <Compile Include="Fragments\Specification.cs" />
     <Compile Include="Furniture.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShopGridViewAdapter.cs" />
     <Compile Include="UserLogins.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -233,6 +235,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\gif03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\shopGrid.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\shopOffers.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
