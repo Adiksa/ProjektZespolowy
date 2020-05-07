@@ -37,13 +37,13 @@ namespace ProjektZespolowy.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             view = inflater.Inflate(Resource.Layout.shopOffers, container, false);
-            //ShopGridViewAdapter adapter = new ShopGridViewAdapter(this, gridViewString, imageId);
+            ShopGridViewAdapter adapter = new ShopGridViewAdapter(this.Activity.BaseContext, gridViewString, imageId);
             gridView = view.FindViewById<GridView>(Resource.Id.grid_view_image_text);
-            //gridView.Adapter = adapter;
-            /*gridView.ItemClick += (s, e) =>
+            gridView.Adapter = adapter;
+            gridView.ItemClick += (s, e) =>
             {
-                Toast.MakeText(this, "GridView Item: " + gridViewString[e.Position], ToastLength.Short).Show();
-            };*/
+                Toast.MakeText(this.Activity.BaseContext, "GridView Item: " + gridViewString[e.Position], ToastLength.Short).Show();
+            };
             //powyższe linijki potrzebują dziedziczenia po AppCompatActivity
             ComponentsLocalizer();
             ActionHooker();
