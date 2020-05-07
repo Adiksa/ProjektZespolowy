@@ -44,7 +44,6 @@ namespace ProjektZespolowy.Fragments
             {
                 Toast.MakeText(this.Activity.BaseContext, "GridView Item: " + gridViewString[e.Position], ToastLength.Short).Show();
             };
-            //powyższe linijki potrzebują dziedziczenia po AppCompatActivity
             ComponentsLocalizer();
             ActionHooker();
             return view;
