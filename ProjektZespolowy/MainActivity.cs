@@ -14,6 +14,7 @@ using Android.Support.Design.Widget;
 using Android.Support.V7.App;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 using Plugin.NFC;
 using ProjektZespolowy.Fragments;
 using AnimationUtils = Android.Views.Animations.AnimationUtils;
@@ -25,7 +26,6 @@ namespace ProjektZespolowy
     public class MainActivity : AppCompatActivity
     {
         private SupportFragment currentFragment;
-        private MainFragment mainFragment;
         private CoordinatorLayout rootview;
         private TextView skanText;
         private Furniture furniture;
@@ -53,25 +53,7 @@ namespace ProjektZespolowy
 
         public override void OnBackPressed()
         {
-            if(mainFragment!=null)
-            {
-                if(!mainFragment.IsMainScreen()) InitNewFragment(mainFragment);
-                else
-                {
-                    var transaction = SupportFragmentManager.BeginTransaction();
-                    transaction.Detach(currentFragment);
-                    transaction.Commit();
-                    currentFragment = null;
-                    mainFragment = null;
-                    animation.Start();
-                    skanText.Visibility = ViewStates.Visible;
-                    animImageView.Visibility = ViewStates.Visible;
-                }
-            }
-            else
-            {
-                base.OnBackPressed();
-            }
+            base.OnBackPressed();
         }
 
         private void ActionHooker()
@@ -148,10 +130,10 @@ namespace ProjektZespolowy
                 }
                 else
                 {
-                    mainFragment = new MainFragment();
-                    mainFragment.furniture = furniture;
-                    InitNewFragment(mainFragment);
-                    
+                    Intent intent = new Intent(this, typeof(FurnitureMain));
+                    intent.PutExtra("Furniture",furnitureId);
+                    this.StartActivity(intent);
+                    Finish();
                 }
             }
             else

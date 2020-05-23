@@ -34,8 +34,12 @@ namespace ProjektZespolowy
         }
         public Bitmap convertBase64ToBitmap(String b64)
         {
-            byte[] imageAsBytes = Convert.FromBase64String(b64);
-            return BitmapFactory.DecodeByteArray(imageAsBytes, 0, imageAsBytes.Length);
+            if(b64 != null)
+            {
+                byte[] imageAsBytes = Convert.FromBase64String(b64);
+                return BitmapFactory.DecodeByteArray(imageAsBytes, 0, imageAsBytes.Length);
+            }
+            return null;
         }
     }
 }
