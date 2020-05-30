@@ -58,8 +58,11 @@ namespace ProjektZespolowy
                     }
                     if (res == 1)
                     {
+                        Intent intent = new Intent(this, typeof(MainActivity));
+                        intent.PutExtra("Login", "1");
                         Finish();
-                        StartActivity(typeof(MainActivity));
+                        this.StartActivity(intent);
+                           
                     }
                     if(res == -1)
                     {

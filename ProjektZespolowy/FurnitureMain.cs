@@ -48,6 +48,19 @@ namespace ProjektZespolowy
             ActionHooker();
         }
 
+        public override void OnBackPressed()
+        {
+            if (currentFragment != scan_Success_View)
+            {
+                InitNewFragment(scan_Success_View);
+            }
+            else
+            {
+                Finish();
+                StartActivity(typeof(MainActivity));
+            }
+        }
+
         private void ActionHooker()
         {
             specBtn.Click += SpecBtn_Click;

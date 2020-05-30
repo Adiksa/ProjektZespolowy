@@ -39,7 +39,7 @@ namespace ProjektZespolowy
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             ComponentLocalizer();
-            Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong).Show();
+            if(Intent.GetStringExtra("Login") == "1") Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong).Show();
             ActionHooker();
             animation = (AnimationDrawable)animImageView.Background;
             animation.Start();
@@ -132,8 +132,8 @@ namespace ProjektZespolowy
                 {
                     Intent intent = new Intent(this, typeof(FurnitureMain));
                     intent.PutExtra("Furniture",furnitureId);
-                    this.StartActivity(intent);
                     Finish();
+                    this.StartActivity(intent);
                 }
             }
             else

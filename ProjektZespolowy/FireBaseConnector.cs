@@ -20,6 +20,7 @@ namespace ProjektZespolowy
     {
         private readonly IFirebaseConfig fcon;
         private readonly IFirebaseClient client;
+        private bool connection = false;
         public FireBaseConnector()
         {
             fcon = new FirebaseConfig()
@@ -211,6 +212,25 @@ namespace ProjektZespolowy
             {
                 return -1;
             }
+        }
+        public int testCon()
+        {
+            var response = Task.Run(() => client.GetAsync("test"));
+            try
+            {
+                if (response.Result.ResultAs<int>() == 1)
+                {
+                    this.connection = true;
+                    return 1;
+                }
+                else this.connection = false;
+            }
+            catch
+            {
+                this.connection = false;
+                return 0;
+            }
+            return 0;
         }
     }
 }
