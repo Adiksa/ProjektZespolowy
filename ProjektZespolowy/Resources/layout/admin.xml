@@ -99,4 +99,11 @@
         android:layout_below="@id/txtEdit3"
         android:layout_alignParentRight="true"
         android:id="@+id/furAdd" />
+    <Button
+        android:text="@string/promotion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/furAdd"
+        android:layout_below="@id/txtEdit3"
+        android:id="@+id/promotion" />
 </RelativeLayout>

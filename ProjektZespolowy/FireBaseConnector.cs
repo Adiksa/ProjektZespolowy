@@ -61,6 +61,19 @@ namespace ProjektZespolowy
             }
         }
 
+        public int dataInsert(Promotion obj)
+        {
+            try
+            {
+                var setter = client.Set("Promotion/" + obj.id, obj);
+                return 1;
+            }
+            catch
+            {
+                return -1;
+            }
+        }
+
         public int dataInsert(Complaint obj)
         {
             try
@@ -135,6 +148,18 @@ namespace ProjektZespolowy
                 return (int.Parse(res) + 1).ToString();
             }
             client.Set("Complaintid/id", "0");
+            return 0.ToString();
+        }
+        public string getPromotionLastId()
+        {
+            var resault = client.Get("Promotionid/id");
+            var res = resault.ResultAs<string>();
+            if (res != null)
+            {
+                client.Set("Promotionid/id", (int.Parse(res) + 1).ToString());
+                return (int.Parse(res) + 1).ToString();
+            }
+            client.Set("Promotionid/id", "0");
             return 0.ToString();
         }
         public Furniture getFurniture(string id)
