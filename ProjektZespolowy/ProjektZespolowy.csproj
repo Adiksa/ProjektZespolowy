@@ -61,6 +61,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PromotionAdd.cs" />
     <Compile Include="Admin.cs" />
     <Compile Include="ComplaintProgressListViewAdapter.cs" />
     <Compile Include="Complaint.cs" />
@@ -245,6 +246,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\shopOffers.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\promo_add.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

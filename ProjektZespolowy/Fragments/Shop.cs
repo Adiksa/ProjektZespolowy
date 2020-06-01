@@ -19,17 +19,8 @@ namespace ProjektZespolowy.Fragments
         private ImageView picImageView;
         private TextView nameTextView;
         private GridView gridView;
-
-        private string[] gridViewString =
-        {
-            "ikona1", "ikona2", "ikona3", "ikona4", "ikona5", "ikona6"
-        };
-
-        private int[] imageId =
-        {
-            Resource.Drawable.icon1, Resource.Drawable.icon2, Resource.Drawable.icon3, Resource.Drawable.icon4,
-            Resource.Drawable.icon5, Resource.Drawable.icon6
-        };
+        private List<Promotion> promotions;
+        
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -37,13 +28,18 @@ namespace ProjektZespolowy.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             view = inflater.Inflate(Resource.Layout.shopOffers, container, false);
-            ShopGridViewAdapter adapter = new ShopGridViewAdapter(this.Activity.BaseContext, gridViewString, imageId);
-            gridView = view.FindViewById<GridView>(Resource.Id.grid_view_image_text);
-            gridView.Adapter = adapter;
-            gridView.ItemClick += (s, e) =>
+            FireBaseConnector connector = new FireBaseConnector();
+            promotions = connector.GetPromotions();
+            if(promotions != null)
             {
-                Toast.MakeText(this.Activity.BaseContext, "GridView Item: " + gridViewString[e.Position], ToastLength.Short).Show();
-            };
+                ShopGridViewAdapter adapter = new ShopGridViewAdapter(this.Activity.BaseContext, promotions);
+                gridView = view.FindViewById<GridView>(Resource.Id.grid_view_image_text);
+                gridView.Adapter = adapter;
+                gridView.ItemClick += (s, e) =>
+                {
+                    Toast.MakeText(this.Activity.BaseContext, "GridView Item: " + promotions[e.Position].text, ToastLength.Short).Show();
+                };
+            }
             ComponentsLocalizer();
             ActionHooker();
             return view;

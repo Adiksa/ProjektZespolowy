@@ -26,6 +26,7 @@ namespace ProjektZespolowy
         private Button warentyFromGallery;
         private Button specFromGalery;
         private Button specFromCamera;
+        private Button promotionBtn;
         private Button furAdd;
         private TextView nfcText;
         private ImageView warentyImage;
@@ -76,37 +77,138 @@ namespace ProjektZespolowy
             CrossNFC.OnNewIntent(intent);
         }
 
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        {
+            if (requestCode>=0&&requestCode<4)
+            {
+                if (requestCode == 0)
+                {
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
+                    {
+                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                    }
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
+                    {
+                        Intent intent = new Intent(MediaStore.ActionImageCapture);
+                        intent.PutExtra(MediaStore.ExtraOutput, 1);
+                        StartActivityForResult(intent, 0);
+                    }
+                }
+                if (requestCode == 1)
+                {
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
+                    {
+                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                    }
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
+                    {
+                        Intent intent = new Intent(MediaStore.ActionImageCapture);
+                        intent.PutExtra(MediaStore.ExtraOutput, 1);
+                        StartActivityForResult(intent, 1);
+                    }
+                }
+                if (requestCode == 2)
+                {
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
+                    {
+                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                    }
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
+                    {
+                        this.Intent = new Intent();
+                        this.Intent.SetType("image/*");
+                        this.Intent.SetAction(Intent.ActionGetContent);
+                        StartActivityForResult(Intent.CreateChooser(this.Intent, "Select picture"), 2);
+                    }
+                }
+                if (requestCode == 3)
+                {
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
+                    {
+                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                    }
+                    if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
+                    {
+                        this.Intent = new Intent();
+                        this.Intent.SetType("image/*");
+                        this.Intent.SetAction(Intent.ActionGetContent);
+                        StartActivityForResult(Intent.CreateChooser(this.Intent, "Select picture"), 3);
+                    }
+                }
+            }
+            else
+            {
+                base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            }
+        }
+
         private void ActionHooker()
         {
             CrossNFC.Current.OnMessageReceived += Current_OnMessageReceived;
             nfcScanBtn.Click += NfcScanBtn_Click;
             warentyFromCamera.Click += delegate
             {
-                Intent intent = new Intent(MediaStore.ActionImageCapture);
-                intent.PutExtra(MediaStore.ExtraOutput, 1);
-                StartActivityForResult(intent, 0);
+                if (this.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.Camera) == Android.Content.PM.Permission.Granted)
+                {
+                    Intent intent = new Intent(MediaStore.ActionImageCapture);
+                    intent.PutExtra(MediaStore.ExtraOutput, 1);
+                    StartActivityForResult(intent, 0);
+                }
+                else
+                {
+                    var requiredPermissions = new String[] { Android.Manifest.Permission.Camera };
+                    RequestPermissions(requiredPermissions, 0);
+                }
             };
             specFromCamera.Click += delegate
             {
-                Intent intent = new Intent(MediaStore.ActionImageCapture);
-                intent.PutExtra(MediaStore.ExtraVideoQuality, 1);
-                StartActivityForResult(intent, 1);
+                if (this.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.Camera) == Android.Content.PM.Permission.Granted)
+                {
+                    Intent intent = new Intent(MediaStore.ActionImageCapture);
+                    intent.PutExtra(MediaStore.ExtraOutput, 1);
+                    StartActivityForResult(intent, 1);
+                }
+                else
+                {
+                    var requiredPermissions = new String[] { Android.Manifest.Permission.Camera };
+                    RequestPermissions(requiredPermissions, 1);
+                }
             };
             warentyFromGallery.Click += delegate
             {
-                Intent = new Intent();
-                Intent.SetType("image/*");
-                Intent.SetAction(Intent.ActionGetContent);
-                StartActivityForResult(Intent.CreateChooser(Intent, "Select picture"), 2);
+                if (this.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.ReadExternalStorage) == Android.Content.PM.Permission.Granted)
+                {
+                    this.Intent = new Intent();
+                    this.Intent.SetType("image/*");
+                    this.Intent.SetAction(Intent.ActionGetContent);
+                    StartActivityForResult(Intent.CreateChooser(this.Intent, "Select picture"), 2);
+                }
+                else
+                {
+                    var requiredPermissions = new String[] { Android.Manifest.Permission.ReadExternalStorage };
+                    RequestPermissions(requiredPermissions, 2);
+                }
             };
             specFromGalery.Click += delegate
             {
-                Intent = new Intent();
-                Intent.SetType("image/*");
-                Intent.SetAction(Intent.ActionGetContent);
-                StartActivityForResult(Intent.CreateChooser(Intent, "Select picture"), 3);
+                if (this.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.ReadExternalStorage) == Android.Content.PM.Permission.Granted)
+                {
+                    this.Intent = new Intent();
+                    this.Intent.SetType("image/*");
+                    this.Intent.SetAction(Intent.ActionGetContent);
+                    StartActivityForResult(Intent.CreateChooser(this.Intent, "Select picture"), 3);
+                }
+                else
+                {
+                    var requiredPermissions = new String[] { Android.Manifest.Permission.ReadExternalStorage };
+                    RequestPermissions(requiredPermissions, 3);
+                }
             };
             furAdd.Click += FurAdd_Click;
+            promotionBtn.Click += delegate
+            {
+                StartActivity(typeof(PromotionAdd));
+            };
         }
         private void FurAdd_Click(object sender, EventArgs e)
         {
@@ -194,6 +296,7 @@ namespace ProjektZespolowy
             specFromCamera = FindViewById<Button>(Resource.Id.btn4);
             specFromGalery = FindViewById<Button>(Resource.Id.btn5);
             furAdd = FindViewById<Button>(Resource.Id.furAdd);
+            promotionBtn = FindViewById<Button>(Resource.Id.promotion);
             nfcText = FindViewById<TextView>(Resource.Id.communicate);
             warentyImage = FindViewById<ImageView>(Resource.Id.photo1);
             specImage = FindViewById<ImageView>(Resource.Id.photo2);

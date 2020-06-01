@@ -20,7 +20,7 @@ namespace ProjektZespolowy
     {
         private readonly IFirebaseConfig fcon;
         private readonly IFirebaseClient client;
-        private bool connection = false;
+        public bool connection = false;
         public FireBaseConnector()
         {
             fcon = new FirebaseConfig()
@@ -40,6 +40,7 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
                 var setter = client.Set("Login/" + obj.login, obj);
                 return 1;
             }
@@ -52,6 +53,7 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
                 var setter = client.Set("Furniture/" + obj.id, obj);
                 return 1;
             }
@@ -65,6 +67,10 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
+                if (this.connection == false)
+                    return -1;
+                obj.id = this.getPromotionLastId();
                 var setter = client.Set("Promotion/" + obj.id, obj);
                 return 1;
             }
@@ -78,6 +84,7 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
                 if (obj.Correct())
                 {
                     obj.id = getComplaintLastId();
@@ -103,6 +110,7 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
                 List<Complaint> list = new List<Complaint>();
                 Task[] tasks = new Task[furnitureComplaintList.Count];
                 int i = 0;
@@ -127,8 +135,28 @@ namespace ProjektZespolowy
                 return null;
             }
         }
+        public List<Promotion> GetPromotions()
+        {
+            try
+            {
+                this.testCon();
+                var resault = client.Get("Promotion");
+                if (resault.ResultAs<List<Promotion>>() != null)
+                {
+                    var list = resault.ResultAs<List<Promotion>>();
+                    if (list.Contains(null)) list.Remove(null);
+                    return list;
+                }
+                else return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
         public List<String> getFurnitureComplaintList(string id)
         {
+            this.testCon();
             var resault = client.Get("Furniture/" + id + "/complaintList");
             var res = resault.ResultAs<List<String>>();
             if (res == null)
@@ -140,6 +168,7 @@ namespace ProjektZespolowy
         }
         public string getComplaintLastId()
         {
+            this.testCon();
             var resault = client.Get("Complaintid/id");
             var res = resault.ResultAs<string>();
             if (res != null)
@@ -152,6 +181,7 @@ namespace ProjektZespolowy
         }
         public string getPromotionLastId()
         {
+            this.testCon();
             var resault = client.Get("Promotionid/id");
             var res = resault.ResultAs<string>();
             if (res != null)
@@ -166,6 +196,7 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
                 var resault = client.Get("Furniture/" + id);
                 return resault.ResultAs<Furniture>();
             }
@@ -178,6 +209,7 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
                 var resault = client.Get("Login/" + login.login);
                 UserLogins res = resault.ResultAs<UserLogins>();
                 if (res != null)
@@ -210,6 +242,7 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
                 var resault = client.Get("Login/" + login.login);
                 UserLogins res = resault.ResultAs<UserLogins>();
                 if (res == null)
@@ -226,6 +259,7 @@ namespace ProjektZespolowy
         {
             try
             {
+                this.testCon();
                 var resault = client.Get("Furniture/" + obj.id);
                 Furniture res = resault.ResultAs<Furniture>();
                 if (res == null)

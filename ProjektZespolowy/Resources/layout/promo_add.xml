@@ -1,0 +1,40 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:src="@android:drawable/ic_menu_gallery"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:id="@+id/promotionPic" />
+    <Button
+        android:text="@string/btnFromCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40px"
+        android:layout_marginRight="20px"
+        android:id="@+id/photoMake" />
+    <Button
+        android:text="@string/btnFromGallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20px"
+        android:layout_below="@id/photoMake"
+        android:id="@+id/picSelect" />
+    <EditText
+        android:hint="@string/txtPromo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/promotionPic"
+        android:id="@+id/promoDesc" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:text="@string/promotion"
+        android:layout_below="@id/promoDesc"
+        android:id="@+id/btnAddPromo"/>
+</RelativeLayout>

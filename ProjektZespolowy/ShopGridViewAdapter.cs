@@ -15,19 +15,20 @@ namespace ProjektZespolowy
     public class ShopGridViewAdapter : BaseAdapter
     {
         private Context context;
-        private string[] gridViewString;
-        private int[] gridViewImage;
+        private List<Promotion> promotions;
 
-        public ShopGridViewAdapter(Context context, string[] gridViewstr, int[] gridViewImage)
+        public ShopGridViewAdapter(Context context, List<Promotion> promotionslist)
         {
             this.context = context;
-            gridViewString = gridViewstr;
-            this.gridViewImage = gridViewImage;
+            if(promotionslist != null)
+            {
+                promotions = promotionslist;
+            }
         }
 
         public override int Count
         {
-            get { return gridViewString.Length; }
+            get { return promotions.Count; }
         }
 
         public override Java.Lang.Object GetItem(int position)
@@ -50,8 +51,8 @@ namespace ProjektZespolowy
                 view = inflater.Inflate(Resource.Layout.shopGrid, null);
                 TextView txtView = view.FindViewById<TextView>(Resource.Id.shopTextView);
                 ImageView imgView = view.FindViewById<ImageView>(Resource.Id.shopImageView);
-                txtView.Text = gridViewString[position];
-                imgView.SetImageResource(gridViewImage[position]);
+                if(promotions[position].text != null) txtView.Text = promotions[position].text;
+                if(promotions[position].convertBase64ToBitmap(promotions[position].image) != null) imgView.SetImageBitmap(promotions[position].convertBase64ToBitmap(promotions[position].image));
             }
             else
             {

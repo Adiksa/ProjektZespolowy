@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace ProjektZespolowy
 {
-    class Promotion
+    public class Promotion
     {
         public string id { get; set; }
         public string text { get; set; }
@@ -21,8 +21,6 @@ namespace ProjektZespolowy
 
         public bool Correct()
         {
-            if (this.id == null)
-                return false;
             if (this.text == null)
                 return false;
             if (this.image == null)

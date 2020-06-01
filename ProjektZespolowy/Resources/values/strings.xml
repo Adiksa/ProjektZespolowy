@@ -36,7 +36,7 @@
   <string name="btnReturn">Powrót</string>
   <!--Ekran tworzenia reklamacji-->
   <string name="complaintCreate">Utwórz reklamację</string>
-  <!--Ekran administratora-->
+  <!--Ekran administratora & dodaj promocje/oferty-->
   <string name="btnScanNFC">SKANUJ TAG</string>
   <string name="comm"></string>
   <string name="btnFromCamera">Zrób zdjęcie</string>
@@ -46,4 +46,5 @@
   <string name="name">Nazwa przedmiotu</string>
   <string name="add">Dodaj</string>
   <string name="promotion">Dodaj promocje</string>
+  <string name="txtPromo">Wpisz opis promocji</string>
 </resources>
