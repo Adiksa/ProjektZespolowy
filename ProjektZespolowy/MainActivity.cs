@@ -62,11 +62,11 @@ namespace ProjektZespolowy
                     StartActivity(intent);
                     alertDialog.Dispose();
                 });
-                alertDialog.SetPositiveButton("Odśwież", delegate
+                alertDialog.SetPositiveButton("Odśwież stan NFC", delegate
                 {
-                    if (!CrossNFC.Current.IsEnabled)
+                    CrossNFC.Current.StartListening();
+                    if (CrossNFC.Current.IsEnabled)
                     {
-                        CrossNFC.Current.StartListening();
                         animation.Start();
                         alertDialog.Dispose();
                     }

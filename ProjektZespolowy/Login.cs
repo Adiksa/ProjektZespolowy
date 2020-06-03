@@ -11,6 +11,7 @@ using Android.Runtime;
 using Android.Support.Design.Widget;
 using Android.Views;
 using Android.Widget;
+using Plugin.NFC;
 using ProjektZespolowy.Fragments;
 
 namespace ProjektZespolowy
@@ -24,10 +25,22 @@ namespace ProjektZespolowy
         private Button signupBtn;
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            CrossNFC.Init(this);
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.login);
             ComponentLocalizer();
             ActionHooker();
+            if(!CrossNFC.Current.IsAvailable)
+            {
+                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
+                alertDialog.SetTitle("Brak NFC");
+                alertDialog.SetMessage("Te urządzenie nie wspiera komunikacji NFC.");
+                alertDialog.SetCancelable(false);
+                alertDialog.SetNeutralButton("Wyjdź z programu.", delegate
+                {
+                    Finish();
+                });
+            }
         }
 
         private void ComponentLocalizer()
