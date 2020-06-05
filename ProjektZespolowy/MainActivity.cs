@@ -71,7 +71,7 @@ namespace ProjektZespolowy
                 });
                 alertDialog.SetNegativeButton("Wyjdz z programu", delegate
                 {
-                    Finish();
+                    FinishAffinity();
                 });
                 alertDialog.Show();
             }
@@ -81,36 +81,6 @@ namespace ProjektZespolowy
         {
             CrossNFC.Current.StartListening();
             if (nfcAdapter.IsEnabled) animation.Start();
-            /*if (!CrossNFC.Current.IsEnabled)
-            {
-                animation.Stop();
-                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                alertDialog.SetTitle("Wyłączone NFC");
-                alertDialog.SetMessage("Czy chcesz wyjść z programu ?");
-                alertDialog.SetCancelable(false);
-                alertDialog.SetNeutralButton("Wejdź do ustawień", delegate
-                {
-                    Intent intent = new Intent();
-                    intent.SetAction(Android.Provider.Settings.ActionNfcSettings);
-                    StartActivity(intent);
-                    alertDialog.Dispose();
-                });
-                alertDialog.SetPositiveButton("Odśwież stan NFC", delegate
-                {
-                    CrossNFC.Current.StartListening();
-                    if (CrossNFC.Current.IsEnabled)
-                    {
-                        animation.Start();
-                        alertDialog.Dispose();
-                    }
-                    else alertDialog.s
-                });
-                alertDialog.SetNegativeButton("Wyjdz z programu", delegate
-                {
-                    Finish();
-                });
-                alertDialog.Show();
-            }*/
             base.OnResume();
         }
 
