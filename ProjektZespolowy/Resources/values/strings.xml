@@ -56,4 +56,5 @@
 	<string name="OKbutton">OK</string>
 	<string name="complaintCorrect">Reklamacja dodana poprawnie.</string>
 	<string name="complaintMessage">Reklamacja została dodana poprawnie, sprawdź jej status klikając na liste reklamacji.</string>
+	<!--Fragment-->
 </resources>
