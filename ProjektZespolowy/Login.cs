@@ -6,6 +6,7 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Nfc;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -30,7 +31,8 @@ namespace ProjektZespolowy
             SetContentView(Resource.Layout.login);
             ComponentLocalizer();
             ActionHooker();
-            if(!CrossNFC.Current.IsAvailable)
+            NfcAdapter nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
+            if (nfcAdapter == null)
             {
                 Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                 alertDialog.SetTitle("Brak NFC");
@@ -40,6 +42,7 @@ namespace ProjektZespolowy
                 {
                     Finish();
                 });
+                alertDialog.Show();
             }
         }
 
@@ -77,7 +80,7 @@ namespace ProjektZespolowy
                         this.StartActivity(intent);
                            
                     }
-                    if(res == -1)
+                    if(!connection.connection)
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                         alertDialog.SetTitle("Brak neta.");
