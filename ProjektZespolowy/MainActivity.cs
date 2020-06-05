@@ -32,6 +32,7 @@ namespace ProjektZespolowy
         private ImageView animImageView;
         private AnimationDrawable animation;
         private ProgressBar progressBar;
+        NfcAdapter nfcAdapter;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             CrossNFC.Init(this);
@@ -43,7 +44,7 @@ namespace ProjektZespolowy
             ActionHooker();
             animation = (AnimationDrawable)animImageView.Background;
             animation.Start();
-            NfcAdapter nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
+            nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
             if(!nfcAdapter.IsEnabled)
             {
                 animation.Stop();
@@ -79,6 +80,7 @@ namespace ProjektZespolowy
         protected override void OnResume()
         {
             CrossNFC.Current.StartListening();
+            if (nfcAdapter.IsEnabled) animation.Start();
             /*if (!CrossNFC.Current.IsEnabled)
             {
                 animation.Stop();
