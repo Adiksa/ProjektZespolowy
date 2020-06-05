@@ -43,12 +43,43 @@ namespace ProjektZespolowy
             ActionHooker();
             animation = (AnimationDrawable)animImageView.Background;
             animation.Start();
+            NfcAdapter nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
+            if(!nfcAdapter.IsEnabled)
+            {
+                animation.Stop();
+                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
+                alertDialog.SetTitle("Wyłączone NFC");
+                alertDialog.SetMessage("Czy chcesz wyjść z programu ?");
+                alertDialog.SetCancelable(false);
+                alertDialog.SetNeutralButton("Wejdź do ustawień", delegate
+                {
+                    Intent intent = new Intent();
+                    intent.SetAction(Android.Provider.Settings.ActionNfcSettings);
+                    StartActivity(intent);
+                    alertDialog.Dispose();
+                });
+                alertDialog.SetPositiveButton("Odśwież stan NFC", delegate
+                {
+                    if (nfcAdapter.IsEnabled)
+                    {
+                        animation.Start();
+                        alertDialog.Dispose();
+                    }
+                    else alertDialog.Show();
+                    
+                });
+                alertDialog.SetNegativeButton("Wyjdz z programu", delegate
+                {
+                    Finish();
+                });
+                alertDialog.Show();
+            }
         }
 
         protected override void OnResume()
         {
             CrossNFC.Current.StartListening();
-            if (!CrossNFC.Current.IsEnabled)
+            /*if (!CrossNFC.Current.IsEnabled)
             {
                 animation.Stop();
                 Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
@@ -70,13 +101,14 @@ namespace ProjektZespolowy
                         animation.Start();
                         alertDialog.Dispose();
                     }
+                    else alertDialog.s
                 });
                 alertDialog.SetNegativeButton("Wyjdz z programu", delegate
                 {
                     Finish();
                 });
                 alertDialog.Show();
-            }
+            }*/
             base.OnResume();
         }
 
