@@ -9,12 +9,14 @@
     android:layout_width="50dp"
     android:layout_height="50dp"
     android:layout_marginTop="15dp"
+	android:layout_centerHorizontal="true"
     android:id="@+id/shopImageView" />
   <TextView
     android:text="Text"
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
     android:layout_below="@id/shopImageView"
     android:layout_marginTop="5dp"
     android:id="@+id/shopTextView" />

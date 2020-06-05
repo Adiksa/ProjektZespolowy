@@ -86,7 +86,7 @@
 	<string name="exitQuestion">Czy chcesz wyjść z programu?</string>
 	<string name="settingsEnter">Wejdź do ustawień</string>
 	<string name="refreshNFC">Odśwież stan NFC</string>
-	<string name="exit">Wyjdź z programu</string>
+	
 	<string name="noFurnitureID">Mebel o podanym ID nie istnieje w naszej bazie.</string>
 	<string name="errorReadTagNFC">Błąd wczytywania tagu NFC. Zbliż poprawny tag.</string>
 </resources>
