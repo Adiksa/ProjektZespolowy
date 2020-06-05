@@ -80,7 +80,7 @@ namespace ProjektZespolowy.Fragments
                 {
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
                     {
-                        Toast.MakeText(this.Activity, "Brak uprawnień.", ToastLength.Short).Show();
+                        Toast.MakeText(this.Activity, Resource.String.noPermissions, ToastLength.Short).Show();
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
@@ -93,7 +93,7 @@ namespace ProjektZespolowy.Fragments
                 {
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
                     {
-                        Toast.MakeText(this.Activity, "Brak uprawnień.", ToastLength.Short).Show();
+                        Toast.MakeText(this.Activity, Resource.String.noPermissions, ToastLength.Short).Show();
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
@@ -155,9 +155,9 @@ namespace ProjektZespolowy.Fragments
                 if (res == 0)
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                    alertDialog.SetTitle("Błąd danych.");
-                    alertDialog.SetMessage("Dodaj wszystkie dane poprawnie.");
-                    alertDialog.SetNeutralButton("Ok", delegate
+                    alertDialog.SetTitle(GetString(Resource.String.dataError));
+                    alertDialog.SetMessage(GetString(Resource.String.addCorrect));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
                         alertDialog.Dispose();
                     });
@@ -166,9 +166,9 @@ namespace ProjektZespolowy.Fragments
                 if (res == -1)
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                    alertDialog.SetTitle("Brak połączenia internetowego.");
-                    alertDialog.SetMessage("Sprawdź swoje połączenie.");
-                    alertDialog.SetNeutralButton("Ok", delegate
+                    alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
+                    alertDialog.SetMessage(GetString(Resource.String.checkConnection));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
                         alertDialog.Dispose();
                     });
@@ -177,9 +177,9 @@ namespace ProjektZespolowy.Fragments
                 if (res == 1)
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                    alertDialog.SetTitle("Reklamacja dodana poprawnie.");
-                    alertDialog.SetMessage("Reklamacja została dodana poprawnie, sprawdź jej status klikając na liste reklamacji.");
-                    alertDialog.SetNeutralButton("Ok", delegate
+                    alertDialog.SetTitle(GetString(Resource.String.complaintCorrect));
+                    alertDialog.SetMessage(GetString(Resource.String.complaintMessage));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
                     alertDialog.Dispose();
                     this.OnComplaintCreated();

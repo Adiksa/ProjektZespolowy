@@ -47,4 +47,13 @@
   <string name="add">Dodaj</string>
   <string name="promotion">Dodaj promocje</string>
   <string name="txtPromo">Wpisz opis promocji</string>
+  <!--Fragment ComplaintCreate.cs-->
+	<string name="noPermissions">Brak uprawnień.</string>
+	<string name="dataError">Błąd danych.</string>
+	<string name="addCorrect">Dodaj wszystkie dane poprawnie.</string>
+	<string name="noInternetConnection">Brak połączenia internetowego.</string>
+	<string name="checkConnection">Sprawdź swoje połączenie.</string>
+	<string name="OKbutton">OK</string>
+	<string name="complaintCorrect">Reklamacja dodana poprawnie.</string>
+	<string name="complaintMessage">Reklamacja została dodana poprawnie, sprawdź jej status klikając na liste reklamacji.</string>
 </resources>
