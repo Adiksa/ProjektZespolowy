@@ -55,7 +55,7 @@ namespace ProjektZespolowy
                 {
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
                     {
-                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                        Toast.MakeText(this, GetString(Resource.String.noPermissions), ToastLength.Short).Show();
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
@@ -68,7 +68,7 @@ namespace ProjektZespolowy
                 {
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
                     {
-                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                        Toast.MakeText(this, GetString(Resource.String.noPermissions), ToastLength.Short).Show();
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
@@ -133,20 +133,20 @@ namespace ProjektZespolowy
                 var res = connection.dataInsert(promotion);
                 if(res == 1 && connection.connection)
                 {
-                    Toast.MakeText(this, "Dodano.", ToastLength.Long).Show();
+                    Toast.MakeText(this, GetString(Resource.String.added), ToastLength.Long).Show();
                     Finish();
                 }
                 else
                 {
                     if(connection.connection==false)
                     {
-                        Toast.MakeText(this, "Brak internetu.", ToastLength.Long).Show();
+                        Toast.MakeText(this, GetString(Resource.String.noInternetConnection), ToastLength.Long).Show();
                     }
                 }
             }
             else
             {
-                Toast.MakeText(this, "Dodaj wszystkie dane poprawnie.", ToastLength.Long).Show();
+                Toast.MakeText(this, GetString(Resource.String.addCorrectData), ToastLength.Long).Show();
             }
         }
 

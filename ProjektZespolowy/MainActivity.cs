@@ -49,17 +49,17 @@ namespace ProjektZespolowy
             {
                 animation.Stop();
                 Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                alertDialog.SetTitle("Wyłączone NFC");
-                alertDialog.SetMessage("Czy chcesz wyjść z programu ?");
+                alertDialog.SetTitle(GetString(Resource.String.offNFC));
+                alertDialog.SetMessage(GetString(Resource.String.exitQuestion));
                 alertDialog.SetCancelable(false);
-                alertDialog.SetNeutralButton("Wejdź do ustawień", delegate
+                alertDialog.SetNeutralButton(GetString(Resource.String.settingsEnter), delegate
                 {
                     Intent intent = new Intent();
                     intent.SetAction(Android.Provider.Settings.ActionNfcSettings);
                     StartActivity(intent);
                     alertDialog.Dispose();
                 });
-                alertDialog.SetPositiveButton("Odśwież stan NFC", delegate
+                alertDialog.SetPositiveButton(GetString(Resource.String.refreshNFC), delegate
                 {
                     if (nfcAdapter.IsEnabled)
                     {
@@ -69,7 +69,7 @@ namespace ProjektZespolowy
                     else alertDialog.Show();
                     
                 });
-                alertDialog.SetNegativeButton("Wyjdz z programu", delegate
+                alertDialog.SetNegativeButton(GetString(Resource.String.exit), delegate
                 {
                     FinishAffinity();
                 });
@@ -159,7 +159,7 @@ namespace ProjektZespolowy
                         skanText.Visibility = ViewStates.Visible;
                         animImageView.Visibility = ViewStates.Visible;
                     });
-                    Snackbar.Make(rootview, "Mebel o podanym id nie istnieje w naszej bazie.", Snackbar.LengthShort).Show();
+                    Snackbar.Make(rootview, GetString(Resource.String.noFurnitureID), Snackbar.LengthShort).Show();
                 }
                 else
                 {
@@ -177,7 +177,7 @@ namespace ProjektZespolowy
                     skanText.Visibility = ViewStates.Visible;
                     animImageView.Visibility = ViewStates.Visible;
                 });
-                Snackbar.Make(rootview, "Bład wczytywania tagu nfc. Zbliż poprawny tag.", Snackbar.LengthShort).Show();
+                Snackbar.Make(rootview, GetString(Resource.String.errorReadTagNFC), Snackbar.LengthShort).Show();
             }
         }
         

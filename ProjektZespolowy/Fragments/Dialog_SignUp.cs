@@ -69,9 +69,9 @@ namespace ProjektZespolowy.Fragments
                     if (connector.checkLoginPossibility(login) == 0)
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                        alertDialog.SetTitle("Zajety login.");
-                        alertDialog.SetMessage("Zmienisz login?");
-                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        alertDialog.SetTitle(GetString(Resource.String.loginInUse));
+                        alertDialog.SetMessage(GetString(Resource.String.loginOther));
+                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
                             alertDialog.Dispose();
                         });
@@ -81,9 +81,9 @@ namespace ProjektZespolowy.Fragments
                     {
                         connector.dataInsert(login);
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                        alertDialog.SetTitle("Konto utworzone.");
-                        alertDialog.SetMessage("Utworzone konto o loginie " + login.login);
-                        alertDialog.SetNeutralButton("Gitara.", delegate
+                        alertDialog.SetTitle(GetString(Resource.String.accountCreated));
+                        alertDialog.SetMessage(GetString(Resource.String.accountCreatedMessage)+" " + login.login);
+                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
                             alertDialog.Dispose();
                         });
@@ -92,9 +92,9 @@ namespace ProjektZespolowy.Fragments
                     if (connector.checkLoginPossibility(login) == -1)
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                        alertDialog.SetTitle("Brak neta.");
-                        alertDialog.SetMessage("Podepniesz sie do neta?");
-                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
+                        alertDialog.SetMessage(GetString(Resource.String.checkConnection));
+                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
                             alertDialog.Dispose();
                         });
@@ -104,9 +104,9 @@ namespace ProjektZespolowy.Fragments
                 else
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                    alertDialog.SetTitle("Bład rejestrowania.");
-                    alertDialog.SetMessage("Dodasz wszystko jak trzeba?");
-                    alertDialog.SetNeutralButton("No dobra.", delegate
+                    alertDialog.SetTitle(GetString(Resource.String.registerError));
+                    alertDialog.SetMessage(GetString(Resource.String.registerErrorMessage));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
                         alertDialog.Dispose();
                     });

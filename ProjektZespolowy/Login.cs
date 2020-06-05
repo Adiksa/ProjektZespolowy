@@ -35,10 +35,10 @@ namespace ProjektZespolowy
             if (nfcAdapter == null)
             {
                 Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                alertDialog.SetTitle("Brak NFC");
-                alertDialog.SetMessage("Te urządzenie nie wspiera komunikacji NFC.");
+                alertDialog.SetTitle(GetString(Resource.String.noNFC));
+                alertDialog.SetMessage(GetString(Resource.String.noSupport));
                 alertDialog.SetCancelable(false);
-                alertDialog.SetNeutralButton("Wyjdź z programu.", delegate
+                alertDialog.SetNeutralButton(GetString(Resource.String.exit), delegate
                 {
                     Finish();
                 });
@@ -83,9 +83,9 @@ namespace ProjektZespolowy
                     if(!connection.connection)
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                        alertDialog.SetTitle("Brak neta.");
-                        alertDialog.SetMessage("Podepniesz sie do neta?");
-                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
+                        alertDialog.SetMessage(GetString(Resource.String.checkConnection));
+                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
                             alertDialog.Dispose();
                         });
@@ -94,9 +94,9 @@ namespace ProjektZespolowy
                     if(res == 0)
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                        alertDialog.SetTitle("Bład logowania.");
-                        alertDialog.SetMessage("Dodasz wszystko jak trzeba?");
-                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        alertDialog.SetTitle(GetString(Resource.String.loginError));
+                        alertDialog.SetMessage(GetString(Resource.String.correctLogin));
+                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
                             alertDialog.Dispose();
                         });
@@ -106,9 +106,9 @@ namespace ProjektZespolowy
                 else
                 {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                        alertDialog.SetTitle("Bład logowania.");
-                        alertDialog.SetMessage("Dodasz wszystko jak trzeba?");
-                        alertDialog.SetNeutralButton("No dobra.", delegate
+                        alertDialog.SetTitle(GetString(Resource.String.loginError));
+                        alertDialog.SetMessage(GetString(Resource.String.correctLogin));
+                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
                             alertDialog.Dispose();
                         });

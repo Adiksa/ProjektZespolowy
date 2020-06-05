@@ -40,7 +40,7 @@ namespace ProjektZespolowy
             SetContentView(Resource.Layout.admin);
             ComponentLocalizer();
             ActionHooker();
-            nfcText.Text = "Włącz skanowanie";
+            nfcText.Text = GetString(Resource.String.scanON);
             CrossNFC.Init(this);
         }
 
@@ -85,7 +85,7 @@ namespace ProjektZespolowy
                 {
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
                     {
-                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                        Toast.MakeText(this, GetString(Resource.String.noPermissions), ToastLength.Short).Show();
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
@@ -98,7 +98,7 @@ namespace ProjektZespolowy
                 {
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
                     {
-                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                        Toast.MakeText(this, GetString(Resource.String.noPermissions), ToastLength.Short).Show();
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
@@ -111,7 +111,7 @@ namespace ProjektZespolowy
                 {
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
                     {
-                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                        Toast.MakeText(this, GetString(Resource.String.noPermissions), ToastLength.Short).Show();
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
@@ -125,7 +125,7 @@ namespace ProjektZespolowy
                 {
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Denied)
                     {
-                        Toast.MakeText(this, "Brak uprawnień.", ToastLength.Short).Show();
+                        Toast.MakeText(this, GetString(Resource.String.noPermissions), ToastLength.Short).Show();
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
@@ -228,16 +228,16 @@ namespace ProjektZespolowy
                 {
                     
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                    alertDialog.SetTitle("Istnieje juz taki mebel");
-                    alertDialog.SetMessage("Chcesz go nadpisać?");
-                    alertDialog.SetPositiveButton("tak", delegate
+                    alertDialog.SetTitle(GetString(Resource.String.furnitureExists));
+                    alertDialog.SetMessage(GetString(Resource.String.overwrite));
+                    alertDialog.SetPositiveButton(GetString(Resource.String.yes), delegate
                     {
                         if(connection.dataInsert(furniture)==-1)
-                            Toast.MakeText(this, "Brak internetu.", ToastLength.Long).Show();
-                        Toast.MakeText(this, "Dodano.", ToastLength.Long).Show();
+                            Toast.MakeText(this, GetString(Resource.String.noInternetConnection), ToastLength.Long).Show();
+                        Toast.MakeText(this, GetString(Resource.String.added), ToastLength.Long).Show();
 
                     });
-                    alertDialog.SetNeutralButton("nie", delegate
+                    alertDialog.SetNeutralButton(GetString(Resource.String.no), delegate
                     {
                         alertDialog.Dispose();
                     });
@@ -246,17 +246,17 @@ namespace ProjektZespolowy
                 if(connection.checkFurniturePossibility(furniture) == 1)
                 {
                     if (connection.dataInsert(furniture) == -1)
-                        Toast.MakeText(this, "Brak internetu.", ToastLength.Long).Show();
-                    Toast.MakeText(this, "Dodano.", ToastLength.Long).Show();
+                        Toast.MakeText(this, GetString(Resource.String.noInternetConnection), ToastLength.Long).Show();
+                    Toast.MakeText(this, GetString(Resource.String.added), ToastLength.Long).Show();
                 }
                 if (connection.checkFurniturePossibility(furniture) == 1)
                 {
-                    Toast.MakeText(this, "Brak internetu.", ToastLength.Long).Show();
+                    Toast.MakeText(this, GetString(Resource.String.noInternetConnection), ToastLength.Long).Show();
                 }
             }
             else
             {
-                Toast.MakeText(this, "Dodaj wszystkie dane poprawnie.", ToastLength.Long).Show();
+                Toast.MakeText(this, GetString(Resource.String.addCorrectData), ToastLength.Long).Show();
             }
         }
 
@@ -271,7 +271,7 @@ namespace ProjektZespolowy
             }
             else
             {
-                Toast.MakeText(this, "Bład czytania NFC", ToastLength.Long).Show();
+                Toast.MakeText(this, GetString(Resource.String.errorReadNFC), ToastLength.Long).Show();
             }
         }
 
@@ -280,11 +280,11 @@ namespace ProjektZespolowy
             try
             {
                 CrossNFC.Current.StartListening();
-                nfcText.Text = "Skanowanie";
+                nfcText.Text = GetString(Resource.String.scanDesc);
             }
             catch
             {
-                nfcText.Text = "Błąd NFC";
+                nfcText.Text = GetString(Resource.String.errorNFC);
             }
         }
 
