@@ -32,14 +32,14 @@
             android:text="@string/register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/buttonlog"
+            android:background="@drawable/button_light_green"
             android:id="@+id/signUpAccept" />
         <Button
             android:text="@string/cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/signUpCancel"
-            android:background="@drawable/buttonlog"
+            android:background="@drawable/button_light_red"
             android:layout_toRightOf="@+id/signUpAccept"/>
     </RelativeLayout>
 </LinearLayout>
