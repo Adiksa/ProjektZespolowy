@@ -23,12 +23,14 @@
         android:layout_below="@id/problemHey"
         android:maxHeight="200dp"/>
     <ImageView
-      android:src="@android:drawable/ic_menu_gallery"
+      android:src="@drawable/ic6b_192x192"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_centerHorizontal="true"
-      android:minHeight="200px"
-      android:minWidth="200px"
+      android:minHeight="100px"
+      android:minWidth="100px"
+      android:scaleX="0.5"
+      android:scaleY="0.5"
       android:contentDescription="@string/photoDesc"
       android:adjustViewBounds="true"
       android:scaleType="fitCenter"
