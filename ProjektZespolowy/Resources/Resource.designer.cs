@@ -4654,169 +4654,172 @@ namespace ProjektZespolowy
 			public const int description = 2131624009;
 			
 			// aapt resource value: 0x7F0E004A
-			public const int errorNFC = 2131624010;
+			public const int emptyLogin = 2131624010;
 			
 			// aapt resource value: 0x7F0E004B
-			public const int errorReadNFC = 2131624011;
+			public const int errorNFC = 2131624011;
 			
 			// aapt resource value: 0x7F0E004C
-			public const int errorReadTagNFC = 2131624012;
+			public const int errorReadNFC = 2131624012;
 			
 			// aapt resource value: 0x7F0E004D
-			public const int exit = 2131624013;
+			public const int errorReadTagNFC = 2131624013;
 			
 			// aapt resource value: 0x7F0E004E
-			public const int exitQuestion = 2131624014;
+			public const int exit = 2131624014;
 			
 			// aapt resource value: 0x7F0E004F
-			public const int fab_transformation_scrim_behavior = 2131624015;
+			public const int exitQuestion = 2131624015;
 			
 			// aapt resource value: 0x7F0E0050
-			public const int fab_transformation_sheet_behavior = 2131624016;
+			public const int fab_transformation_scrim_behavior = 2131624016;
 			
 			// aapt resource value: 0x7F0E0051
-			public const int furnitureExists = 2131624017;
+			public const int fab_transformation_sheet_behavior = 2131624017;
 			
 			// aapt resource value: 0x7F0E0052
-			public const int hello = 2131624018;
+			public const int furnitureExists = 2131624018;
 			
 			// aapt resource value: 0x7F0E0053
-			public const int hide_bottom_view_on_scroll_behavior = 2131624019;
+			public const int hello = 2131624019;
 			
 			// aapt resource value: 0x7F0E0054
-			public const int hintLogin = 2131624020;
+			public const int hide_bottom_view_on_scroll_behavior = 2131624020;
 			
 			// aapt resource value: 0x7F0E0055
-			public const int hintPassword = 2131624021;
+			public const int hintLogin = 2131624021;
 			
 			// aapt resource value: 0x7F0E0056
-			public const int itemName = 2131624022;
+			public const int hintPassword = 2131624022;
 			
 			// aapt resource value: 0x7F0E0057
-			public const int loginError = 2131624023;
+			public const int itemName = 2131624023;
 			
 			// aapt resource value: 0x7F0E0058
-			public const int loginInUse = 2131624024;
+			public const int loginError = 2131624024;
 			
 			// aapt resource value: 0x7F0E0059
-			public const int loginOther = 2131624025;
+			public const int loginInUse = 2131624025;
 			
 			// aapt resource value: 0x7F0E005A
-			public const int logoCentre = 2131624026;
+			public const int loginOther = 2131624026;
 			
 			// aapt resource value: 0x7F0E005B
-			public const int logoITM = 2131624027;
+			public const int logoCentre = 2131624027;
 			
 			// aapt resource value: 0x7F0E005C
-			public const int mtrl_chip_close_icon_content_description = 2131624028;
+			public const int logoITM = 2131624028;
 			
 			// aapt resource value: 0x7F0E005D
-			public const int name = 2131624029;
+			public const int mtrl_chip_close_icon_content_description = 2131624029;
 			
 			// aapt resource value: 0x7F0E005E
-			public const int no = 2131624030;
+			public const int name = 2131624030;
 			
 			// aapt resource value: 0x7F0E005F
-			public const int noAccount = 2131624031;
+			public const int no = 2131624031;
 			
 			// aapt resource value: 0x7F0E0060
-			public const int noFurnitureID = 2131624032;
+			public const int noAccount = 2131624032;
 			
 			// aapt resource value: 0x7F0E0061
-			public const int noInternetConnection = 2131624033;
+			public const int noFurnitureID = 2131624033;
 			
 			// aapt resource value: 0x7F0E0062
-			public const int noNFC = 2131624034;
+			public const int noInternetConnection = 2131624034;
 			
 			// aapt resource value: 0x7F0E0063
-			public const int noPermissions = 2131624035;
+			public const int noNFC = 2131624035;
 			
 			// aapt resource value: 0x7F0E0064
-			public const int noSupport = 2131624036;
+			public const int noPermissions = 2131624036;
 			
 			// aapt resource value: 0x7F0E0065
-			public const int offNFC = 2131624037;
+			public const int noSupport = 2131624037;
+			
+			// aapt resource value: 0x7F0E0066
+			public const int offNFC = 2131624038;
 			
 			// aapt resource value: 0x7F0E0001
 			public const int OKbutton = 2131623937;
 			
-			// aapt resource value: 0x7F0E0066
-			public const int overwrite = 2131624038;
-			
 			// aapt resource value: 0x7F0E0067
-			public const int password_toggle_content_description = 2131624039;
+			public const int overwrite = 2131624039;
 			
 			// aapt resource value: 0x7F0E0068
-			public const int path_password_eye = 2131624040;
+			public const int password_toggle_content_description = 2131624040;
 			
 			// aapt resource value: 0x7F0E0069
-			public const int path_password_eye_mask_strike_through = 2131624041;
+			public const int path_password_eye = 2131624041;
 			
 			// aapt resource value: 0x7F0E006A
-			public const int path_password_eye_mask_visible = 2131624042;
+			public const int path_password_eye_mask_strike_through = 2131624042;
 			
 			// aapt resource value: 0x7F0E006B
-			public const int path_password_strike_through = 2131624043;
+			public const int path_password_eye_mask_visible = 2131624043;
 			
 			// aapt resource value: 0x7F0E006C
-			public const int photoDesc = 2131624044;
+			public const int path_password_strike_through = 2131624044;
 			
 			// aapt resource value: 0x7F0E006D
-			public const int problemHey = 2131624045;
+			public const int photoDesc = 2131624045;
 			
 			// aapt resource value: 0x7F0E006E
-			public const int promotion = 2131624046;
+			public const int problemHey = 2131624046;
 			
 			// aapt resource value: 0x7F0E006F
-			public const int refreshNFC = 2131624047;
+			public const int promotion = 2131624047;
 			
 			// aapt resource value: 0x7F0E0070
-			public const int register = 2131624048;
+			public const int refreshNFC = 2131624048;
 			
 			// aapt resource value: 0x7F0E0071
-			public const int registerError = 2131624049;
+			public const int register = 2131624049;
 			
 			// aapt resource value: 0x7F0E0072
-			public const int registerErrorMessage = 2131624050;
+			public const int registerError = 2131624050;
 			
 			// aapt resource value: 0x7F0E0073
-			public const int scanDesc = 2131624051;
-			
-			// aapt resource value: 0x7F0E0075
-			public const int scanning = 2131624053;
+			public const int registerErrorMessage = 2131624051;
 			
 			// aapt resource value: 0x7F0E0074
-			public const int scanON = 2131624052;
+			public const int scanDesc = 2131624052;
 			
 			// aapt resource value: 0x7F0E0076
-			public const int search_menu_title = 2131624054;
+			public const int scanning = 2131624054;
+			
+			// aapt resource value: 0x7F0E0075
+			public const int scanON = 2131624053;
 			
 			// aapt resource value: 0x7F0E0077
-			public const int settingsEnter = 2131624055;
+			public const int search_menu_title = 2131624055;
 			
 			// aapt resource value: 0x7F0E0078
-			public const int specs = 2131624056;
+			public const int settingsEnter = 2131624056;
 			
 			// aapt resource value: 0x7F0E0079
-			public const int status_bar_notification_info_overflow = 2131624057;
+			public const int specs = 2131624057;
 			
 			// aapt resource value: 0x7F0E007A
-			public const int txtClickToPick = 2131624058;
+			public const int status_bar_notification_info_overflow = 2131624058;
 			
 			// aapt resource value: 0x7F0E007B
-			public const int txtComplaint = 2131624059;
+			public const int txtClickToPick = 2131624059;
 			
 			// aapt resource value: 0x7F0E007C
-			public const int txtPromo = 2131624060;
+			public const int txtComplaint = 2131624060;
 			
 			// aapt resource value: 0x7F0E007D
-			public const int warenty = 2131624061;
+			public const int txtPromo = 2131624061;
 			
 			// aapt resource value: 0x7F0E007E
-			public const int writeHere = 2131624062;
+			public const int warenty = 2131624062;
 			
 			// aapt resource value: 0x7F0E007F
-			public const int yes = 2131624063;
+			public const int writeHere = 2131624063;
+			
+			// aapt resource value: 0x7F0E0080
+			public const int yes = 2131624064;
 			
 			static String()
 			{

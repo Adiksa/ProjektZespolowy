@@ -107,7 +107,7 @@ namespace ProjektZespolowy
                 {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                         alertDialog.SetTitle(GetString(Resource.String.loginError));
-                        alertDialog.SetMessage(GetString(Resource.String.correctLogin));
+                        alertDialog.SetMessage(GetString(Resource.String.emptyLogin));
                         alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
                             alertDialog.Dispose();
