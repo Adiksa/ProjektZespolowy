@@ -17,25 +17,28 @@
     android:weightSum="30">
     <ImageButton
       android:text="@string/btnSuc1"
-      android:src="@drawable/icon1"
+      android:src="@drawable/btn1_192x192"
       android:layout_width="wrap_content"
       android:layout_height="50dp"
       android:scaleType="fitCenter"
+      android:background="@drawable/button_white"
       android:id="@+id/specBtn"
       android:layout_weight="10"/>
     <ImageButton
       android:text="@string/btnSuc2"
-      android:src="@drawable/icon2"
+      android:src="@drawable/btn2_192x192"
       android:layout_width="wrap_content"
       android:layout_height="50dp"
+      android:background="@drawable/button_white"
       android:scaleType="fitCenter"
       android:id="@+id/complaintBtn" 
       android:layout_weight="10"/>
     <ImageButton
       android:text="@string/btnSuc3"
-      android:src="@drawable/icon4"      
+      android:src="@drawable/btn3_192x192"      
       android:layout_width="wrap_content"
       android:layout_height="50dp"
+      android:background="@drawable/button_white"
       android:scaleType="fitCenter"
       android:id="@+id/shopBtn" 
       android:layout_weight="10"/>
