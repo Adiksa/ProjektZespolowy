@@ -198,7 +198,8 @@ namespace ProjektZespolowy
             {
                 this.testCon();
                 var resault = client.Get("Furniture/" + id);
-                return resault.ResultAs<Furniture>();
+                if (resault == null) return null;
+                else return resault.ResultAs<Furniture>();
             }
             catch
             {
@@ -214,7 +215,6 @@ namespace ProjektZespolowy
                 UserLogins res = resault.ResultAs<UserLogins>();
                 if (res != null)
                 {
-                    System.Console.WriteLine(res.login + " " + res.userPassword);
                     if (login.login == res.login && login.userPassword == res.userPassword)
                     {
                         if (res.admin == true)
@@ -231,12 +231,15 @@ namespace ProjektZespolowy
                         return 0;
                     }
                 }
+                else
+                {
+                    return 0;
+                }
             }
             catch
             {
                 return -1;
             }
-            return -1;
         }
         public int checkLoginPossibility(UserLogins login)
         {

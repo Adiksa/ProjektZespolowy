@@ -86,7 +86,7 @@ namespace ProjektZespolowy
 
         public override void OnBackPressed()
         {
-            base.OnBackPressed();
+            FinishAffinity();
         }
 
         private void ActionHooker()
