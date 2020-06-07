@@ -17,17 +17,24 @@
             android:layout_height="wrap_content"
             android:minHeight="200dp"
             android:minWidth="200dp"
+            android:layout_centerHorizontal="true"
             android:id="@+id/imageComplaintProgress" 
             android:adjustViewBounds="true"
             />
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="200dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/imageComplaintProgress">
         <TextView
             android:text="@string/ComProgress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="16sp"
+            android:textSize="10sp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/ComProgresComplaint"
-            android:layout_below="@id/imageComplaintProgress"/>
+            />
+        </ScrollView>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -40,13 +47,18 @@
             android:textSize="20sp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/ComProgress" />
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/ComProgress">
         <ListView
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ComProgress"
             android:id="@+id/listProgress" />
+        </ScrollView>
         </RelativeLayout> 
    </LinearLayout>
 </RelativeLayout>
