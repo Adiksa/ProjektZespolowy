@@ -70,6 +70,7 @@ namespace ProjektZespolowy.Fragments
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
                         alertDialog.SetTitle(GetString(Resource.String.loginInUse));
+                        alertDialog.SetIcon(Resource.Drawable.ic4b_192x192);
                         alertDialog.SetMessage(GetString(Resource.String.loginOther));
                         alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
@@ -82,6 +83,7 @@ namespace ProjektZespolowy.Fragments
                         connector.dataInsert(login);
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
                         alertDialog.SetTitle(GetString(Resource.String.accountCreated));
+                        alertDialog.SetIcon(Resource.Drawable.ok2a_192x192);
                         alertDialog.SetMessage(GetString(Resource.String.accountCreatedMessage)+" " + login.login);
                         alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
@@ -93,6 +95,7 @@ namespace ProjektZespolowy.Fragments
                     {
                         Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
                         alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
+                        alertDialog.SetIcon(Resource.Drawable.ic5c_192x192);
                         alertDialog.SetMessage(GetString(Resource.String.checkConnection));
                         alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                         {
@@ -105,6 +108,7 @@ namespace ProjektZespolowy.Fragments
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
                     alertDialog.SetTitle(GetString(Resource.String.registerError));
+                    alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
                     alertDialog.SetMessage(GetString(Resource.String.registerErrorMessage));
                     alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {

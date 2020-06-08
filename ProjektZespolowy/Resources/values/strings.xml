@@ -85,6 +85,7 @@
 	<string name="correctLogin">Podane dane logowania są niepoprawne.</string>
 	<string name="emptyLogin">Nie podano danych logowania lub dane są błędne.</string>
   <!--MainActivity.cs-->
+	<string name="loginDone">Zalogowano pomyślnie!</string>
 	<string name="offNFC">NFC jest wyłączone</string>
 	<string name="exitQuestion">Czy chcesz wyjść z programu?</string>
 	<string name="settingsEnter">Wejdź do ustawień</string>

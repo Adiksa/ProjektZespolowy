@@ -40,7 +40,7 @@ namespace ProjektZespolowy
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             SetContentView(Resource.Layout.activity_main);
             ComponentLocalizer();
-            if(Intent.GetStringExtra("Login") == "1") Snackbar.Make(rootview, "Zalogowano pomyślnie.", Snackbar.LengthLong).Show();
+            if(Intent.GetStringExtra("Login") == "1") Snackbar.Make(rootview, GetString(Resource.String.loginDone), Snackbar.LengthLong).Show();
             ActionHooker();
             animation = (AnimationDrawable)animImageView.Background;
             animation.Start();
@@ -50,6 +50,7 @@ namespace ProjektZespolowy
                 animation.Stop();
                 Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                 alertDialog.SetTitle(GetString(Resource.String.offNFC));
+                alertDialog.SetIcon(Resource.Drawable.ic1a_192x192);
                 alertDialog.SetMessage(GetString(Resource.String.exitQuestion));
                 alertDialog.SetCancelable(false);
                 alertDialog.SetNeutralButton(GetString(Resource.String.settingsEnter), delegate

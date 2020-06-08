@@ -156,6 +156,7 @@ namespace ProjektZespolowy.Fragments
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
                     alertDialog.SetTitle(GetString(Resource.String.dataError));
+                    alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
                     alertDialog.SetMessage(GetString(Resource.String.addCorrect));
                     alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
@@ -167,6 +168,7 @@ namespace ProjektZespolowy.Fragments
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
                     alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
+                    alertDialog.SetIcon(Resource.Drawable.ic5c_192x192);
                     alertDialog.SetMessage(GetString(Resource.String.checkConnection));
                     alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
@@ -178,6 +180,7 @@ namespace ProjektZespolowy.Fragments
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
                     alertDialog.SetTitle(GetString(Resource.String.complaintCorrect));
+                    alertDialog.SetIcon(Resource.Drawable.ok2a_192x192);
                     alertDialog.SetMessage(GetString(Resource.String.complaintMessage));
                     alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {

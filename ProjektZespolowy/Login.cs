@@ -37,6 +37,7 @@ namespace ProjektZespolowy
             {
                 Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                 alertDialog.SetTitle(GetString(Resource.String.noNFC));
+                alertDialog.SetIcon(Resource.Drawable.ic1c_192x192);
                 alertDialog.SetMessage(GetString(Resource.String.noSupport));
                 alertDialog.SetCancelable(false);
                 alertDialog.SetNeutralButton(GetString(Resource.String.exit), delegate
@@ -107,6 +108,7 @@ namespace ProjektZespolowy
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                     alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
+                    alertDialog.SetIcon(Resource.Drawable.ic5c_192x192);
                     alertDialog.SetMessage(GetString(Resource.String.checkConnection));
                     alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
@@ -118,6 +120,7 @@ namespace ProjektZespolowy
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                     alertDialog.SetTitle(GetString(Resource.String.loginError));
+                    alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
                     alertDialog.SetMessage(GetString(Resource.String.correctLogin));
                     alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
@@ -130,6 +133,7 @@ namespace ProjektZespolowy
             {
                 Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
                 alertDialog.SetTitle(GetString(Resource.String.loginError));
+                alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
                 alertDialog.SetMessage(GetString(Resource.String.emptyLogin));
                 alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                 {
