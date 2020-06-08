@@ -154,13 +154,17 @@ namespace ProjektZespolowy
                 furniture = fcon.getFurniture(furnitureId);
                 if (furniture == null)
                 {
-                    this.RunOnUiThread(() =>
+                    if(fcon.connection)
                     {
-                        animation.Start();
-                        skanText.Visibility = ViewStates.Visible;
-                        animImageView.Visibility = ViewStates.Visible;
-                    });
-                    Snackbar.Make(rootview, GetString(Resource.String.noFurnitureID), Snackbar.LengthShort).Show();
+                        this.RunOnUiThread(() =>
+                        {
+                            animation.Start();
+                            skanText.Visibility = ViewStates.Visible;
+                            animImageView.Visibility = ViewStates.Visible;
+                        });
+                        Snackbar.Make(rootview, GetString(Resource.String.noFurnitureID), Snackbar.LengthShort).Show();
+                    }
+                    else Snackbar.Make(rootview, GetString(Resource.String.noInternetConnection), Snackbar.LengthShort).Show();
                 }
                 else
                 {
