@@ -61,6 +61,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Fragments\OfferFragment.cs" />
     <Compile Include="PromotionAdd.cs" />
     <Compile Include="Admin.cs" />
     <Compile Include="ComplaintProgressListViewAdapter.cs" />
