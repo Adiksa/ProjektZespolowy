@@ -33,9 +33,9 @@
 	<string name="ComProgress">Przebieg reklamacji:</string>
 	<string name="txtComplaint">Reklamacja</string>
 	<!--Ekran specyfikacji-->
-  <string name="btnReturn">Powrót</string>
-	<!--Ekran tworzenia reklamacji-->
-  <string name="complaintCreate">Utwórz reklamację</string>
+	<string name="btnReturn">Powrót</string>
+  <!--Ekran tworzenia reklamacji-->
+	<string name="complaintCreate">Utwórz reklamację</string>
   <!--Ekran administratora & dodaj promocje/oferty-->
 	<string name="btnScanNFC">SKANUJ TAG</string>
 	<string name="comm"></string>
@@ -87,6 +87,12 @@
 	<string name="exitQuestion">Czy chcesz wyjść z programu?</string>
 	<string name="settingsEnter">Wejdź do ustawień</string>
 	<string name="refreshNFC">Odśwież stan NFC</string>
-  <string name="noFurnitureID">Mebel o podanym ID nie istnieje w naszej bazie.</string>
+	<string name="noFurnitureID">Mebel o podanym ID nie istnieje w naszej bazie.</string>
 	<string name="errorReadTagNFC">Błąd wczytywania tagu NFC. Zbliż poprawny tag.</string>
+  <!--offer.xml-->
+	<string name="offerTitle">Tytuł oferty</string>
+	<string name="offerPhotoDesc">Zdjęcie oferty</string>
+	<string name="offerDesc">Opis oferty</string>
+	<string name="offerPrice">Cena oferty</string>
+	<string name="addToCart">Dodaj do koszyka</string>
 </resources>
