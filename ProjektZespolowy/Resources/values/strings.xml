@@ -32,7 +32,7 @@
   <!--Ekran przebiegu reklamacji-->
 	<string name="ComProgress">Przebieg reklamacji:</string>
 	<string name="txtComplaint">Reklamacja</string>
-	<!--Ekran specyfikacji-->
+  <!--Ekran specyfikacji-->
 	<string name="btnReturn">Powrót</string>
   <!--Ekran tworzenia reklamacji-->
 	<string name="complaintCreate">Utwórz reklamację</string>
@@ -45,8 +45,10 @@
 	<string name="specs">Dane techniczne</string>
 	<string name="name">Nazwa przedmiotu</string>
 	<string name="add">Dodaj</string>
-	<string name="promotion">Dodaj promocje</string>
-	<string name="txtPromo">Wpisz opis promocji</string>
+	<string name="promotion">Dodaj ofertę</string>
+	<string name="txtPromo">Wpisz opis oferty</string>
+	<string name="TitlePromo">Wpisz tytuł oferty</string>
+	<string name="PricePromo">Wpisz cenę oferty</string>
   <!--Fragment ComplaintCreate.cs-->
 	<string name="noPermissions">Brak uprawnień.</string>
 	<string name="dataError">Błąd danych</string>

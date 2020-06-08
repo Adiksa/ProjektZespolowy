@@ -51,7 +51,7 @@ namespace ProjektZespolowy
                 view = inflater.Inflate(Resource.Layout.shopGrid, null);
                 TextView txtView = view.FindViewById<TextView>(Resource.Id.shopTextView);
                 ImageView imgView = view.FindViewById<ImageView>(Resource.Id.shopImageView);
-                if(promotions[position].text != null) txtView.Text = promotions[position].text;
+                if(promotions[position].title != null) txtView.Text = promotions[position].title;
                 if(promotions[position].convertBase64ToBitmap(promotions[position].image) != null) imgView.SetImageBitmap(promotions[position].convertBase64ToBitmap(promotions[position].image));
             }
             else

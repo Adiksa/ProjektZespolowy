@@ -67,7 +67,10 @@ namespace ProjektZespolowy.Fragments
                         this.Activity.RunOnUiThread(() => { gridView.Adapter = adapter; });
                         gridView.ItemClick += (s, e) =>
                         {
-                            Toast.MakeText(this.Activity.BaseContext, "GridView Item: " + promotions[e.Position].text, ToastLength.Short).Show();
+                            var transaction = this.Activity.FragmentManager.BeginTransaction();
+                            OfferFragment offerFragment = new OfferFragment();
+                            offerFragment.promotion = promotions[e.Position];
+                            offerFragment.Show(transaction, "create offer dialog");
                         };
                     }
                 }

@@ -1,4 +1,4 @@
-
+<?xml version="1.0" encoding="utf-8" ?> 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -28,16 +28,30 @@
         android:layout_below="@id/photoMake"
         android:id="@+id/picSelect" />
     <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/TitlePromo"
+        android:id="@+id/promoTitle"
+        android:layout_below="@id/promotionPic"/>
+    <EditText
         android:hint="@string/txtPromo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/promotionPic"
+        android:layout_below="@id/promoTitle"
         android:id="@+id/promoDesc" />
+    <EditText
+	    android:hint="@string/PricePromo"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/promoDesc"
+	    android:id="@+id/pricePromo" 
+        android:digits="0123456789."
+        android:inputType="number"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 		android:text="@string/promotion"
         android:background="@drawable/button_light_green"
-        android:layout_below="@id/promoDesc"
+        android:layout_below="@id/pricePromo"
         android:id="@+id/btnAddPromo"/>
 </RelativeLayout>

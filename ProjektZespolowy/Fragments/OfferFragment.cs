@@ -20,6 +20,7 @@ namespace ProjektZespolowy.Fragments
         private TextView fOfferDesc;
         private TextView fOfferPrice;
         private Button fAddToCart;
+        public Promotion promotion;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -31,6 +32,10 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.offer, container, false);
             ComponentsLocalizer();
             ActionHooker();
+            fOfferDesc.Text = promotion.desc;
+            fOfferPrice.Text = promotion.price;
+            fOfferTitle.Text = promotion.title;
+            fOfferPhoto.SetImageBitmap(promotion.convertBase64ToBitmap(promotion.image));
             return view;
         }
         public override void OnActivityCreated(Bundle savedInstanceState)
