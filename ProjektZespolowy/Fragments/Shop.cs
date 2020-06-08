@@ -31,7 +31,6 @@ namespace ProjektZespolowy.Fragments
             view = inflater.Inflate(Resource.Layout.shopOffers, container, false);
             ComponentsLocalizer();
             ActionHooker();
-            
             return view;
         }
 
