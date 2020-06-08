@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -24,6 +24,7 @@ namespace ProjektZespolowy
         private EditText userPassword;
         private Button loginBtn;
         private Button signupBtn;
+        private ProgressBar progressBar;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             CrossNFC.Init(this);
@@ -52,68 +53,15 @@ namespace ProjektZespolowy
             userPassword = FindViewById<EditText>(Resource.Id.password);
             loginBtn = FindViewById<Button>(Resource.Id.loginButton);
             signupBtn = FindViewById<Button>(Resource.Id.signUpButton);
+            progressBar = FindViewById<ProgressBar>(Resource.Id.LoginsProgressBar);
         }
 
         private void ActionHooker()
         {
+            
             loginBtn.Click += delegate
             {
-                UserLogins login = new UserLogins()
-                {
-                    login = userLogin.Text,
-                    userPassword = userPassword.Text
-                };
-                FireBaseConnector connection = new FireBaseConnector();
-                if (login.login.Length > 0 && login.userPassword.Length > 0)
-                {
-                    var res = connection.checkLogin(login);
-                    if (res == 2)
-                    {
-                        Finish();
-                        StartActivity(typeof(Admin));
-                    }
-                    if (res == 1)
-                    {
-                        Intent intent = new Intent(this, typeof(MainActivity));
-                        intent.PutExtra("Login", "1");
-                        Finish();
-                        this.StartActivity(intent);
-                           
-                    }
-                    if(!connection.connection)
-                    {
-                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                        alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
-                        alertDialog.SetMessage(GetString(Resource.String.checkConnection));
-                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
-                        {
-                            alertDialog.Dispose();
-                        });
-                        alertDialog.Show();
-                    }
-                    if(res == 0)
-                    {
-                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                        alertDialog.SetTitle(GetString(Resource.String.loginError));
-                        alertDialog.SetMessage(GetString(Resource.String.correctLogin));
-                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
-                        {
-                            alertDialog.Dispose();
-                        });
-                        alertDialog.Show();
-                    }
-                }
-                else
-                {
-                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                        alertDialog.SetTitle(GetString(Resource.String.loginError));
-                        alertDialog.SetMessage(GetString(Resource.String.emptyLogin));
-                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
-                        {
-                            alertDialog.Dispose();
-                        });
-                        alertDialog.Show();
-                }
+                LoginCheck();
             };
             signupBtn.Click += delegate
             {
@@ -121,6 +69,78 @@ namespace ProjektZespolowy
                 Dialog_SignUp signUpDialog = new Dialog_SignUp();
                 signUpDialog.Show(transaction, "dialog fragment");
             };
+        }
+
+        private async Task LoginCheck()
+        {
+            await Task.Run(() => this.RunOnUiThread(() =>
+            {
+                progressBar.Visibility = ViewStates.Visible;
+            }));
+            UserLogins login = new UserLogins()
+            {
+                login = userLogin.Text,
+                userPassword = userPassword.Text
+            };
+            FireBaseConnector connection = new FireBaseConnector();
+            if (login.login.Length > 0 && login.userPassword.Length > 0)
+            {
+                var res = connection.checkLogin(login);
+                await Task.Run(() => this.RunOnUiThread(() =>
+                {
+                    progressBar.Visibility = ViewStates.Invisible;
+                }));
+                if (res == 2)
+                {
+                    Finish();
+                    StartActivity(typeof(Admin));
+                }
+                if (res == 1)
+                {
+                    Intent intent = new Intent(this, typeof(MainActivity));
+                    intent.PutExtra("Login", "1");
+                    Finish();
+                    this.StartActivity(intent);
+
+                }
+                if (!connection.connection)
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
+                    alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
+                    alertDialog.SetMessage(GetString(Resource.String.checkConnection));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
+                }
+                if (res == 0)
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
+                    alertDialog.SetTitle(GetString(Resource.String.loginError));
+                    alertDialog.SetMessage(GetString(Resource.String.correctLogin));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
+                }
+            }
+            else
+            {
+                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
+                alertDialog.SetTitle(GetString(Resource.String.loginError));
+                alertDialog.SetMessage(GetString(Resource.String.emptyLogin));
+                alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
+                {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+            }
+            await Task.Run(() => this.RunOnUiThread(() =>
+            {
+                progressBar.Visibility = ViewStates.Invisible;
+            }));
         }
     }
 }
