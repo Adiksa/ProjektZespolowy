@@ -20,6 +20,8 @@ namespace ProjektZespolowy
     public class PromotionAdd : Activity
     {
         private ImageView imagePromo;
+        private EditText titlePromo;
+        private EditText pricePromo;
         private EditText desc;
         private Button imageFromCamera;
         private Button imageFromGallery;
@@ -153,7 +155,9 @@ namespace ProjektZespolowy
         private void ComponentLocalizer()
         {
             imagePromo = FindViewById<ImageView>(Resource.Id.promotionPic);
+            titlePromo = FindViewById<EditText>(Resource.Id.promoTitle);
             desc = FindViewById<EditText>(Resource.Id.promoDesc);
+            pricePromo = FindViewById<EditText>(Resource.Id.pricePromo);
             imageFromCamera = FindViewById<Button>(Resource.Id.photoMake);
             imageFromGallery = FindViewById<Button>(Resource.Id.picSelect);
             promotionBtn = FindViewById<Button>(Resource.Id.btnAddPromo);
