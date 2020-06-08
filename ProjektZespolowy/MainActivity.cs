@@ -164,7 +164,16 @@ namespace ProjektZespolowy
                         });
                         Snackbar.Make(rootview, GetString(Resource.String.noFurnitureID), Snackbar.LengthShort).Show();
                     }
-                    else Snackbar.Make(rootview, GetString(Resource.String.noInternetConnection), Snackbar.LengthShort).Show();
+                    else
+                    {
+                        this.RunOnUiThread(() =>
+                        {
+                            animation.Start();
+                            skanText.Visibility = ViewStates.Visible;
+                            animImageView.Visibility = ViewStates.Visible;
+                        });
+                        Snackbar.Make(rootview, GetString(Resource.String.noInternetConnection), Snackbar.LengthShort).Show();
+                    }
                 }
                 else
                 {
