@@ -4846,64 +4846,67 @@ namespace ProjektZespolowy
 			public const int PricePromo = 2131623938;
 			
 			// aapt resource value: 0x7F0E0076
-			public const int problemHey = 2131624054;
+			public const int priceTxt = 2131624054;
 			
 			// aapt resource value: 0x7F0E0077
-			public const int promotion = 2131624055;
+			public const int problemHey = 2131624055;
 			
 			// aapt resource value: 0x7F0E0078
-			public const int refreshNFC = 2131624056;
+			public const int promotion = 2131624056;
 			
 			// aapt resource value: 0x7F0E0079
-			public const int register = 2131624057;
+			public const int refreshNFC = 2131624057;
 			
 			// aapt resource value: 0x7F0E007A
-			public const int registerError = 2131624058;
+			public const int register = 2131624058;
 			
 			// aapt resource value: 0x7F0E007B
-			public const int registerErrorMessage = 2131624059;
+			public const int registerError = 2131624059;
 			
 			// aapt resource value: 0x7F0E007C
-			public const int scanDesc = 2131624060;
-			
-			// aapt resource value: 0x7F0E007E
-			public const int scanning = 2131624062;
+			public const int registerErrorMessage = 2131624060;
 			
 			// aapt resource value: 0x7F0E007D
-			public const int scanON = 2131624061;
+			public const int scanDesc = 2131624061;
 			
 			// aapt resource value: 0x7F0E007F
-			public const int search_menu_title = 2131624063;
+			public const int scanning = 2131624063;
+			
+			// aapt resource value: 0x7F0E007E
+			public const int scanON = 2131624062;
 			
 			// aapt resource value: 0x7F0E0080
-			public const int settingsEnter = 2131624064;
+			public const int search_menu_title = 2131624064;
 			
 			// aapt resource value: 0x7F0E0081
-			public const int specs = 2131624065;
+			public const int settingsEnter = 2131624065;
 			
 			// aapt resource value: 0x7F0E0082
-			public const int status_bar_notification_info_overflow = 2131624066;
+			public const int specs = 2131624066;
+			
+			// aapt resource value: 0x7F0E0083
+			public const int status_bar_notification_info_overflow = 2131624067;
 			
 			// aapt resource value: 0x7F0E0003
 			public const int TitlePromo = 2131623939;
 			
-			// aapt resource value: 0x7F0E0083
-			public const int txtClickToPick = 2131624067;
-			
 			// aapt resource value: 0x7F0E0084
-			public const int txtComplaint = 2131624068;
+			public const int txtClickToPick = 2131624068;
 			
 			// aapt resource value: 0x7F0E0085
-			public const int txtPromo = 2131624069;
+			public const int txtComplaint = 2131624069;
 			
 			// aapt resource value: 0x7F0E0086
-			public const int warenty = 2131624070;
+			public const int txtPromo = 2131624070;
 			
 			// aapt resource value: 0x7F0E0087
-			public const int writeHere = 2131624071;
+			public const int warenty = 2131624071;
 			
 			// aapt resource value: 0x7F0E0088
-			public const int yes = 2131624072;
+			public const int writeHere = 2131624072;
+			
+			// aapt resource value: 0x7F0E0089
+			public const int yes = 2131624073;
 			
 			static String()
 			{

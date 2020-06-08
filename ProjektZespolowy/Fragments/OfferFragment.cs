@@ -33,7 +33,7 @@ namespace ProjektZespolowy.Fragments
             ComponentsLocalizer();
             ActionHooker();
             fOfferDesc.Text = promotion.desc;
-            fOfferPrice.Text = promotion.price;
+            fOfferPrice.Text = GetString(Resource.String.priceTxt) + " "+ promotion.price;
             fOfferTitle.Text = promotion.title;
             fOfferPhoto.SetImageBitmap(promotion.convertBase64ToBitmap(promotion.image));
             return view;
