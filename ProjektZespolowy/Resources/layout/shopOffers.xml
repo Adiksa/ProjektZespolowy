@@ -15,5 +15,12 @@
       android:columnWidth="110dp"
       android:gravity="center"
       android:numColumns="auto_fit"/>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ShopProgressBar"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="visible"/>
   </RelativeLayout>
 </RelativeLayout>
