@@ -23,7 +23,7 @@ namespace ProjektZespolowy
 
         public bool Correct()
         {
-            if (description == null && description == "")
+            if (description == null || description == "")
                 return false;
             if (photo == null)
                 return false;
