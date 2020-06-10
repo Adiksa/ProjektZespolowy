@@ -7,6 +7,7 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
@@ -26,11 +27,13 @@ namespace ProjektZespolowy
         private Button imageFromCamera;
         private Button imageFromGallery;
         private Button promotionBtn;
+        private Drawable photoDefault;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.promo_add);
             ComponentLocalizer();
+            photoDefault = imagePromo.Drawable;
             ActionHooker();
         }
 
@@ -131,7 +134,7 @@ namespace ProjektZespolowy
                 title = titlePromo.Text,
                 price = pricePromo.Text
             };
-            if (promotion.Correct() && imagePromo.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192))
+            if (promotion.Correct() && imagePromo.Drawable != photoDefault)
             {
                 FireBaseConnector connection = new FireBaseConnector();
                 var res = connection.dataInsert(promotion);

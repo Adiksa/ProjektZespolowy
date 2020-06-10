@@ -7,6 +7,7 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
@@ -34,11 +35,15 @@ namespace ProjektZespolowy
         private EditText warentyText;
         private EditText specText;
         private EditText name;
+        private Drawable warentyDefault;
+        private Drawable specDefault;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.admin);
             ComponentLocalizer();
+            warentyDefault = warentyImage.Drawable;
+            specDefault = specImage.Drawable;
             ActionHooker();
             nfcText.Text = GetString(Resource.String.scanON);
             CrossNFC.Init(this);
@@ -221,7 +226,7 @@ namespace ProjektZespolowy
                 specText = specText.Text,
                 name = name.Text
             };
-            if(furniture.Correct() && warentyImage.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192) && specImage.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192))
+            if(furniture.Correct() && warentyImage.Drawable != warentyDefault && specImage.Drawable != specDefault)
             {
                 FireBaseConnector connection = new FireBaseConnector();
                 if (connection.checkFurniturePossibility(furniture)==0)
