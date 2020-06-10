@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
@@ -147,14 +147,57 @@ namespace ProjektZespolowy.Fragments
             };
             btn2Complaint.Click += delegate
             {
-                Activity.RunOnUiThread (() => btn2Complaint.Enabled = false);
+                
+                AddComplaint();
+                
+            };
+        }
+        private string ImageViewToBase64String(ImageView obj)
+        {
+            Android.Graphics.Drawables.BitmapDrawable bd1 = (Android.Graphics.Drawables.BitmapDrawable)obj.Drawable;
+            Bitmap bitmap = bd1.Bitmap;
+            if(bitmap.Height > 1000 || bitmap.Width > 1000)
+            {
+                if(bitmap.Height > bitmap.Width)
+                {
+                    int newWidth = Convert.ToInt32((double)bitmap.Width / (double)bitmap.Height * 1000.0);
+                    if (newWidth>0)
+                    {
+                        bitmap = Bitmap.CreateScaledBitmap(bitmap, newWidth, 1000, true);
+                    }
+                }
+                else
+                {
+                    int newHeight = Convert.ToInt32((double)bitmap.Height / (double)bitmap.Width * 1000.0);
+                    if (newHeight>0)
+                    {
+                        bitmap = Bitmap.CreateScaledBitmap(bitmap, 1000, newHeight, true);
+                    }
+                }
+            }
+            MemoryStream ms = new MemoryStream();
+            bitmap.Compress(CompressFormat.Png, 100, ms);
+            byte[] bb = ms.ToArray();
+            return Convert.ToBase64String(bb);
+        }
+
+        protected virtual void OnComplaintCreated()
+        {
+            ComplaintCreated(this, EventArgs.Empty);
+        }
+
+        private async void AddComplaint()
+        {
+            Activity.RunOnUiThread(() => btn2Complaint.Enabled = false);
+            await Task.Run(() =>
+            {
                 Complaint complaint = new Complaint()
                 {
                     furnitureId = furniture.id,
                     description = problemDesc.Text,
                     photo = ImageViewToBase64String(photoPreview)
                 };
-                if (complaint.Correct() && photoDefault!=photoPreview.Drawable)
+                if (complaint.Correct() && photoDefault != photoPreview.Drawable)
                 {
                     FireBaseConnector connector = new FireBaseConnector();
                     var res = connector.dataInsert(complaint);
@@ -210,41 +253,8 @@ namespace ProjektZespolowy.Fragments
                     });
                     alertDialog.Show();
                 }
-                Activity.RunOnUiThread(() => btn2Complaint.Enabled = true);
-            };
-        }
-        private string ImageViewToBase64String(ImageView obj)
-        {
-            Android.Graphics.Drawables.BitmapDrawable bd1 = (Android.Graphics.Drawables.BitmapDrawable)obj.Drawable;
-            Bitmap bitmap = bd1.Bitmap;
-            if(bitmap.Height > 1000 || bitmap.Width > 1000)
-            {
-                if(bitmap.Height > bitmap.Width)
-                {
-                    int newWidth = Convert.ToInt32((double)bitmap.Width / (double)bitmap.Height * 1000.0);
-                    if (newWidth>0)
-                    {
-                        bitmap = Bitmap.CreateScaledBitmap(bitmap, newWidth, 1000, true);
-                    }
-                }
-                else
-                {
-                    int newHeight = Convert.ToInt32((double)bitmap.Height / (double)bitmap.Width * 1000.0);
-                    if (newHeight>0)
-                    {
-                        bitmap = Bitmap.CreateScaledBitmap(bitmap, 1000, newHeight, true);
-                    }
-                }
-            }
-            MemoryStream ms = new MemoryStream();
-            bitmap.Compress(CompressFormat.Png, 100, ms);
-            byte[] bb = ms.ToArray();
-            return Convert.ToBase64String(bb);
-        }
-
-        protected virtual void OnComplaintCreated()
-        {
-            ComplaintCreated(this, EventArgs.Empty);
+            });
+            Activity.RunOnUiThread(() => btn2Complaint.Enabled = true);
         }
     }
 }
