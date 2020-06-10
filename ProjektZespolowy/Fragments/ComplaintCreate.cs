@@ -152,12 +152,11 @@ namespace ProjektZespolowy.Fragments
 
         private void Btn2Complaint_Click(object sender, EventArgs e)
         { 
-            if (SystemClock.ElapsedRealtime() - lastClickTime < 1000)
+            if (SystemClock.ElapsedRealtime() - lastClickTime > 1000)
             {
                 this.Activity.RunOnUiThread(() => btn2Complaint.Enabled = false);
                 AddComplaint();
             }
-
             lastClickTime = SystemClock.ElapsedRealtime();
         }
 
