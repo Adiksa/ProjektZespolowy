@@ -29,7 +29,9 @@ namespace ProjektZespolowy.Fragments
         public Furniture furniture;
         public event EventHandler ComplaintCreated;
         private Drawable photoDefault;
-        
+        private long lastClickTime;
+
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -145,13 +147,20 @@ namespace ProjektZespolowy.Fragments
                 }
 
             };
-            btn2Complaint.Click += delegate
-            {
-                
-                AddComplaint();
-                
-            };
+            btn2Complaint.Click += Btn2Complaint_Click;
         }
+
+        private void Btn2Complaint_Click(object sender, EventArgs e)
+        { 
+            if (SystemClock.ElapsedRealtime() - lastClickTime < 1000)
+            {
+                this.Activity.RunOnUiThread(() => btn2Complaint.Enabled = false);
+                AddComplaint();
+            }
+
+            lastClickTime = SystemClock.ElapsedRealtime();
+        }
+
         private string ImageViewToBase64String(ImageView obj)
         {
             Android.Graphics.Drawables.BitmapDrawable bd1 = (Android.Graphics.Drawables.BitmapDrawable)obj.Drawable;
@@ -186,62 +195,19 @@ namespace ProjektZespolowy.Fragments
             ComplaintCreated(this, EventArgs.Empty);
         }
 
-        private async void AddComplaint()
+        private async Task AddComplaint()
         {
-            Activity.RunOnUiThread(() => btn2Complaint.Enabled = false);
-            await Task.Run(() =>
+            Complaint complaint = new Complaint()
             {
-                Complaint complaint = new Complaint()
-                {
-                    furnitureId = furniture.id,
-                    description = problemDesc.Text,
-                    photo = ImageViewToBase64String(photoPreview)
-                };
-                if (complaint.Correct() && photoDefault != photoPreview.Drawable)
-                {
-                    FireBaseConnector connector = new FireBaseConnector();
-                    var res = connector.dataInsert(complaint);
-                    if (res == 0)
-                    {
-                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                        alertDialog.SetTitle(GetString(Resource.String.dataError));
-                        alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
-                        alertDialog.SetMessage(GetString(Resource.String.addCorrect));
-                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
-                        {
-                            alertDialog.Dispose();
-                        });
-                        alertDialog.Show();
-                    }
-                    if (res == -1)
-                    {
-                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                        alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
-                        alertDialog.SetIcon(Resource.Drawable.ic5c_192x192);
-                        alertDialog.SetMessage(GetString(Resource.String.checkConnection));
-                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
-                        {
-                            alertDialog.Dispose();
-                        });
-                        alertDialog.Show();
-                    }
-                    if (res == 1)
-                    {
-                        Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
-                        alertDialog.SetTitle(GetString(Resource.String.complaintCorrect));
-                        alertDialog.SetIcon(Resource.Drawable.ok2a_192x192);
-                        alertDialog.SetMessage(GetString(Resource.String.complaintMessage));
-                        alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
-                        {
-                            alertDialog.Dispose();
-                            this.OnComplaintCreated();
-                            this.Dismiss();
-                        });
-                        alertDialog.Show();
-
-                    }
-                }
-                else
+                furnitureId = furniture.id,
+                description = problemDesc.Text,
+                photo = ImageViewToBase64String(photoPreview)
+            };
+            if (complaint.Correct() && photoDefault != photoPreview.Drawable)
+            {
+                FireBaseConnector connector = new FireBaseConnector();
+                var res = connector.dataInsert(complaint);
+                if (res == 0)
                 {
                     Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
                     alertDialog.SetTitle(GetString(Resource.String.dataError));
@@ -253,8 +219,48 @@ namespace ProjektZespolowy.Fragments
                     });
                     alertDialog.Show();
                 }
-            });
-            Activity.RunOnUiThread(() => btn2Complaint.Enabled = true);
+                if (res == -1)
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                    alertDialog.SetTitle(GetString(Resource.String.noInternetConnection));
+                    alertDialog.SetIcon(Resource.Drawable.ic5c_192x192);
+                    alertDialog.SetMessage(GetString(Resource.String.checkConnection));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
+                    {
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
+                }
+                if (res == 1)
+                {
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                    alertDialog.SetTitle(GetString(Resource.String.complaintCorrect));
+                    alertDialog.SetIcon(Resource.Drawable.ok2a_192x192);
+                    alertDialog.SetMessage(GetString(Resource.String.complaintMessage));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
+                    {
+                        alertDialog.Dispose();
+                        this.OnComplaintCreated();
+                        this.Dismiss();
+                    });
+                    alertDialog.Show();
+
+                }
+            }
+            else
+            {
+                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                alertDialog.SetTitle(GetString(Resource.String.dataError));
+                alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
+                alertDialog.SetMessage(GetString(Resource.String.addCorrect));
+                alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
+                {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+            }
+            this.Activity.RunOnUiThread(() => btn2Complaint.Enabled = true);
         }
+        
     }
 }
