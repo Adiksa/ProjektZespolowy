@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
+        android:src="@drawable/ic6b_192x192"
         android:layout_width="300px"
         android:layout_height="300px"
         android:id="@+id/promotionPic" />
