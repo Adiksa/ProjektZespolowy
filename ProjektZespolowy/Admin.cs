@@ -221,7 +221,7 @@ namespace ProjektZespolowy
                 specText = specText.Text,
                 name = name.Text
             };
-            if(furniture.Correct())
+            if(furniture.Correct() || warentyImage.Drawable != null)
             {
                 FireBaseConnector connection = new FireBaseConnector();
                 if (connection.checkFurniturePossibility(furniture)==0)
