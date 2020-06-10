@@ -7,6 +7,7 @@ using System.Text;
 using Android.App;
 using Android.Content;
 using Android.Graphics;
+using Android.Graphics.Drawables;
 using Android.Media;
 using Android.OS;
 using Android.Provider;
@@ -27,6 +28,7 @@ namespace ProjektZespolowy.Fragments
         private Button btn2Complaint;
         public Furniture furniture;
         public event EventHandler ComplaintCreated;
+        private Drawable photoDefault;
         
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -44,6 +46,7 @@ namespace ProjektZespolowy.Fragments
 
             view = inflater.Inflate(Resource.Layout.complaint, container, false);
             ComponentsLocalizer();
+            photoDefault = photoPreview.Drawable;
             ActionHooker();
             return view;
         }
@@ -151,7 +154,7 @@ namespace ProjektZespolowy.Fragments
                     description = problemDesc.Text,
                     photo = ImageViewToBase64String(photoPreview)
                 };
-                if (complaint.Correct() && photoPreview.Drawable != this.Activity.GetDrawable(Resource.Drawable.ic6b_192x192))
+                if (complaint.Correct() && photoDefault!=photoPreview.Drawable)
                 {
                     FireBaseConnector connector = new FireBaseConnector();
                     var res = connector.dataInsert(complaint);
