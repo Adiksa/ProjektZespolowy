@@ -310,6 +310,25 @@ namespace ProjektZespolowy
         {
             Android.Graphics.Drawables.BitmapDrawable bd1 = (Android.Graphics.Drawables.BitmapDrawable)obj.Drawable;
             Bitmap bitmap = bd1.Bitmap;
+            if (bitmap.Height > 1000 || bitmap.Width > 1000)
+            {
+                if (bitmap.Height > bitmap.Width)
+                {
+                    int newWidth = Convert.ToInt32((double)bitmap.Width / (double)bitmap.Height * 1000.0);
+                    if (newWidth > 0)
+                    {
+                        bitmap = Bitmap.CreateScaledBitmap(bitmap, newWidth, 1000, true);
+                    }
+                }
+                else
+                {
+                    int newHeight = Convert.ToInt32((double)bitmap.Height / (double)bitmap.Width * 1000.0);
+                    if (newHeight > 0)
+                    {
+                        bitmap = Bitmap.CreateScaledBitmap(bitmap, 1000, newHeight, true);
+                    }
+                }
+            }
             MemoryStream ms = new MemoryStream();
             bitmap.Compress(CompressFormat.Png, 100, ms);
             byte[] bb = ms.ToArray();

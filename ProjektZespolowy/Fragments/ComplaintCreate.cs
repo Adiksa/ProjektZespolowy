@@ -144,6 +144,7 @@ namespace ProjektZespolowy.Fragments
             };
             btn2Complaint.Click += delegate
             {
+                btn2Complaint.Enabled = false;
                 Complaint complaint = new Complaint()
                 {
                     furnitureId = furniture.id,
@@ -191,6 +192,7 @@ namespace ProjektZespolowy.Fragments
                     alertDialog.Show();
                     
                 }
+                btn2Complaint.Enabled = true;
             };
         }
         private string ImageViewToBase64String(ImageView obj)
