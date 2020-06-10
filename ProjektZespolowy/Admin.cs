@@ -221,7 +221,7 @@ namespace ProjektZespolowy
                 specText = specText.Text,
                 name = name.Text
             };
-            if(furniture.Correct() || warentyImage.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192) || specImage.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192))
+            if(furniture.Correct() && warentyImage.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192) && specImage.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192))
             {
                 FireBaseConnector connection = new FireBaseConnector();
                 if (connection.checkFurniturePossibility(furniture)==0)

@@ -151,7 +151,7 @@ namespace ProjektZespolowy.Fragments
                     description = problemDesc.Text,
                     photo = ImageViewToBase64String(photoPreview)
                 };
-                if (complaint.Correct() || photoPreview.Drawable != this.Activity.GetDrawable(Resource.Drawable.ic6b_192x192))
+                if (complaint.Correct() && photoPreview.Drawable != this.Activity.GetDrawable(Resource.Drawable.ic6b_192x192))
                 {
                     FireBaseConnector connector = new FireBaseConnector();
                     var res = connector.dataInsert(complaint);

@@ -131,7 +131,7 @@ namespace ProjektZespolowy
                 title = titlePromo.Text,
                 price = pricePromo.Text
             };
-            if (promotion.Correct() || imagePromo.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192))
+            if (promotion.Correct() && imagePromo.Drawable != GetDrawable(Resource.Drawable.ic6b_192x192))
             {
                 FireBaseConnector connection = new FireBaseConnector();
                 var res = connection.dataInsert(promotion);
