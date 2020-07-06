@@ -49,6 +49,9 @@
 	<string name="txtPromo">Wpisz opis oferty</string>
 	<string name="TitlePromo">Wpisz tytuł oferty</string>
 	<string name="PricePromo">Wpisz cenę oferty</string>
+  <!--Ekran alertu wylogowania-->
+  <string name="logoutAlert">Wyloguj</string>
+  <string name="logoutAlertMsg">Czy na pewno chcesz się wylogować?</string>
   <!--Fragment ComplaintCreate.cs-->
 	<string name="noPermissions">Brak uprawnień.</string>
 	<string name="dataError">Błąd danych</string>
@@ -100,4 +103,12 @@
 	<string name="addToCart">Dodaj do koszyka</string>
   <!--OfferFragmets.cs-->
 	<string name="priceTxt">Cena: </string>
+  <!--furniture_menu-->
+  <string name="prevOrders">Moje zakupy</string>
+  <string name="cart">Koszyk</string>
+  <string name="whishList">Lista życzeń</string>
+  <string name="settings">Ustawienia</string>
+  <!--nav_furniture_header.xml-->
+  <string name="loginAs">Zalogowany jako : </string>
+  <string name="singOut">Wyloguj sie</string>
 </resources>

@@ -14,6 +14,12 @@ using ProjektZespolowy.Fragments;
 using SupportFragment = Android.Support.V4.App.Fragment;
 using System.Net.NetworkInformation;
 using Newtonsoft.Json;
+using Android.Support.V4.Widget;
+using Android.Support.Design.Widget;
+using Android.Support.V7.Widget;
+using Android.Support.V4.View;
+using System.Runtime.Remoting.Messaging;
+using Android.Util;
 
 namespace ProjektZespolowy
 {
@@ -29,6 +35,11 @@ namespace ProjektZespolowy
         private ImageButton specBtn;
         private ImageButton complaintBtn;
         private ImageButton shopBtn;
+        private DrawerLayout drawerLayout;
+        private NavigationView navigationView;
+        private View headerview;
+        private TextView loginAs;
+        private Button logoutBtn;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -46,6 +57,9 @@ namespace ProjektZespolowy
             InitNewFragment(scan_Success_View);
             ComponentsLocalizer();
             ActionHooker();
+            headerview = navigationView.GetHeaderView(0);
+            loginAs = headerview.FindViewById<TextView>(Resource.Id.loginAs);
+            loginAs.Text += " " + GlobalVars.login;
         }
 
         public override void OnBackPressed()
@@ -66,6 +80,25 @@ namespace ProjektZespolowy
             specBtn.Click += SpecBtn_Click;
             complaintBtn.Click += ComplaintBtn_Click;
             shopBtn.Click += ShopBtn_Click;
+            logoutBtn.Click += delegate
+            {
+                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
+                alertDialog.SetTitle(GetString(Resource.String.logoutAlert));
+                alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
+                alertDialog.SetMessage(GetString(Resource.String.logoutAlertMsg));
+                alertDialog.SetPositiveButton(GetString(Resource.String.yes), delegate
+                {
+                    this.Finish();
+                    StartActivity(typeof(Login));
+                    alertDialog.Dispose();
+                });
+                alertDialog.SetNegativeButton(GetString(Resource.String.no), delegate
+                {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
+                
+            };
         }
 
         private void ComplaintBtn_Click(object sender, EventArgs e)
@@ -87,6 +120,9 @@ namespace ProjektZespolowy
             specBtn = FindViewById<ImageButton>(Resource.Id.specBtn);
             complaintBtn = FindViewById<ImageButton>(Resource.Id.complaintBtn);
             shopBtn = FindViewById<ImageButton>(Resource.Id.shopBtn);
+            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            logoutBtn = FindViewById<Button>(Resource.Id.button_sing_out);
         }
 
         private void InitNewFragment(SupportFragment fragment)

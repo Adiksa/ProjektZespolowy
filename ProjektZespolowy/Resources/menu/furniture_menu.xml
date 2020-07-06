@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/furMenu_prevOrders"
+    android:title="@string/prevOrders"></item>
+  <item
+    android:id="@+id/furMenu_cart"
+    android:title="@string/prevOrders"></item>
+  <item
+    android:id="@+id/furMenu_whishList"
+    android:title="@string/whishList"></item>
+  <item
+    android:id="@+id/furMenu_settings"
+    android:title="@string/settings"></item>
+</menu>
