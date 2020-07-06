@@ -20,6 +20,8 @@ namespace ProjektZespolowy.Fragments
         private TextView fOfferDesc;
         private TextView fOfferPrice;
         private Button fAddToCart;
+        private ImageView fAddToFav;
+        private bool fav;
         public Promotion promotion;
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -36,6 +38,7 @@ namespace ProjektZespolowy.Fragments
             fOfferPrice.Text = GetString(Resource.String.priceTxt) + " "+ promotion.price;
             fOfferTitle.Text = promotion.title;
             fOfferPhoto.SetImageBitmap(promotion.convertBase64ToBitmap(promotion.image));
+            fav = false;
             return view;
         }
         public override void OnActivityCreated(Bundle savedInstanceState)
@@ -52,11 +55,26 @@ namespace ProjektZespolowy.Fragments
             fOfferDesc = view.FindViewById<TextView>(Resource.Id.offerDesc);
             fOfferPrice = view.FindViewById<TextView>(Resource.Id.offerPrice);
             fAddToCart = view.FindViewById<Button>(Resource.Id.addToCart);
+            fAddToFav = view.FindViewById<ImageView>(Resource.Id.addToFav);
         }
 
         private void ActionHooker()
         {
+            fAddToFav.Click += FAddToFav_Click;
+        }
 
+        private void FAddToFav_Click(object sender, EventArgs e)
+        {
+            if(fav)
+            {
+                fav = false;
+                fAddToFav.SetImageDrawable(this.Activity.GetDrawable(Resource.Drawable.heart));
+            }
+            else
+            {
+                fav = true;
+                fAddToFav.SetImageDrawable(this.Activity.GetDrawable(Resource.Drawable.heart_red));
+            }
         }
     }
 }

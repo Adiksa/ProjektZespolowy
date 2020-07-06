@@ -5,7 +5,7 @@
     android:title="@string/prevOrders"></item>
   <item
     android:id="@+id/furMenu_cart"
-    android:title="@string/prevOrders"></item>
+    android:title="@string/cart"></item>
   <item
     android:id="@+id/furMenu_whishList"
     android:title="@string/whishList"></item>
