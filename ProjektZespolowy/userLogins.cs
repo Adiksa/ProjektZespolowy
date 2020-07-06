@@ -17,5 +17,6 @@ namespace ProjektZespolowy
         public string login { get; set; }
         public string userPassword { get; set; }
         public bool admin { get; set; }
+        public List<String> whishList { get; set; }
     }
 }
