@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:minWidth="30px"
+    android:minHeight="30px"
+    android:paddingLeft="5dp"
+    android:padding="2dp"
+    android:paddingTop="2dp">
+    <ImageView
+		  android:src="@android:drawable/ic_menu_gallery"
+		  android:layout_width="match_parent"
+		  android:layout_height="wrap_content"
+		  android:layout_marginTop="5dp"
+		  android:contentDescription="@string/offerPhotoDesc"
+		  android:id="@+id/orderPhoto"
+          android:adjustViewBounds="true"
+          android:scaleType="fitStart"
+          android:layout_alignParentLeft="true"/>
+    <TextView
+        android:id="@+id/WhishListRowPromotionName"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="@string/no"
+        android:layout_alignLeft="@+id/orderPhoto"/>
+    <TextView
+        android:id="@+id/WhishListRowPromotionPrice"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/no"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

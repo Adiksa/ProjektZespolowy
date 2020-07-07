@@ -20,12 +20,14 @@ namespace ProjektZespolowy.Fragments
         private TextView fOfferDesc;
         private TextView fOfferPrice;
         private Button fAddToCart;
+        private Button fRemoveFromCart;
         private ImageView fAddToFav;
         private ProgressBar fProgressBar;
         private bool fav;
         private bool refresh;
         public Promotion promotion;
         public event EventHandler OfferChange;
+        private bool cart;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -52,6 +54,7 @@ namespace ProjektZespolowy.Fragments
             }
             else fav = false;
             refresh = false;
+            if (cart) fRemoveFromCart.Visibility = ViewStates.Visible;
             return view;
         }
         public override void OnActivityCreated(Bundle savedInstanceState)
@@ -79,6 +82,7 @@ namespace ProjektZespolowy.Fragments
             fAddToCart = view.FindViewById<Button>(Resource.Id.addToCart);
             fAddToFav = view.FindViewById<ImageView>(Resource.Id.addToFav);
             fProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarOffer);
+            fRemoveFromCart = view.FindViewById<Button>(Resource.Id.removeFromCart);
         }
 
         private void ActionHooker()

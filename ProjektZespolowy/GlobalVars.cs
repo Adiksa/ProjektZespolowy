@@ -1,4 +1,6 @@
-﻿namespace ProjektZespolowy
+﻿using System.Collections.Generic;
+
+namespace ProjektZespolowy
 {
     class GlobalVars
     {

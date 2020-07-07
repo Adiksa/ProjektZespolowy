@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Fragments\OfferFragment.cs" />
     <Compile Include="GlobalVars.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderListViewAdapter.cs" />
     <Compile Include="PromotionAdd.cs" />
     <Compile Include="Admin.cs" />
     <Compile Include="ComplaintProgressListViewAdapter.cs" />
@@ -339,6 +341,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\whish_list_row.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\order_row.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

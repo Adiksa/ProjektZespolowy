@@ -101,6 +101,7 @@
 	<string name="offerDesc">Opis oferty</string>
 	<string name="offerPrice">Cena oferty</string>
 	<string name="addToCart">Dodaj do koszyka</string>
+  <string name="removeFromCart">Usuń z koszyka</string>
   <!--OfferFragmets.cs-->
 	<string name="priceTxt">Cena: </string>
   <!--furniture_menu-->
