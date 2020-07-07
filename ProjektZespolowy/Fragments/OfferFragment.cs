@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -21,8 +21,11 @@ namespace ProjektZespolowy.Fragments
         private TextView fOfferPrice;
         private Button fAddToCart;
         private ImageView fAddToFav;
+        private ProgressBar fProgressBar;
         private bool fav;
+        private bool refresh;
         public Promotion promotion;
+        public event EventHandler OfferChange;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -38,7 +41,17 @@ namespace ProjektZespolowy.Fragments
             fOfferPrice.Text = GetString(Resource.String.priceTxt) + " "+ promotion.price;
             fOfferTitle.Text = promotion.title;
             fOfferPhoto.SetImageBitmap(promotion.convertBase64ToBitmap(promotion.image));
-            fav = false;
+            if(promotion.WhishList!=null)
+            {
+                if (promotion.WhishList.Contains(GlobalVars.login))
+                {
+                    fav = true;
+                    fAddToFav.SetImageDrawable(this.Activity.GetDrawable(Resource.Drawable.heart_red));
+                }
+                else fav = false;
+            }
+            else fav = false;
+            refresh = false;
             return view;
         }
         public override void OnActivityCreated(Bundle savedInstanceState)
@@ -46,6 +59,15 @@ namespace ProjektZespolowy.Fragments
             Dialog.Window.RequestFeature(WindowFeatures.NoTitle);
             base.OnActivityCreated(savedInstanceState);
             Dialog.Window.Attributes.WindowAnimations = Resource.Style.dialog_animation;
+        }
+
+        public override void OnDetach()
+        {
+            base.OnDetach();
+            if(refresh)
+            {
+                OnOfferChange();
+            }
         }
 
         private void ComponentsLocalizer()
@@ -56,25 +78,45 @@ namespace ProjektZespolowy.Fragments
             fOfferPrice = view.FindViewById<TextView>(Resource.Id.offerPrice);
             fAddToCart = view.FindViewById<Button>(Resource.Id.addToCart);
             fAddToFav = view.FindViewById<ImageView>(Resource.Id.addToFav);
+            fProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarOffer);
         }
 
         private void ActionHooker()
         {
             fAddToFav.Click += FAddToFav_Click;
         }
-
-        private void FAddToFav_Click(object sender, EventArgs e)
+        protected virtual void OnOfferChange()
         {
-            if(fav)
+            OfferChange(this, EventArgs.Empty);
+        }
+
+        private async void FAddToFav_Click(object sender, EventArgs e)
+        {
+            fProgressBar.Visibility = ViewStates.Visible;
+            await Task.Run(() =>
             {
-                fav = false;
-                fAddToFav.SetImageDrawable(this.Activity.GetDrawable(Resource.Drawable.heart));
-            }
-            else
-            {
-                fav = true;
-                fAddToFav.SetImageDrawable(this.Activity.GetDrawable(Resource.Drawable.heart_red));
-            }
+                FireBaseConnector connector = new FireBaseConnector();
+                if (fav)
+                {
+                    if (connector.AddToWhishList(promotion.id, GlobalVars.login, true))
+                    {
+                        fav = false;
+                        fAddToFav.SetImageDrawable(this.Activity.GetDrawable(Resource.Drawable.heart));
+                        refresh = true;
+                    }
+
+                }
+                else
+                {
+                    if (connector.AddToWhishList(promotion.id, GlobalVars.login, false))
+                    {
+                        fav = true;
+                        fAddToFav.SetImageDrawable(this.Activity.GetDrawable(Resource.Drawable.heart_red));
+                        refresh = true;
+                    }
+                }
+            });
+            fProgressBar.Visibility = ViewStates.Invisible;
         }
     }
 }

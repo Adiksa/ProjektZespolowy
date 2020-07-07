@@ -108,7 +108,7 @@
   <string name="cart">Koszyk</string>
   <string name="whishList">Lista życzeń</string>
   <string name="settings">Ustawienia</string>
-  <!--nav_furniture_header.xml-->
+  <!--nav_furniture_header-->
   <string name="loginAs">Zalogowany jako : </string>
   <string name="singOut">Wyloguj sie</string>
 </resources>

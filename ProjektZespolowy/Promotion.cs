@@ -20,7 +20,7 @@ namespace ProjektZespolowy
         public string image { get; set; }
         public string title { get; set; }
         public string price { get; set; }
-        public List<String> whishListUsers { get; set; }
+        public List<String> WhishList { get; set; }
 
         public bool Correct()
         {
@@ -33,8 +33,6 @@ namespace ProjektZespolowy
                 return false;
             if (this.price == null)
                 return false;
-            if (this.whishListUsers == null)
-                this.whishListUsers = new List<string>();
             return true;
         }
         public Bitmap convertBase64ToBitmap(String b64)

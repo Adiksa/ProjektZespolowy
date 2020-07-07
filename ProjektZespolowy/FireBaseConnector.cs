@@ -294,5 +294,94 @@ namespace ProjektZespolowy
             }
             return 0;
         }
+        public bool AddToWhishList(string promotionID, string user, bool delete)
+        {
+
+            try
+            {
+                List<String> promotionWhishList = null;
+                List<String> userWhishList = null;
+                this.testCon();
+                Task[] tasks = new Task[2];
+                tasks[0] = Task.Run(async () =>
+                {
+                    var resPromotionWhishList = await client.GetAsync("Promotion/" + promotionID + "/WhishList");
+                    if (resPromotionWhishList.ResultAs<List<String>>() != null)
+                    {
+                        promotionWhishList = resPromotionWhishList.ResultAs<List<String>>();
+                    }
+                    else promotionWhishList = new List<String>();
+                });
+                tasks[1] = Task.Run(async () =>
+                {
+                    var resUserWhishList = await client.GetAsync("Login/" + user + "/WhishList");
+                    if (resUserWhishList.ResultAs<List<String>>() != null)
+                    {
+                        userWhishList = resUserWhishList.ResultAs<List<String>>();
+                    }
+                    else userWhishList = new List<String>();
+                });
+                Task.WaitAll(tasks);
+                if (delete == false)
+                {
+                    if (!promotionWhishList.Contains(user)) promotionWhishList.Add(user);
+                    if (!userWhishList.Contains(promotionID)) userWhishList.Add(promotionID);
+                }
+                else
+                {
+                    if (promotionWhishList.Contains(user)) promotionWhishList.Remove(user);
+                    if (userWhishList.Contains(promotionID)) userWhishList.Remove(promotionID);
+                }
+                Task[] tasks_data_insert = new Task[2];
+                tasks_data_insert[0] = Task.Run(async () =>
+                {
+                    var resPromotionWhishList = await client.SetAsync("Promotion/" + promotionID.ToString() + "/WhishList", promotionWhishList);
+                });
+                tasks_data_insert[1] = Task.Run(async () =>
+                {
+                    var resPromotionWhishList = await client.SetAsync("Login/" + user + "/WhishList", userWhishList);
+                });
+                Task.WaitAll(tasks_data_insert);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public List<Promotion> GetWhishList(string user)
+        {
+            try
+            {
+                this.testCon();
+                var resUserWhishList = client.Get("Login/" + user + "/WhishList");
+                var userWhishList = resUserWhishList.ResultAs<List<int>>();
+                List<Promotion> whishList = new List<Promotion>();
+                int i = 0;
+                if (userWhishList != null)
+                {
+                    Task[] tasks = new Task[userWhishList.Count];
+                    foreach (int id in userWhishList)
+                    {
+                        tasks[i] = Task.Run(async () =>
+                        {
+                            var resPromotionWhishList = await client.GetAsync("Promotion/" + id.ToString() + "/");
+                            if (resPromotionWhishList.ResultAs<Promotion>() != null)
+                            {
+                                whishList.Add(resPromotionWhishList.ResultAs<Promotion>());
+                            }
+                        });
+                        i++;
+                    }
+                    Task.WaitAll(tasks);
+                }
+                return whishList;
+            }
+            catch
+            {
+                return null;
+            }
+        }
     }
 }

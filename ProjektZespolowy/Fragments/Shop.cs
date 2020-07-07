@@ -70,6 +70,7 @@ namespace ProjektZespolowy.Fragments
                             var transaction = this.Activity.FragmentManager.BeginTransaction();
                             OfferFragment offerFragment = new OfferFragment();
                             offerFragment.promotion = promotions[e.Position];
+                            offerFragment.OfferChange += this.OnOfferChange;
                             offerFragment.Show(transaction, "create offer dialog");
                         };
                     }
@@ -81,5 +82,12 @@ namespace ProjektZespolowy.Fragments
             });
             progressBar.Visibility = ViewStates.Invisible;
         }
+
+        public async void OnOfferChange(object o, EventArgs e)
+        {
+            FireBaseConnector connector = new FireBaseConnector();
+            promotions = connector.GetPromotions();
+        }
+
     }
 }

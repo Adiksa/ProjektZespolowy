@@ -24,7 +24,7 @@ using Android.Util;
 namespace ProjektZespolowy
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
-    public class FurnitureMain : AppCompatActivity
+    public class FurnitureMain : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         private SupportFragment currentFragment;
         private Scan_Success_View scan_Success_View;
@@ -60,19 +60,17 @@ namespace ProjektZespolowy
             headerview = navigationView.GetHeaderView(0);
             loginAs = headerview.FindViewById<TextView>(Resource.Id.loginAs);
             loginAs.Text += " " + GlobalVars.login;
+            navigationView.SetNavigationItemSelectedListener(this);
         }
 
-        public override void OnBackPressed()
+        public bool OnNavigationItemSelected(IMenuItem item)
         {
-            if (currentFragment != scan_Success_View)
+            switch(item.ItemId)
             {
-                InitNewFragment(scan_Success_View);
+                case Resource.Id.furMenu_whishList: StartActivity(typeof(WhishList));
+                    break;
             }
-            else
-            {
-                Finish();
-                StartActivity(typeof(MainActivity));
-            }
+            return true;
         }
 
         private void ActionHooker()
