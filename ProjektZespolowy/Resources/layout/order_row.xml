@@ -1,35 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:minWidth="30px"
-    android:minHeight="30px"
-    android:paddingLeft="5dp"
-    android:padding="2dp"
-    android:paddingTop="2dp">
+    android:paddingHorizontal="10dp"
+    android:paddingVertical="5dp">
     <ImageView
-		  android:src="@android:drawable/ic_menu_gallery"
-		  android:layout_width="match_parent"
-		  android:layout_height="wrap_content"
-		  android:layout_marginTop="5dp"
-		  android:contentDescription="@string/offerPhotoDesc"
-		  android:id="@+id/orderPhoto"
-          android:adjustViewBounds="true"
-          android:scaleType="fitStart"
-          android:layout_alignParentLeft="true"/>
-    <TextView
-        android:id="@+id/WhishListRowPromotionName"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="@string/no"
-        android:layout_alignLeft="@+id/orderPhoto"/>
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:contentDescription="@string/offerPhotoDesc"
+        android:id="@+id/orderPhoto"
+        android:adjustViewBounds="true"
+        android:scaleType="fitStart"
+        android:layout_alignParentLeft="true"
+        android:paddingVertical="5dp"/>
     <TextView
-        android:id="@+id/WhishListRowPromotionPrice"
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/orderName"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/no"
+        android:layout_toRightOf="@id/orderPhoto"
+        android:layout_centerVertical="true"
+        android:paddingHorizontal="5dp"/>    
+    <TextView
+        android:id="@+id/orderPrice"
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/no"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"/>
 </RelativeLayout>

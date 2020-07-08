@@ -61,6 +61,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cart.cs" />
     <Compile Include="Fragments\OfferFragment.cs" />
     <Compile Include="GlobalVars.cs" />
     <Compile Include="Order.cs" />
@@ -346,6 +347,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\order_row.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\cart.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

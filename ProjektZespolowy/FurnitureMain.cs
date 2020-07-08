@@ -69,6 +69,8 @@ namespace ProjektZespolowy
             {
                 case Resource.Id.furMenu_whishList: StartActivity(typeof(WhishList));
                     break;
+                case Resource.Id.furMenu_cart: StartActivity(typeof(Cart));
+                    break;
             }
             return true;
         }

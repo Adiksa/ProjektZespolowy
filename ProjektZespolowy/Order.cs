@@ -12,10 +12,40 @@ using Android.Widget;
 
 namespace ProjektZespolowy
 {
-    class Order
+    public class Order
     {
-        private Promotion product { get; set; }
-        private int amount { get; set; }
-        private double price { get; set; }
+        public Promotion product { get; set; }
+        public int amount { get; set; }
+        public double price { get; set; }
+        public void priceCount()
+        {
+            this.price = Double.Parse(this.product.price)*this.amount;
+        }
+        public static List<Order> AddToList(List<Order> list, Promotion promotion)
+        {
+            if (list != null)
+            {
+                foreach(Order o in list)
+                {
+                    if(o.product == promotion)
+                    {
+                        o.amount++;
+                        o.priceCount();
+                        return list;
+                    }
+                }
+            }
+            else list = new List<Order>();
+            Order order = new Order()
+            {
+                product = promotion,
+                amount = 1,
+                price = Double.Parse(promotion.price.Replace('.',','))
+            };
+            list.Add(order);
+            return list;
+        }
     }
+    
+    
 }

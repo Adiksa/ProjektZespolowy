@@ -5,5 +5,6 @@ namespace ProjektZespolowy
     class GlobalVars
     {
         public static string login;
+        public static List<Order> cart;
     }
 }

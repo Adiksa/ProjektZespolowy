@@ -12,11 +12,11 @@ using Android.Widget;
 
 namespace ProjektZespolowy
 {
-    class OrderListViewAdapter : BaseAdapter<Promotion>
+    class OrderListViewAdapter : BaseAdapter<Order>
     {
-        public List<Promotion> mlist;
+        public List<Order> mlist;
         private Context mcontext;
-        public OrderListViewAdapter(Context context, List<Promotion> list)
+        public OrderListViewAdapter(Context context, List<Order> list)
         {
             mlist = list;
             mcontext = context;
@@ -31,7 +31,7 @@ namespace ProjektZespolowy
             return position;
         }
 
-        public override Promotion this[int position]
+        public override Order this[int position]
         {
             get { return mlist[position]; }
         }
@@ -41,14 +41,14 @@ namespace ProjektZespolowy
 
             if (row == null)
             {
-                row = LayoutInflater.From(mcontext).Inflate(Resource.Layout.whish_list_row, null, false);
+                row = LayoutInflater.From(mcontext).Inflate(Resource.Layout.order_row, null, false);
             }
-
-            TextView name = row.FindViewById<TextView>(Resource.Id.WhishListRowPromotionName);
-            name.Text = mlist[position].title;
-            TextView price = row.FindViewById<TextView>(Resource.Id.WhishListRowPromotionPrice);
-            price.Text = mlist[position].price + "zł";
-
+            ImageView image = row.FindViewById<ImageView>(Resource.Id.orderPhoto);
+            image.SetImageBitmap(mlist[position].product.convertBase64ToBitmap(mlist[position].product.image));
+            TextView name = row.FindViewById<TextView>(Resource.Id.orderName);
+            name.Text = mlist[position].product.title;
+            TextView price = row.FindViewById<TextView>(Resource.Id.orderPrice);
+            price.Text = mlist[position].amount.ToString() + "x" + mlist[position].product.price + "=" + mlist[position].price + "zl";
             return row;
         }
     }

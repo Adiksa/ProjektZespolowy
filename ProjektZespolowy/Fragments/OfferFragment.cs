@@ -7,6 +7,7 @@ using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
+using Android.Text;
 using Android.Views;
 using Android.Widget;
 
@@ -23,11 +24,14 @@ namespace ProjektZespolowy.Fragments
         private Button fRemoveFromCart;
         private ImageView fAddToFav;
         private ProgressBar fProgressBar;
+        private EditText fAmmount;
+        private TextView fOrderPrice;
+        private TextView fAmmountText;
         private bool fav;
         private bool refresh;
         public Promotion promotion;
+        public Order order;
         public event EventHandler OfferChange;
-        private bool cart;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -54,7 +58,14 @@ namespace ProjektZespolowy.Fragments
             }
             else fav = false;
             refresh = false;
-            if (cart) fRemoveFromCart.Visibility = ViewStates.Visible;
+            if (order != null)
+            {
+                fRemoveFromCart.Visibility = ViewStates.Visible;
+                fAmmount.Visibility = ViewStates.Visible;
+                fAmmount.Visibility = ViewStates.Visible;
+                fOrderPrice.Visibility = ViewStates.Visible;
+                fAddToCart.Visibility = ViewStates.Invisible;
+            }
             return view;
         }
         public override void OnActivityCreated(Bundle savedInstanceState)
@@ -83,11 +94,18 @@ namespace ProjektZespolowy.Fragments
             fAddToFav = view.FindViewById<ImageView>(Resource.Id.addToFav);
             fProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarOffer);
             fRemoveFromCart = view.FindViewById<Button>(Resource.Id.removeFromCart);
+            fAmmount = view.FindViewById<EditText>(Resource.Id.offerAmmount);
+            fAmmountText = view.FindViewById<TextView>(Resource.Id.offerAmmountText);
         }
 
         private void ActionHooker()
         {
             fAddToFav.Click += FAddToFav_Click;
+            fAddToCart.Click += delegate
+            {
+                GlobalVars.cart = Order.AddToList(GlobalVars.cart, promotion);
+                Toast.MakeText(this.Activity, GetString(Resource.String.addedToCart), ToastLength.Short).Show();
+            };
         }
         protected virtual void OnOfferChange()
         {
@@ -108,7 +126,6 @@ namespace ProjektZespolowy.Fragments
                         fAddToFav.SetImageDrawable(this.Activity.GetDrawable(Resource.Drawable.heart));
                         refresh = true;
                     }
-
                 }
                 else
                 {
