@@ -9,11 +9,12 @@
         android:src="@android:drawable/ic_menu_gallery"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxHeight="200dp"
         android:layout_marginTop="5dp"
         android:contentDescription="@string/offerPhotoDesc"
         android:id="@+id/orderPhoto"
         android:adjustViewBounds="true"
-        android:scaleType="fitStart"
+        android:scaleType="fitXY"
         android:layout_alignParentLeft="true"
         android:paddingVertical="5dp"/>
     <TextView

@@ -60,11 +60,14 @@ namespace ProjektZespolowy.Fragments
             refresh = false;
             if (order != null)
             {
+                fOrderPrice.Text = order.price.ToString();
+                fAmmount.Text = order.amount.ToString();
                 fRemoveFromCart.Visibility = ViewStates.Visible;
                 fAmmount.Visibility = ViewStates.Visible;
-                fAmmount.Visibility = ViewStates.Visible;
+                fAmmountText.Visibility = ViewStates.Visible;
                 fOrderPrice.Visibility = ViewStates.Visible;
                 fAddToCart.Visibility = ViewStates.Invisible;
+                fOrderPrice.Text = "x" + order.product.price + "zł = " + order.price + "zł";
             }
             return view;
         }
@@ -94,8 +97,9 @@ namespace ProjektZespolowy.Fragments
             fAddToFav = view.FindViewById<ImageView>(Resource.Id.addToFav);
             fProgressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarOffer);
             fRemoveFromCart = view.FindViewById<Button>(Resource.Id.removeFromCart);
-            fAmmount = view.FindViewById<EditText>(Resource.Id.offerAmmount);
-            fAmmountText = view.FindViewById<TextView>(Resource.Id.offerAmmountText);
+            fOrderPrice = view.FindViewById<TextView>(Resource.Id.offerAmountSum);
+            fAmmount = view.FindViewById<EditText>(Resource.Id.offerAmount);
+            fAmmountText = view.FindViewById<TextView>(Resource.Id.offerAmountText);
         }
 
         private void ActionHooker()
@@ -105,6 +109,66 @@ namespace ProjektZespolowy.Fragments
             {
                 GlobalVars.cart = Order.AddToList(GlobalVars.cart, promotion);
                 Toast.MakeText(this.Activity, GetString(Resource.String.addedToCart), ToastLength.Short).Show();
+            };
+            fAmmount.AfterTextChanged += delegate
+            {
+                try
+                {
+                    var temp = int.Parse(fAmmount.Text);
+                    if(temp<0)
+                    {
+                        fAmmount.Text = order.amount.ToString();
+                        Toast.MakeText(this.Activity, GetString(Resource.String.errorAmmount), ToastLength.Short);
+                    }
+                    else
+                    {
+                        if(temp == 0)
+                        {
+                            fAmmount.Text = order.amount.ToString();
+                            Toast.MakeText(this.Activity, GetString(Resource.String.errorRemove), ToastLength.Short);
+                        }
+                        else
+                        {
+                            refresh = true;
+                            order.amount = temp;
+                            order.priceCount();
+                            fOrderPrice.Text = "x" + order.product.price + "zł = " + order.price + "zł";
+                            foreach (Order o in GlobalVars.cart)
+                            {
+                                if(o == order)
+                                {
+                                    o.amount = temp;
+                                    o.priceCount();
+                                }
+                            }
+                        }
+                    }
+                }
+                catch
+                {
+                    fAmmount.Text = order.amount.ToString();
+                    Toast.MakeText(this.Activity, GetString(Resource.String.errorAmmount), ToastLength.Short);
+                }
+            };
+            fRemoveFromCart.Click += delegate
+            {
+                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                alertDialog.SetTitle(GetString(Resource.String.removeFromCart));
+                alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
+                alertDialog.SetMessage(GetString(Resource.String.alertRemove));
+                alertDialog.SetPositiveButton(GetString(Resource.String.yes), delegate
+                {
+                    refresh = true;
+                    GlobalVars.cart.Remove(order);
+                    order = null;
+                    this.Dismiss();
+                    alertDialog.Dispose();
+                });
+                alertDialog.SetNegativeButton(GetString(Resource.String.no), delegate
+                {
+                    alertDialog.Dispose();
+                });
+                alertDialog.Show();
             };
         }
         protected virtual void OnOfferChange()

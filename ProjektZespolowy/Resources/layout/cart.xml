@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="10dp"
+        android:layout_above="@id/cartTotal"
         android:layout_below="@+id/cartTitle"/>
     <ProgressBar
 		android:id="@+id/progressBarCart"
@@ -24,4 +25,20 @@
 		android:layout_centerHorizontal="true"
 		android:layout_centerVertical="true"
 		android:visibility="invisible"/>
+    <TextView
+        android:text="@string/orderPriceSum"
+        android:id="@+id/cartTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/submitOrder"/>
+    <Button
+        android:id="@+id/submitOrder"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/submitOrder"
+        android:enabled="false"/>
 </RelativeLayout>

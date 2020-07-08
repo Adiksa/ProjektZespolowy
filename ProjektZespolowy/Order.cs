@@ -19,7 +19,7 @@ namespace ProjektZespolowy
         public double price { get; set; }
         public void priceCount()
         {
-            this.price = Double.Parse(this.product.price)*this.amount;
+            this.price = Double.Parse(this.product.price.Replace(".",","))*this.amount;
         }
         public static List<Order> AddToList(List<Order> list, Promotion promotion)
         {
@@ -44,6 +44,19 @@ namespace ProjektZespolowy
             };
             list.Add(order);
             return list;
+        }
+
+        public static double Total(List<Order> list)
+        {
+            double total = 0;
+            if(list != null)
+            {
+                foreach (Order o in list)
+                {
+                    total += o.price;
+                }
+            }
+            return total;
         }
     }
     

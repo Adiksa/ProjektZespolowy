@@ -103,6 +103,12 @@
 	<string name="addToCart">Dodaj do koszyka</string>
   <string name="removeFromCart">Usuń z koszyka</string>
   <string name="addedToCart">Dodano do koszyka</string>
+  <string name="errorAmmount">Błędna ilość sztuk, zmień jeszcze raz.</string>
+  <string name="errorRemove">Jeżeli chcesz usunąc produkt z koszyka użyj przycisku.</string>
+  <string name="alertRemove">Czy na pewno chcesz usunąć produkt z koszyka?</string>
+  <string name="orderPriceSum">Łącznie :</string>
+  <string name="removedFromCart">Usunięto z koszyka.</string>
+  <string name="submitOrder">Złóż zamówienie</string>
   <!--OfferFragmets.cs-->
 	<string name="priceTxt">Cena: </string>
   <!--furniture_menu-->

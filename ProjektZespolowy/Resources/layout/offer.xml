@@ -29,50 +29,49 @@
 		android:layout_below="@id/offerPhoto"
 		android:layout_centerHorizontal="true"
 		android:id="@+id/offerDesc" />
-	<EditText
-		android:id="@+id/offerAmonut"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:visibility="invisible"
-		android:inputType="numberDecimal"/>
 	<TextView
 		android:text="@string/offerPrice"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_marginTop="10dp"
 		android:layout_below="@id/offerDesc"
 		android:layout_centerHorizontal="true"
 		android:id="@+id/offerPrice" />
-	<TextView
-		android:text="@string/offerPrice"
+	<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+		android:layout_below="@id/offerPrice"
+		android:id="@+id/relativeLayoutOrder"
+		android:paddingHorizontal="10dp">
+		<TextView
+		android:text="@string/orderPriceSum"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_marginTop="10dp"
-		android:layout_marginLeft="30dp"
-		android:layout_below="@id/offerPrice"
 		android:visibility="invisible"
-		android:id="@+id/offerAmmountText" />
+		android:id="@+id/offerAmountText"
+		android:layout_centerVertical="true"/>
 	<EditText
-		android:id="@+id/offerAmmount"
+		android:id="@+id/offerAmount"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceMedium"
 		android:visibility="invisible"
-		android:layout_below="@id/offerPrice"
-		android:inputType="numberDecimal"
-		android:layout_toRightOf="@id/offerAmmountText"/>
+		android:paddingHorizontal="5dp"
+		android:inputType="number"
+		android:layout_toRightOf="@id/offerAmountText"
+		android:maxLength="3"
+			android:layout_centerVertical="true"/>
 	<TextView
 		android:text="@string/offerPrice"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textAppearance="?android:attr/textAppearanceMedium"
-		android:layout_marginTop="10dp"
-		android:layout_below="@id/offerPrice"
-		android:layout_toRightOf="@id/offerAmmount"
-		android:layout_centerHorizontal="true"
+		android:layout_toRightOf="@id/offerAmount"
 		android:visibility="invisible"
-		android:id="@+id/offerAmmountSum" />
+		android:id="@+id/offerAmountSum"
+			android:layout_centerVertical="true"/>
+	</RelativeLayout>
 	<Button
         android:text="@string/addToCart"
         android:layout_width="wrap_content"
@@ -80,7 +79,7 @@
         android:layout_alignParentLeft="true"
 		android:background="@drawable/button_white"
         android:id="@+id/addToCart" 
-		android:layout_below="@id/offerAmmount"
+		android:layout_below="@id/relativeLayoutOrder"
 		android:layout_centerHorizontal="true"/>
 	<Button
         android:text="@string/removeFromCart"
@@ -90,14 +89,14 @@
 		android:background="@drawable/button_white"
         android:id="@+id/removeFromCart" 
 		android:visibility="invisible"
-		android:layout_below="@id/offerAmmount"
+		android:layout_below="@id/relativeLayoutOrder"
 		android:layout_centerHorizontal="true"/>
 	<ImageView
 		android:id="@+id/addToFav"
         android:layout_width="50dp"
         android:layout_height="50dp"
 		android:src="@drawable/heart"
-		android:layout_below="@id/offerAmmount"
+		android:layout_below="@id/relativeLayoutOrder"
 		android:layout_alignParentRight="true"/>
     <ProgressBar
 		android:id="@+id/progressBarOffer"
