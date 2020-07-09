@@ -14,9 +14,15 @@ using Android.Views;
 using Android.Widget;
 using Plugin.NFC;
 using ProjektZespolowy.Fragments;
+using Android.Gms.Common;
+using Firebase.Messaging;
+using Firebase.Iid;
+using Android.Util;
 
 namespace ProjektZespolowy
 {
+    [Service]
+    [IntentFilter(new[] { "com.google.firebase.MESSAGING_EVENT" })]
     [Activity(Label = "Meble NFC", Icon="@drawable/icon5", Theme = "@style/AppTheme.NoActionBar", MainLauncher = true, ScreenOrientation = ScreenOrientation.Portrait)]
     public class Login : Activity
     {
@@ -46,6 +52,7 @@ namespace ProjektZespolowy
                 });
                 alertDialog.Show();
             }
+            CreateNotificationChannel();
         }
 
         private void ComponentLocalizer()
@@ -146,6 +153,28 @@ namespace ProjektZespolowy
             {
                 progressBar.Visibility = ViewStates.Invisible;
             }));
+        }
+
+        void CreateNotificationChannel()
+        {
+            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+            {
+                // Notification channels are new in API 26 (and not a part of the
+                // support library). There is no need to create a notification
+                // channel on older versions of Android.
+                return;
+            }
+
+            var channelName = Resources.GetString(Resource.String.channel_name);
+            var channelDescription = GetString(Resource.String.channel_description);
+
+            var channel = new NotificationChannel(channelName, channelDescription, NotificationImportance.Default)
+            {
+                Description = channelDescription
+            };
+
+            var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+            notificationManager.CreateNotificationChannel(channel);
         }
     }
 }

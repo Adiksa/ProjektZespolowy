@@ -119,4 +119,7 @@
   <!--nav_furniture_header-->
   <string name="loginAs">Zalogowany jako : </string>
   <string name="singOut">Wyloguj sie</string>
+  <!--notifications-->
+  <string name="channel_name">my_notification_channel</string>
+  <string name="channel_description">FCM Notifications</string>
 </resources>
