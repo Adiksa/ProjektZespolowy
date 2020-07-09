@@ -20,11 +20,12 @@ using Android.Support.V7.Widget;
 using Android.Support.V4.View;
 using System.Runtime.Remoting.Messaging;
 using Android.Util;
+using Java.Lang;
 
 namespace ProjektZespolowy
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
-    public class FurnitureMain : AppCompatActivity, NavigationView.IOnNavigationItemSelectedListener
+    public class FurnitureMain : BaseWithMenu
     {
         private SupportFragment currentFragment;
         private Scan_Success_View scan_Success_View;
@@ -35,15 +36,11 @@ namespace ProjektZespolowy
         private ImageButton specBtn;
         private ImageButton complaintBtn;
         private ImageButton shopBtn;
-        private DrawerLayout drawerLayout;
-        private NavigationView navigationView;
-        private View headerview;
-        private TextView loginAs;
-        private Button logoutBtn;
+        
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.main_fragment);
+            SetContentView(Resource.Layout.base_with_menu);
             FireBaseConnector fcon = new FireBaseConnector();
             string test = Intent.GetStringExtra("Furniture");
             furniture = fcon.getFurniture(test);
@@ -57,48 +54,15 @@ namespace ProjektZespolowy
             InitNewFragment(scan_Success_View);
             ComponentsLocalizer();
             ActionHooker();
-            headerview = navigationView.GetHeaderView(0);
-            loginAs = headerview.FindViewById<TextView>(Resource.Id.loginAs);
-            loginAs.Text += " " + GlobalVars.login;
-            navigationView.SetNavigationItemSelectedListener(this);
+            base.navigationView.SetNavigationItemSelectedListener(this);
         }
 
-        public bool OnNavigationItemSelected(IMenuItem item)
+        protected override void ActionHooker()
         {
-            switch(item.ItemId)
-            {
-                case Resource.Id.furMenu_whishList: StartActivity(typeof(WhishList));
-                    break;
-                case Resource.Id.furMenu_cart: StartActivity(typeof(Cart));
-                    break;
-            }
-            return true;
-        }
-
-        private void ActionHooker()
-        {
+            base.ActionHooker();
             specBtn.Click += SpecBtn_Click;
             complaintBtn.Click += ComplaintBtn_Click;
             shopBtn.Click += ShopBtn_Click;
-            logoutBtn.Click += delegate
-            {
-                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this);
-                alertDialog.SetTitle(GetString(Resource.String.logoutAlert));
-                alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
-                alertDialog.SetMessage(GetString(Resource.String.logoutAlertMsg));
-                alertDialog.SetPositiveButton(GetString(Resource.String.yes), delegate
-                {
-                    this.Finish();
-                    StartActivity(typeof(Login));
-                    alertDialog.Dispose();
-                });
-                alertDialog.SetNegativeButton(GetString(Resource.String.no), delegate
-                {
-                    alertDialog.Dispose();
-                });
-                alertDialog.Show();
-                
-            };
         }
 
         private void ComplaintBtn_Click(object sender, EventArgs e)
@@ -115,14 +79,15 @@ namespace ProjektZespolowy
             InitNewFragment(shop);
         }
 
-        private void ComponentsLocalizer()
+        protected override void ComponentsLocalizer()
         {
+            base.ComponentsLocalizer();
+            stub.LayoutResource = Resource.Layout.main_fragment;
+            stub.Inflate();
             specBtn = FindViewById<ImageButton>(Resource.Id.specBtn);
             complaintBtn = FindViewById<ImageButton>(Resource.Id.complaintBtn);
             shopBtn = FindViewById<ImageButton>(Resource.Id.shopBtn);
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
-            navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-            logoutBtn = FindViewById<Button>(Resource.Id.button_sing_out);
+            
         }
 
         private void InitNewFragment(SupportFragment fragment)

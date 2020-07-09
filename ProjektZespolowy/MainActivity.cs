@@ -23,7 +23,7 @@ using SupportFragment = Android.Support.V4.App.Fragment;
 namespace ProjektZespolowy
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : BaseWithMenu
     {
         private SupportFragment currentFragment;
         private CoordinatorLayout rootview;
@@ -38,10 +38,10 @@ namespace ProjektZespolowy
             CrossNFC.Init(this);
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            SetContentView(Resource.Layout.activity_main);
-            ComponentLocalizer();
-            if(Intent.GetStringExtra("Login") == "1") Snackbar.Make(rootview, GetString(Resource.String.loginDone), Snackbar.LengthLong).Show();
+            SetContentView(Resource.Layout.base_with_menu);
+            ComponentsLocalizer();
             ActionHooker();
+            if (Intent.GetStringExtra("Login") == "1") Snackbar.Make(rootview, GetString(Resource.String.loginDone), Snackbar.LengthLong).Show();
             animation = (AnimationDrawable)animImageView.Background;
             animation.Start();
             nfcAdapter = NfcAdapter.GetDefaultAdapter(this);
@@ -76,13 +76,14 @@ namespace ProjektZespolowy
                 });
                 alertDialog.Show();
             }
+            base.navigationView.SetNavigationItemSelectedListener(this);
         }
 
         protected override void OnResume()
         {
-            CrossNFC.Current.StartListening();
             if (nfcAdapter.IsEnabled) animation.Start();
             base.OnResume();
+            CrossNFC.Current.StartListening();
         }
 
         public override void OnBackPressed()
@@ -90,8 +91,9 @@ namespace ProjektZespolowy
             FinishAffinity();
         }
 
-        private void ActionHooker()
+        protected override void ActionHooker()
         {
+            base.ActionHooker();
             CrossNFC.Current.OnMessageReceived += Current_OnMessageReceived;
         }
 
@@ -112,12 +114,31 @@ namespace ProjektZespolowy
             CrossNFC.OnNewIntent(intent);
         }
 
-        private void ComponentLocalizer()
+        protected override void ComponentsLocalizer()
         {
+            base.ComponentsLocalizer();
+            stub.LayoutResource = Resource.Layout.activity_main;
+            stub.Inflate();
             rootview = FindViewById<CoordinatorLayout>(Resource.Id.coordinatorLayout1);
             skanText = FindViewById<TextView>(Resource.Id.skanText);
             animImageView = FindViewById<ImageView>(Resource.Id.waitingForScan);
             progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarMain);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.furMenu_whishList:
+                    stub = null;
+                    StartActivity(typeof(WhishList));
+                    break;
+                case Resource.Id.furMenu_cart:
+                    Finish();
+                    StartActivity(typeof(Cart));
+                    break;
+            }
+            return true;
         }
 
         private void InitNewFragment(SupportFragment fragment)

@@ -61,6 +61,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseWithMenu.cs" />
     <Compile Include="Cart.cs" />
     <Compile Include="FirebaseNotificationService.cs" />
     <Compile Include="Fragments\OfferFragment.cs" />
@@ -361,6 +362,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\cart.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\base_with_menu.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
