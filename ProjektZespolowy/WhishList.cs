@@ -15,22 +15,23 @@ using ProjektZespolowy.Fragments;
 namespace ProjektZespolowy
 {
     [Activity(Label = "WhishList", Theme = "@style/AppTheme.NoActionBar", MainLauncher = false, ScreenOrientation = ScreenOrientation.Portrait)]
-    public class WhishList : Activity
+    public class WhishList : BaseWithMenu
     {
         private ListView listView;
         private List<Promotion> whishList;
         private ProgressBar progressBar;
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            SetContentView(Resource.Layout.whish_list);
             base.OnCreate(savedInstanceState);
+            SetContentView(Resource.Layout.base_with_menu);
             ComponentsLocalizer();
             ActionHooker();
             refresh();
         }
 
-        private void ActionHooker()
+        protected override void ActionHooker()
         {
+            base.ActionHooker();
             listView.ItemClick += ListView_ItemClick;
         }
 
@@ -43,8 +44,11 @@ namespace ProjektZespolowy
             offerFragment.Show(transaction, "create offer dialog");
         }
 
-        private void ComponentsLocalizer()
+        protected override void ComponentsLocalizer()
         {
+            base.ComponentsLocalizer();
+            stub.LayoutResource = Resource.Layout.whish_list;
+            stub.Inflate();
             listView = FindViewById<ListView>(Resource.Id.listViewWhishList);
             progressBar = FindViewById<ProgressBar>(Resource.Id.progressBarWhishList);
         }
