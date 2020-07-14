@@ -20,6 +20,7 @@ namespace ProjektZespolowy
         public string photo { get; set; }
         public string furnitureId { get; set; }
         public List<string> complaintProgress{ get; set; }
+        public string senderName { get; set; }
 
         public bool Correct()
         {

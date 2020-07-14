@@ -200,7 +200,8 @@ namespace ProjektZespolowy.Fragments
             {
                 furnitureId = furniture.id,
                 description = problemDesc.Text,
-                photo = ImageViewToBase64String(photoPreview)
+                photo = ImageViewToBase64String(photoPreview),
+                senderName = GlobalVars.login
             };
             if (complaint.Correct() && photoDefault != photoPreview.Drawable)
             {
