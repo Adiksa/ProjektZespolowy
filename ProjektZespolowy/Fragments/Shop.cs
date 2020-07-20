@@ -48,7 +48,18 @@ namespace ProjektZespolowy.Fragments
 
         private void ActionHooker()
         {
+            
+        }
 
+        private void GridView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+        {
+            gridView.ItemClick -= GridView_ItemClick;
+            var transaction = this.Activity.FragmentManager.BeginTransaction();
+            OfferFragment offerFragment = new OfferFragment();
+            offerFragment.promotion = promotions[e.Position];
+            offerFragment.OfferChange += this.OnOfferChange;
+            offerFragment.UnlockGridView += this.UnlockGridView;
+            offerFragment.Show(transaction, "create offer dialog");
         }
 
         private async Task PromotionLoad()
@@ -65,14 +76,7 @@ namespace ProjektZespolowy.Fragments
                         ShopGridViewAdapter adapter = new ShopGridViewAdapter(this.Activity.BaseContext, promotions);
                         gridView = view.FindViewById<GridView>(Resource.Id.grid_view_image_text);
                         this.Activity.RunOnUiThread(() => { gridView.Adapter = adapter; });
-                        gridView.ItemClick += (s, e) =>
-                        {
-                            var transaction = this.Activity.FragmentManager.BeginTransaction();
-                            OfferFragment offerFragment = new OfferFragment();
-                            offerFragment.promotion = promotions[e.Position];
-                            offerFragment.OfferChange += this.OnOfferChange;
-                            offerFragment.Show(transaction, "create offer dialog");
-                        };
+                        gridView.ItemClick += GridView_ItemClick;
                     }
                 }
                 catch
@@ -88,6 +92,12 @@ namespace ProjektZespolowy.Fragments
             FireBaseConnector connector = new FireBaseConnector();
             promotions = connector.GetPromotions();
         }
-
+        public void UnlockGridView(object o, EventArgs e)
+        {
+            if(gridView != null)
+            {
+                gridView.ItemClick += GridView_ItemClick;
+            }
+        }
     }
 }

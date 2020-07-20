@@ -5,6 +5,7 @@ using System.Text;
 
 using Android.App;
 using Android.Content;
+using Android.Content.Res;
 using Android.OS;
 using Android.Runtime;
 using Android.Support.Design.Widget;
@@ -25,15 +26,13 @@ namespace ProjektZespolowy
         public Button logoutBtn;
         public View headerview;
         public TextView loginAs;
+        public ImageView menuImageView;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.base_with_menu);
             ComponentsLocalizer();
             ActionHooker();
-            headerview = navigationView.GetHeaderView(0);
-            loginAs = headerview.FindViewById<TextView>(Resource.Id.loginAs);
-            loginAs.Text += " " + GlobalVars.login;
             navigationView.SetNavigationItemSelectedListener(this);
         }
 
@@ -56,7 +55,11 @@ namespace ProjektZespolowy
                     alertDialog.Dispose();
                 });
                 alertDialog.Show();
-
+            };
+            menuImageView.Click += delegate
+            {
+                if (drawerLayout.IsDrawerOpen(navigationView)) drawerLayout.CloseDrawer(navigationView);
+                else drawerLayout.OpenDrawer(navigationView);
             };
         }
 
@@ -66,6 +69,10 @@ namespace ProjektZespolowy
             drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
             logoutBtn = FindViewById<Button>(Resource.Id.button_sing_out);
+            headerview = navigationView.GetHeaderView(0);
+            loginAs = headerview.FindViewById<TextView>(Resource.Id.loginAs);
+            loginAs.Text += " " + GlobalVars.login;
+            menuImageView = FindViewById<ImageView>(Resource.Id.toolbarMenu);
         }
 
         public bool OnNavigationItemSelected(IMenuItem item)

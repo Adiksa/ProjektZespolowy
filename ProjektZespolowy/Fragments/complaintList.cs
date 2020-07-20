@@ -26,6 +26,7 @@ namespace ProjektZespolowy.Fragments
         private List<Complaint> complaintList;
         private List<string> complaintIdList;
         private ProgressBar progressBar;
+        private TextView noComplaintsText;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -50,17 +51,20 @@ namespace ProjektZespolowy.Fragments
             complaints = view.FindViewById<ListView>(Resource.Id.complaintList);
             createButton = view.FindViewById<Button>(Resource.Id.complaintCreate);
             progressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarComplaintList);
+            noComplaintsText = view.FindViewById<TextView>(Resource.Id.noComplaintsTextView);
         }
 
         public async void OnComplaintCreated(object o, EventArgs e)
         {
             progressBar.Visibility = ViewStates.Visible;
+            noComplaintsText.Visibility = ViewStates.Invisible;
             await Task.Run(() => RefreshComplaintList());
             progressBar.Visibility = ViewStates.Invisible;
             if (complaintList != null)
             {
                 ComplaintListViewAdapter adapter = new ComplaintListViewAdapter(this.Activity, complaintList);
                 complaints.Adapter = adapter;
+                if (adapter.Count == 0) noComplaintsText.Visibility = ViewStates.Visible;
             }
         }
 

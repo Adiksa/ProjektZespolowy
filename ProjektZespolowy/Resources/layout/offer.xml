@@ -3,6 +3,15 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+	<ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentRight="true"
+		android:src="@android:drawable/ic_delete"
+		android:scaleType="fitEnd"
+		android:id="@+id/offerCloseButton"
+		android:background="?attr/selectableItemBackgroundBorderless"/>
 	<TextView
 		android:text="@string/offerTitle"
 		android:textAppearance="?android:attr/textAppearanceLarge"
@@ -10,7 +19,7 @@
 		android:layout_height="wrap_content"
 		android:layout_centerHorizontal="true"
 		android:layout_marginTop="5dp"
-		android:id="@+id/offerTitle" />
+		android:id="@+id/offerTitle"/>
 	<ImageView
 		android:src="@android:drawable/ic_menu_gallery"
 		android:layout_width="match_parent"

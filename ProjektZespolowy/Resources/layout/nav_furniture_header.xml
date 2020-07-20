@@ -7,7 +7,8 @@
     android:gravity="bottom"
     android:orientation="vertical"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:paddingHorizontal="5dp">
+    android:paddingHorizontal="5dp"
+    android:fitsSystemWindows="true">
 
     <ImageView
           android:layout_width="wrap_content"

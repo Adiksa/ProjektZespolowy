@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:paddingBottom="50dp">    
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/desc"
-        android:layout_alignParentTop="true">   
+    android:paddingBottom="50dp"
+    android:paddingTop="5dp"
+    android:paddingHorizontal="5dp">    
         <TextView
             android:text="@string/itemName"
             android:layout_width="wrap_content"
@@ -15,21 +12,32 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:layout_centerHorizontal="true"
             android:id="@+id/itemName" />
-        <ImageView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:adjustViewBounds="true"
-            android:scaleType="fitCenter"
-            android:layout_below="@id/itemName"
-            android:id="@+id/photoPreview" />
-        </RelativeLayout>
-    <TextView
-      android:text="@string/description"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerHorizontal="true"
-      android:layout_alignParentBottom="true"
-      android:id="@+id/desc" />
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:scaleType="fitCenter"
+                    android:id="@+id/photoPreview"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:paddingVertical="5dp">
+                <TextView
+                    android:text="@string/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:id="@+id/desc" />
+            </LinearLayout>
+        </LinearLayout>
   </RelativeLayout>
-

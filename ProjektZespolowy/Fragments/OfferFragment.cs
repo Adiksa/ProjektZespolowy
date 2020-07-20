@@ -27,11 +27,13 @@ namespace ProjektZespolowy.Fragments
         private EditText fAmmount;
         private TextView fOrderPrice;
         private TextView fAmmountText;
+        private ImageView closeBtn;
         private bool fav;
         private bool refresh;
         public Promotion promotion;
         public Order order;
         public event EventHandler OfferChange;
+        public event EventHandler UnlockGridView;
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -85,6 +87,7 @@ namespace ProjektZespolowy.Fragments
             {
                 OnOfferChange();
             }
+            UnlockGridView(this, EventArgs.Empty);
         }
 
         private void ComponentsLocalizer()
@@ -100,6 +103,7 @@ namespace ProjektZespolowy.Fragments
             fOrderPrice = view.FindViewById<TextView>(Resource.Id.offerAmountSum);
             fAmmount = view.FindViewById<EditText>(Resource.Id.offerAmount);
             fAmmountText = view.FindViewById<TextView>(Resource.Id.offerAmountText);
+            closeBtn = view.FindViewById<ImageView>(Resource.Id.offerCloseButton);
         }
 
         private void ActionHooker()
@@ -169,6 +173,10 @@ namespace ProjektZespolowy.Fragments
                     alertDialog.Dispose();
                 });
                 alertDialog.Show();
+            };
+            closeBtn.Click += delegate
+            {
+                this.Dismiss();
             };
         }
         protected virtual void OnOfferChange()

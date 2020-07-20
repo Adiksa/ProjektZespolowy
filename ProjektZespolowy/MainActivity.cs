@@ -130,7 +130,7 @@ namespace ProjektZespolowy
             switch (item.ItemId)
             {
                 case Resource.Id.furMenu_whishList:
-                    stub = null;
+                    Finish();
                     StartActivity(typeof(WhishList));
                     break;
                 case Resource.Id.furMenu_cart:

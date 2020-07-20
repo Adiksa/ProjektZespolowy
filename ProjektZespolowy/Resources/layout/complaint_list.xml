@@ -26,4 +26,11 @@
         android:layout_centerVertical="true"
         android:id="@+id/progressBarComplaintList"
         android:visibility="visible"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/noComplaintsTextView"
+        android:text="@string/noComplaints"
+        android:layout_centerInParent="true"
+        android:textAppearance="?android:attr/textAppearanceMedium"/>
 </RelativeLayout>

@@ -35,6 +35,7 @@
   <!--Ekran specyfikacji-->
 	<string name="btnReturn">Powrót</string>
   <!--Ekran tworzenia reklamacji-->
+  <string name="noComplaints">Brak reklamacji</string>
 	<string name="complaintCreate">Utwórz reklamację</string>
   <!--Ekran administratora & dodaj promocje/oferty-->
 	<string name="btnScanNFC">SKANUJ TAG</string>

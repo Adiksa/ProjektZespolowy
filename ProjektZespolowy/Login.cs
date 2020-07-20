@@ -105,7 +105,7 @@ namespace ProjektZespolowy
                 }
                 if (res == 1)
                 {
-                    GlobalVars.login = login.login;
+                    GlobalVars.login = userLogin.Text;
                     Intent intent = new Intent(this, typeof(MainActivity));
                     intent.PutExtra("Login", "1");
                     Finish();
