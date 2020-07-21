@@ -21,6 +21,7 @@ using Android.Support.V4.View;
 using System.Runtime.Remoting.Messaging;
 using Android.Util;
 using Java.Lang;
+using Android.Graphics;
 
 namespace ProjektZespolowy
 {

@@ -15,6 +15,7 @@ namespace ProjektZespolowy
         public string specText { get; set; }
         public string name { get; set; }
         public List<string> complaintList { get; set; }
+        public string madeBy { get; set; }
 
         public bool Correct()
         {
@@ -29,6 +30,8 @@ namespace ProjektZespolowy
             if (this.specText == "")
                 return false;
             if (this.name == "")
+                return false;
+            if (this.madeBy == "")
                 return false;
             return true;
         }

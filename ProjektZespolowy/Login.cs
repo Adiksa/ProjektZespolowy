@@ -18,6 +18,8 @@ using Android.Gms.Common;
 using Firebase.Messaging;
 using Firebase.Iid;
 using Android.Util;
+using Android.Graphics;
+using Android.Content.Res;
 
 namespace ProjektZespolowy
 {

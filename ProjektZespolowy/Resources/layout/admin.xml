@@ -94,16 +94,23 @@
         android:inputType="textMultiLine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="@string/madeBy"
+        android:layout_below="@id/txtEdit2"
+        android:id="@+id/txtEdit3" />
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/button_white"
         android:hint="@string/name"
-        android:layout_below="@+id/txtEdit2"
-        android:id="@+id/txtEdit3" />
+        android:layout_below="@+id/txtEdit3"
+        android:id="@+id/txtEdit4" />
     <Button
         android:text="@string/add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 		android:background="@drawable/button_light_green"
-        android:layout_below="@id/txtEdit3"
+        android:layout_below="@id/txtEdit4"
         android:layout_alignParentRight="true"
         android:id="@+id/furAdd" />
     <Button
@@ -112,6 +119,6 @@
         android:layout_height="wrap_content"
 	    android:background="@drawable/button_light_red"
         android:layout_toLeftOf="@id/furAdd"
-        android:layout_below="@id/txtEdit3"
+        android:layout_below="@id/txtEdit4"
         android:id="@+id/promotion" />
 </RelativeLayout>

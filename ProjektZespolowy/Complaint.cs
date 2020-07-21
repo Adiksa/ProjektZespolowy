@@ -21,6 +21,7 @@ namespace ProjektZespolowy
         public string furnitureId { get; set; }
         public List<string> complaintProgress{ get; set; }
         public string senderName { get; set; }
+        public string madeBy { get; set; }
 
         public bool Correct()
         {
@@ -29,6 +30,8 @@ namespace ProjektZespolowy
             if (photo == null)
                 return false;
             if (furnitureId == null)
+                return false;
+            if (madeBy == null)
                 return false;
             return true;
         }

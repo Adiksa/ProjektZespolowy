@@ -35,6 +35,7 @@ namespace ProjektZespolowy
         private EditText warentyText;
         private EditText specText;
         private EditText name;
+        private EditText madeBy;
         private Drawable warentyDefault;
         private Drawable specDefault;
         protected override void OnCreate(Bundle savedInstanceState)
@@ -224,7 +225,8 @@ namespace ProjektZespolowy
                 warentyText = warentyText.Text,
                 specImage = ImageViewToBase64String(specImage),
                 specText = specText.Text,
-                name = name.Text
+                name = name.Text,
+                madeBy = madeBy.Text
             };
             if(furniture.Correct() && warentyImage.Drawable != warentyDefault && specImage.Drawable != specDefault)
             {
@@ -308,7 +310,8 @@ namespace ProjektZespolowy
             specImage = FindViewById<ImageView>(Resource.Id.photo2);
             warentyText = FindViewById<EditText>(Resource.Id.editText1);
             specText = FindViewById<EditText>(Resource.Id.txtEdit2);
-            name = FindViewById<EditText>(Resource.Id.txtEdit3);
+            madeBy = FindViewById<EditText>(Resource.Id.txtEdit3);
+            name = FindViewById<EditText>(Resource.Id.txtEdit4);
         }
 
         private string ImageViewToBase64String(ImageView obj)
