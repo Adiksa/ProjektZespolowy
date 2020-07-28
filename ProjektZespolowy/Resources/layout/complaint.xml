@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
   <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -22,27 +22,68 @@
         android:hint="@string/writeHere"
         android:layout_below="@id/problemHey"
         android:maxHeight="200dp"/>
-    <ImageView
-      android:src="@drawable/ic6b_192x192"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_centerHorizontal="true"
-      android:minHeight="100px"
-      android:minWidth="100px"
-      android:scaleX="0.5"
-      android:scaleY="0.5"
-      android:contentDescription="@string/photoDesc"
-      android:adjustViewBounds="true"
-      android:scaleType="fitCenter"
-      android:layout_below="@id/problemDesc"
-      android:id="@+id/photoPreview" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageLayout"
+        android:layout_below="@id/problemDesc">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\uf104"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/fontawesome"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/leftBtn"
+            android:layout_alignParentLeft="true"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\uf105"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/fontawesome"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/rightBtn"
+            android:layout_alignParentRight="true"/>
+        <ImageView
+            android:src="@drawable/ic6b_192x192"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:contentDescription="@string/photoDesc"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter"
+            android:id="@+id/photoPreview"
+            android:layout_toRightOf="@id/leftBtn"
+            android:layout_toLeftOf="@id/rightBtn"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\uf03e"
+            android:fontFamily="@font/fontawesome"
+            android:textSize="20sp"
+            android:layout_alignBottom="@id/photoPreview"
+            android:layout_alignLeft="@id/photoPreview"
+            android:paddingHorizontal="2dp"
+            android:paddingVertical="2dp"/>
+            <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="\uf1f8"
+            android:fontFamily="@font/fontawesome"
+            android:textSize="20sp"
+            android:layout_alignBottom="@id/photoPreview"
+            android:layout_alignRight="@id/photoPreview"
+            android:paddingHorizontal="2dp"
+            android:paddingVertical="2dp"/>
+    </RelativeLayout>
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_centerHorizontal="true"
       android:id="@+id/txtClickToPick"
       android:text="@string/txtClickToPick"
-      android:layout_below="@id/photoPreview"/>
+      android:layout_below="@id/imageLayout"/>
   </RelativeLayout>
   <RelativeLayout
     android:layout_width="wrap_content"

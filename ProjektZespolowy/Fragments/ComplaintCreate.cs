@@ -13,8 +13,10 @@ using Android.OS;
 using Android.Provider;
 using Android.Runtime;
 using Android.Support.Design.Widget;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Java.IO;
 using static Android.Graphics.Bitmap;
 
 namespace ProjektZespolowy.Fragments
@@ -30,11 +32,16 @@ namespace ProjektZespolowy.Fragments
         public event EventHandler ComplaintCreated;
         private Drawable photoDefault;
         private long lastClickTime;
+        private List<Bitmap> images;
+        private Button lBtn;
+        private Button rBtn;
+        private int photoi = 0;
 
 
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            images = new List<Bitmap>();
         }
         public override void OnActivityCreated(Bundle savedInstanceState)
         {
@@ -59,6 +66,8 @@ namespace ProjektZespolowy.Fragments
             photoPreview = view.FindViewById<ImageView>(Resource.Id.photoPreview);
             btn1Complaint = view.FindViewById<Button>(Resource.Id.btn1Complaint);
             btn2Complaint = view.FindViewById<Button>(Resource.Id.btn2Complaint);
+            lBtn = view.FindViewById<Button>(Resource.Id.leftBtn);
+            rBtn = view.FindViewById<Button>(Resource.Id.rightBtn);
         }
 
         public override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -66,14 +75,61 @@ namespace ProjektZespolowy.Fragments
             base.OnActivityResult(requestCode, resultCode, data);
             if ((requestCode == 0) && (resultCode == Result.Ok) && (data != null))
             {
-                Bitmap bitmap = (Bitmap)data.Extras.Get("data");
-                photoPreview.SetImageBitmap(bitmap);
+                images.Add((Bitmap)data.Extras.Get("data"));
             }
             if ((requestCode == 1) && (resultCode == Result.Ok) && (data != null))
             {
-                Android.Net.Uri uri = data.Data;
+                List<Bitmap> bitmapy = new List<Bitmap>();
+                ClipData clipData = data.ClipData;
+                try
+                {
+                    if (clipData.ItemCount > 0)
+                    {
+                        for (int i = 0; i < clipData.ItemCount; i++)
+                        {
+                            Android.Net.Uri imageUri = clipData.GetItemAt(i).Uri;
+                            try
+                            {
+                                bitmapy.Add(MediaStore.Images.Media.GetBitmap(this.Activity.ContentResolver, imageUri));
+                            }
+                            catch
+                            {
+                                Log.Debug("Blad.", "Error");
+                            }
+                            
+                        }
+                        if (bitmapy.Count + images.Count > 5)
+                        {
+                            //komunikat, że przekroczono ilość zdjęć.
+                        }
+                        int j = 0;
+                        while(images.Count < 5 && j < bitmapy.Count)
+                        {
+                            images.Add(bitmapy[j]);
+                            j++;
+                        }
+                    }
+                }
+                catch
+                {
+                    try
+                    {
+                        images.Add(MediaStore.Images.Media.GetBitmap(this.Activity.ContentResolver, data.Data));
+                    }
+                    catch
+                    {
+                        Log.Debug("Blad.", "Error");
+                    }
+                }
+                try
+                {
+                    photoPreview.SetImageBitmap(images[0]);
+                    photoi = 0;
+                }
+                catch
+                {
 
-                photoPreview.SetImageURI(uri);
+                }
             }
         }
 
@@ -89,9 +145,17 @@ namespace ProjektZespolowy.Fragments
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
-                        Intent intent = new Intent(MediaStore.ActionImageCapture);
-                        intent.PutExtra(MediaStore.ExtraOutput, 1);
-                        StartActivityForResult(intent, 0);
+                        if(images.Count > 4)
+                        {
+
+                        }
+                        else
+                        {
+                            Intent intent = new Intent(MediaStore.ActionImageCapture);
+                            intent.PutExtra(MediaStore.ExtraVideoQuality, true);
+                            intent.PutExtra(MediaStore.ExtraOutput, 1);
+                            StartActivityForResult(intent, 0);
+                        }
                     }
                 }
                 if(requestCode==1)
@@ -102,10 +166,19 @@ namespace ProjektZespolowy.Fragments
                     }
                     if ((grantResults.Length == 1) && (grantResults[0]) == Android.Content.PM.Permission.Granted)
                     {
-                        this.Activity.Intent = new Intent();
-                        this.Activity.Intent.SetType("image/*");
-                        this.Activity.Intent.SetAction(Intent.ActionGetContent);
-                        StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
+                        if (images.Count > 4)
+                        {
+
+                        }
+                        else
+                        {
+                            this.Activity.Intent = new Intent();
+                            this.Activity.Intent.PutExtra(Intent.ExtraAllowMultiple, 5);
+                            this.Activity.Intent.PutExtra(Intent.ExtraAllowMultiple, true);
+                            this.Activity.Intent.SetType("image/*");
+                            this.Activity.Intent.SetAction(Intent.ActionGetContent);
+                            StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
+                        }
                     }
                 }
             }
@@ -121,10 +194,19 @@ namespace ProjektZespolowy.Fragments
             {
                 if (this.Activity.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.ReadExternalStorage) == Android.Content.PM.Permission.Granted)
                 {
-                    this.Activity.Intent = new Intent();
-                    this.Activity.Intent.SetType("image/*");
-                    this.Activity.Intent.SetAction(Intent.ActionGetContent);
-                    StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
+                    if (images.Count > 4)
+                    {
+                        
+                    }
+                    else
+                    {
+                        this.Activity.Intent = new Intent();
+                        this.Activity.Intent.PutExtra(Intent.ExtraAllowMultiple, 5);
+                        this.Activity.Intent.PutExtra(Intent.ExtraAllowMultiple, true);
+                        this.Activity.Intent.SetType("image/*");
+                        this.Activity.Intent.SetAction(Intent.ActionGetContent);
+                        StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
+                    }
                 }
                 else
                 {
@@ -136,9 +218,17 @@ namespace ProjektZespolowy.Fragments
             {
                 if (this.Activity.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.Camera) == Android.Content.PM.Permission.Granted)
                 {
-                    Intent intent = new Intent(MediaStore.ActionImageCapture);
-                    intent.PutExtra(MediaStore.ExtraOutput, 1);
-                    StartActivityForResult(intent, 0);
+                    if (images.Count > 4)
+                    {
+
+                    }
+                    else
+                    {
+                        Intent intent = new Intent(MediaStore.ActionImageCapture);
+                        intent.PutExtra(MediaStore.ExtraVideoQuality, true);
+                        intent.PutExtra(MediaStore.ExtraOutput, 1);
+                        StartActivityForResult(intent, 0);
+                    }
                 }
                 else
                 {
@@ -148,6 +238,19 @@ namespace ProjektZespolowy.Fragments
 
             };
             btn2Complaint.Click += Btn2Complaint_Click;
+            rBtn.Click += delegate
+            {
+                photoi++;
+                if (photoi == images.Count ) photoi = 0;
+                Activity.RunOnUiThread(() => photoPreview.SetImageBitmap(images[photoi]));
+                Log.Debug("Id zdjecia", photoi.ToString());
+            };
+            lBtn.Click += delegate
+            {
+                photoi--;
+                if (photoi < 0) photoi = images.Count-1;
+                Activity.RunOnUiThread(() => photoPreview.SetImageBitmap(images[photoi]));
+            };
         }
 
         private void Btn2Complaint_Click(object sender, EventArgs e)
@@ -201,7 +304,8 @@ namespace ProjektZespolowy.Fragments
                 furnitureId = furniture.id,
                 description = problemDesc.Text,
                 photo = ImageViewToBase64String(photoPreview),
-                senderName = GlobalVars.login
+                senderName = GlobalVars.login,
+                madeBy = furniture.madeBy
             };
             if (complaint.Correct() && photoDefault != photoPreview.Drawable)
             {
