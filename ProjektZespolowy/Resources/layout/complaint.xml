@@ -27,24 +27,51 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageLayout"
         android:layout_below="@id/problemDesc">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="\uf104"
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/photoPreview"
+            android:layout_alignTop="@id/photoPreview"
+            android:layout_alignParentLeft="true"
+            android:paddingHorizontal="5dp"
+            android:id="@+id/complaintLeft">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\uf104"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/fontawesome"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/leftBtn"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:fontFamily="@font/fontawesome"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/leftBtn"
-            android:layout_alignParentLeft="true"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="\uf105"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/fontawesome"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/rightBtn"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignBottom="@id/photoPreview"
+            android:layout_alignTop="@id/photoPreview"
+            android:layout_alignParentRight="true"
+            android:paddingHorizontal="5dp"
+            android:id="@+id/complaintRight">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\uf105"
+                android:textSize="20sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:fontFamily="@font/fontawesome"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/rightBtn"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\uf1f8"
+                android:fontFamily="@font/fontawesome"
+                android:textSize="20sp"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/complaintImageDelete"/>
+        </RelativeLayout>
         <ImageView
             android:src="@drawable/ic6b_192x192"
             android:layout_width="wrap_content"
@@ -54,28 +81,8 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:id="@+id/photoPreview"
-            android:layout_toRightOf="@id/leftBtn"
-            android:layout_toLeftOf="@id/rightBtn"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="\uf03e"
-            android:fontFamily="@font/fontawesome"
-            android:textSize="20sp"
-            android:layout_alignBottom="@id/photoPreview"
-            android:layout_alignLeft="@id/photoPreview"
-            android:paddingHorizontal="2dp"
-            android:paddingVertical="2dp"/>
-            <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="\uf1f8"
-            android:fontFamily="@font/fontawesome"
-            android:textSize="20sp"
-            android:layout_alignBottom="@id/photoPreview"
-            android:layout_alignRight="@id/photoPreview"
-            android:paddingHorizontal="2dp"
-            android:paddingVertical="2dp"/>
+            android:layout_toRightOf="@id/complaintLeft"
+            android:layout_toLeftOf="@id/complaintRight"/>
     </RelativeLayout>
     <TextView
       android:layout_width="wrap_content"

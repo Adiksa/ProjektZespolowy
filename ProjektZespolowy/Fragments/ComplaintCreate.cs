@@ -33,10 +33,10 @@ namespace ProjektZespolowy.Fragments
         private Drawable photoDefault;
         private long lastClickTime;
         private List<Bitmap> images;
-        private Button lBtn;
-        private Button rBtn;
+        private TextView lBtn;
+        private TextView rBtn;
         private int photoi = 0;
-
+        private TextView deleteImage;
 
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -66,8 +66,10 @@ namespace ProjektZespolowy.Fragments
             photoPreview = view.FindViewById<ImageView>(Resource.Id.photoPreview);
             btn1Complaint = view.FindViewById<Button>(Resource.Id.btn1Complaint);
             btn2Complaint = view.FindViewById<Button>(Resource.Id.btn2Complaint);
-            lBtn = view.FindViewById<Button>(Resource.Id.leftBtn);
-            rBtn = view.FindViewById<Button>(Resource.Id.rightBtn);
+            lBtn = view.FindViewById<TextView>(Resource.Id.leftBtn);
+            rBtn = view.FindViewById<TextView>(Resource.Id.rightBtn);
+            deleteImage = view.FindViewById<TextView>(Resource.Id.complaintImageDelete);
+            Refresh();
         }
 
         public override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
@@ -131,6 +133,7 @@ namespace ProjektZespolowy.Fragments
 
                 }
             }
+            Refresh();
         }
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
@@ -192,26 +195,40 @@ namespace ProjektZespolowy.Fragments
         {
             photoPreview.Click += delegate
             {
-                if (this.Activity.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.ReadExternalStorage) == Android.Content.PM.Permission.Granted)
+                if(images.Count > 0 && images.Count < 5)
                 {
-                    if (images.Count > 4)
+                    Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity);
+                    alertDialog.SetTitle(GetString(Resource.String.dataError));
+                    alertDialog.SetIcon(Resource.Drawable.ic4c_192x192);
+                    alertDialog.SetMessage(GetString(Resource.String.addCorrect));
+                    alertDialog.SetNeutralButton(GetString(Resource.String.OKbutton), delegate
                     {
-                        
-                    }
-                    else
-                    {
-                        this.Activity.Intent = new Intent();
-                        this.Activity.Intent.PutExtra(Intent.ExtraAllowMultiple, 5);
-                        this.Activity.Intent.PutExtra(Intent.ExtraAllowMultiple, true);
-                        this.Activity.Intent.SetType("image/*");
-                        this.Activity.Intent.SetAction(Intent.ActionGetContent);
-                        StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
-                    }
+                        alertDialog.Dispose();
+                    });
+                    alertDialog.Show();
                 }
                 else
                 {
-                    var requiredPermissions = new String[] { Android.Manifest.Permission.ReadExternalStorage };
-                    RequestPermissions(requiredPermissions, 1);
+                    if(images.Count == 0)
+                    {
+                        if (this.Activity.ApplicationContext.CheckSelfPermission(Android.Manifest.Permission.ReadExternalStorage) == Android.Content.PM.Permission.Granted)
+                        {
+                            this.Activity.Intent = new Intent();
+                            this.Activity.Intent.PutExtra(Intent.ExtraAllowMultiple, true);
+                            this.Activity.Intent.SetType("image/*");
+                            this.Activity.Intent.SetAction(Intent.ActionGetContent);
+                            StartActivityForResult(Intent.CreateChooser(this.Activity.Intent, "Select picture"), 1);
+                        }
+                        else
+                        {
+                            var requiredPermissions = new String[] { Android.Manifest.Permission.ReadExternalStorage };
+                            RequestPermissions(requiredPermissions, 1);
+                        }
+                    }
+                    else
+                    {
+                        //komunikat, że jest 5 zdjęć
+                    }
                 }
             };
             btn1Complaint.Click += delegate
@@ -250,6 +267,30 @@ namespace ProjektZespolowy.Fragments
                 photoi--;
                 if (photoi < 0) photoi = images.Count-1;
                 Activity.RunOnUiThread(() => photoPreview.SetImageBitmap(images[photoi]));
+            };
+            deleteImage.Click += delegate
+            {
+                Android.Support.V7.App.AlertDialog.Builder alertDialog = new Android.Support.V7.App.AlertDialog.Builder(this.Activity)
+                    .SetTitle(GetString(Resource.String.deleteImageTitle))
+                    .SetIcon(Resource.Drawable.ic4b_192x192)
+                    .SetMessage(GetString(Resource.String.deleteImageMsg))
+                    .SetPositiveButton(GetString(Resource.String.yes), delegate
+                    {
+                        images.RemoveAt(photoi);
+                        if (images.Count != 0)
+                        {
+                            if (photoi >= images.Count)
+                                photoi--;
+                            photoPreview.SetImageBitmap(images[photoi]);
+                        }
+                        else
+                        {
+                            photoPreview.SetImageDrawable(photoDefault);
+                        }
+                        Refresh();
+                    })
+                    .SetNegativeButton(GetString(Resource.String.no), delegate { });
+                alertDialog.Show();
             };
         }
 
@@ -365,6 +406,28 @@ namespace ProjektZespolowy.Fragments
             }
             this.Activity.RunOnUiThread(() => btn2Complaint.Enabled = true);
         }
-        
+        private void Refresh()
+        {
+            if(images.Count > 1)
+            {
+                lBtn.Visibility = ViewStates.Visible;
+                rBtn.Visibility = ViewStates.Visible;
+                deleteImage.Visibility = ViewStates.Visible;
+            }
+            else switch (images.Count)
+                {
+                    case 1:
+                        lBtn.Visibility = ViewStates.Invisible;
+                        rBtn.Visibility = ViewStates.Invisible;
+                        deleteImage.Visibility = ViewStates.Visible;
+                        break;
+                    case 0:
+                        lBtn.Visibility = ViewStates.Invisible;
+                        rBtn.Visibility = ViewStates.Invisible;
+                        deleteImage.Visibility = ViewStates.Invisible;
+                        break;
+                }
+                                
+        }
     }
 }

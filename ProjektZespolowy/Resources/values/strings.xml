@@ -65,6 +65,8 @@
 	<string name="OKbutton">OK</string>
 	<string name="complaintCorrect">Reklamacja dodana poprawnie</string>
 	<string name="complaintMessage">Reklamacja została dodana poprawnie, sprawdź jej status klikając na liste reklamacji.</string>
+	<string name="deleteImageTitle">Czy usunąć zdjęcie?</string>
+  <string name="deleteImageMsg">Czy na pewno chcesz usunąć to zdjęcie?</string>
   <!--Fragment Dialog_SignUp.cs-->
 	<string name="loginInUse">Login zajęty</string>
 	<string name="loginOther">Podany login istnieje w bazie danych. Podaj inny.</string>
