@@ -3465,13 +3465,16 @@ namespace ProjektZespolowy
 			public const int ok2a_192x192 = 2131165356;
 			
 			// aapt resource value: 0x7F0700AD
-			public const int scan_nfc = 2131165357;
+			public const int plus = 2131165357;
 			
 			// aapt resource value: 0x7F0700AE
-			public const int tooltip_frame_dark = 2131165358;
+			public const int scan_nfc = 2131165358;
 			
 			// aapt resource value: 0x7F0700AF
-			public const int tooltip_frame_light = 2131165359;
+			public const int tooltip_frame_dark = 2131165359;
+			
+			// aapt resource value: 0x7F0700B0
+			public const int tooltip_frame_light = 2131165360;
 			
 			static Drawable()
 			{

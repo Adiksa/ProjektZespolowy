@@ -21,7 +21,7 @@ namespace ProjektZespolowy.Fragments
     {
         private View view;
         private ListView complaints;
-        private Button createButton;
+        private ImageView createButton;
         public Furniture furniture;
         private List<Complaint> complaintList;
         private List<string> complaintIdList;
@@ -49,7 +49,7 @@ namespace ProjektZespolowy.Fragments
         private void ComponentsLocalizer()
         {
             complaints = view.FindViewById<ListView>(Resource.Id.complaintList);
-            createButton = view.FindViewById<Button>(Resource.Id.complaintCreate);
+            createButton = view.FindViewById<ImageView>(Resource.Id.complaintCreate);
             progressBar = view.FindViewById<ProgressBar>(Resource.Id.progressBarComplaintList);
             noComplaintsText = view.FindViewById<TextView>(Resource.Id.noComplaintsTextView);
         }

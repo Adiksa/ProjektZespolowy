@@ -27,8 +27,8 @@
   <!--Ekran zgłaszania problemu-->
   <string name="problemHey">Opisz nam swój problem:</string>
   <string name="writeHere">Kliknij tu, aby zacząć pisać...</string>
-  <string name="btn1text">Zrób zdjęcie</string>
-  <string name="btn2text">Potwierdź</string>
+  <string name="btn1text">\uf030</string>
+  <string name="btn2text">\uf00c</string>
   <string name="photoDesc">Opis zdjęcia</string>
   <string name="txtClickToPick">Kliknij ikonę, aby wybrać zdjęcie\nz galerii.\n(Maksymalnie 5 zdjęć)</string>
   <!--Ekran przebiegu reklamacji-->
@@ -75,7 +75,7 @@
   <string name="photoReplaceCamera">Zastąp nowym z aparatu</string>
   <string name="photoReplaceGalery">Zastąp zdjęciem z galerii</string>
   <string name="tooManyPhotosSelected">Za dużo zdjęć zostało wybrane, nie wszystkie zostały dodane.</string>
-  <string name="tooManyPhotos">Zgłoszenie, nie może mieć więcej niż pięć zdjęć.</string>
+  <string name="tooManyPhotos">Zgłoszenie nie może mieć więcej niż pięć zdjęć.</string>
   <!--Fragment Dialog_SignUp.cs-->
   <string name="loginInUse">Login zajęty</string>
   <string name="loginOther">Podany login istnieje w bazie danych. Podaj inny.</string>

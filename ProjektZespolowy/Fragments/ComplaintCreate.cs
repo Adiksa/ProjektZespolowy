@@ -26,8 +26,8 @@ namespace ProjektZespolowy.Fragments
         private View view;
         private EditText problemDesc;
         private ImageView photoPreview;
-        private Button btn1Complaint;
-        private Button btn2Complaint;
+        private TextView btn1Complaint;
+        private TextView btn2Complaint;
         public Furniture furniture;
         public event EventHandler ComplaintCreated;
         private Drawable photoDefault;
@@ -66,8 +66,8 @@ namespace ProjektZespolowy.Fragments
         {
             problemDesc = view.FindViewById<EditText>(Resource.Id.problemDesc);
             photoPreview = view.FindViewById<ImageView>(Resource.Id.photoPreview);
-            btn1Complaint = view.FindViewById<Button>(Resource.Id.btn1Complaint);
-            btn2Complaint = view.FindViewById<Button>(Resource.Id.btn2Complaint);
+            btn1Complaint = view.FindViewById<TextView>(Resource.Id.btn1Complaint);
+            btn2Complaint = view.FindViewById<TextView>(Resource.Id.btn2Complaint);
             lBtn = view.FindViewById<TextView>(Resource.Id.leftBtn);
             rBtn = view.FindViewById<TextView>(Resource.Id.rightBtn);
             deleteImage = view.FindViewById<TextView>(Resource.Id.complaintImageDelete);

@@ -96,25 +96,32 @@
       android:layout_below="@id/imageLayout"/>
   </RelativeLayout>
   <RelativeLayout
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/buttons"
     android:layout_below="@id/mainSection"
-    android:layout_centerHorizontal="true">
-    <Button
+    android:layout_centerHorizontal="true"
+    android:paddingVertical="10dp">
+    <TextView
       android:text="@string/btn1text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:background="@drawable/button_light_yellow"
-      android:layout_below="@id/photoPreview"
-      android:id="@+id/btn1Complaint" />
-    <Button
+      android:background="?attr/selectableItemBackgroundBorderless"
+      android:id="@+id/btn1Complaint"
+      android:fontFamily="@font/fontawesome"
+      android:textSize="30dp"
+      android:paddingHorizontal="50dp"
+      android:layout_alignParentLeft="true"/>
+    <TextView
       android:text="@string/btn2text"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:background="@drawable/button_light_green"
-      android:layout_toRightOf="@id/btn1Complaint"
-      android:id="@+id/btn2Complaint" />
+      android:background="?attr/selectableItemBackgroundBorderless"
+      android:id="@+id/btn2Complaint"
+      android:fontFamily="@font/fontawesome"
+      android:textSize="30dp"
+      android:paddingHorizontal="50dp"
+      android:layout_alignParentRight="true"/>
   </RelativeLayout>
   <ProgressBar
       android:layout_width="wrap_content"

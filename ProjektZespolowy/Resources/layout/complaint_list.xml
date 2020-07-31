@@ -1,8 +1,8 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:paddingBottom="55dp">
     <ListView
         android:minWidth="25px"
@@ -12,13 +12,18 @@
         android:id="@+id/complaintList" 
         android:layout_alignParentTop="true"
         android:layout_above="@id/complaintCreate"/>
-    <Button
-        android:text="@string/complaintCreate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+		android:src="@drawable/plus"
+		android:layout_width="50dp"
+		android:layout_height="50dp"
+		android:contentDescription="@string/photoDesc"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/button_light_red"
-        android:id="@+id/complaintCreate" />
+        android:layout_alignParentRight="true"
+        android:scaleType="fitStart"
+        android:adjustViewBounds="true"
+		android:id="@+id/complaintCreate"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:paddingHorizontal="5dp"/>
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
