@@ -1,112 +1,121 @@
 <resources>
   <!--Ekran logowania/rejestracji-->
-	<string name="app_name">ProjektZespolowy</string>
-	<string name="action_settings">Settings</string>
-	<string name="btnLogin">ZALOGUJ</string>
-	<string name="btnSignUp">ZAŁÓŻ KONTO</string>
-	<string name="register">ZAREJESTRUJ</string>
-	<string name="cancel">ANULUJ</string>
-	<string name="hintLogin">LOGIN</string>
-	<string name="hintPassword">HASŁO</string>
-	<string name="noAccount">Nie masz konta?\nKliknij poniższy przycisk.</string>
-	<string name="hello">Witaj, zaloguj się.</string>
-	<string name="logoITM">ITM Software House</string>
-	<string name="logoCentre">Logo</string>
+  <string name="app_name">ProjektZespolowy</string>
+  <string name="action_settings">Settings</string>
+  <string name="btnLogin">ZALOGUJ</string>
+  <string name="btnSignUp">ZAŁÓŻ KONTO</string>
+  <string name="register">ZAREJESTRUJ</string>
+  <string name="cancel">ANULUJ</string>
+  <string name="hintLogin">LOGIN</string>
+  <string name="hintPassword">HASŁO</string>
+  <string name="noAccount">Nie masz konta?\nKliknij poniższy przycisk.</string>
+  <string name="hello">Witaj, zaloguj się.</string>
+  <string name="logoITM">ITM Software House</string>
+  <string name="logoCentre">Logo</string>
   <string name="passwordIcon">\uf084</string>
   <string name="loginIcon">\uf007</string>
   <!--Ekran oczekiwania na tag NFC-->
-	<string name="scanning">Zbliż tag NFC do czujnika</string>
-	<string name="scanDesc">Skanowanie</string>
+  <string name="scanning">Zbliż tag NFC do czujnika</string>
+  <string name="scanDesc">Skanowanie</string>
   <!--Ekran po zeskanowaniu NFC-->
-	<string name="itemName">Nazwa mebla</string>
-	<string name="description">Opis mebla</string>
+  <string name="itemName">Nazwa mebla</string>
+  <string name="description">Opis mebla</string>
   <!--Fragment główny - przyciski na dole ekranu-->
-	<string name="btnSuc1">Specyfikacja</string>
-	<string name="btnSuc2">Reklamacje</string>
-	<string name="btnSuc3">Sklep?</string>
+  <string name="btnSuc1">Specyfikacja</string>
+  <string name="btnSuc2">Reklamacje</string>
+  <string name="btnSuc3">Sklep?</string>
   <!--Ekran zgłaszania problemu-->
-	<string name="problemHey">Opisz nam swój problem:</string>
-	<string name="writeHere">Kliknij tu, aby zacząć pisać...</string>
-	<string name="btn1text">Zrób zdjęcie</string>
-	<string name="btn2text">Potwierdź</string>
-	<string name="photoDesc">Opis zdjęcia</string>
-	<string name="txtClickToPick">Kliknij ikonę, aby wybrać zdjęcie\nz galerii.</string>
+  <string name="problemHey">Opisz nam swój problem:</string>
+  <string name="writeHere">Kliknij tu, aby zacząć pisać...</string>
+  <string name="btn1text">Zrób zdjęcie</string>
+  <string name="btn2text">Potwierdź</string>
+  <string name="photoDesc">Opis zdjęcia</string>
+  <string name="txtClickToPick">Kliknij ikonę, aby wybrać zdjęcie\nz galerii.\n(Maksymalnie 5 zdjęć)</string>
   <!--Ekran przebiegu reklamacji-->
-	<string name="ComProgress">Przebieg reklamacji:</string>
-	<string name="txtComplaint">Reklamacja</string>
+  <string name="ComProgress">Przebieg reklamacji:</string>
+  <string name="txtComplaint">Reklamacja</string>
   <!--Ekran specyfikacji-->
-	<string name="btnReturn">Powrót</string>
+  <string name="btnReturn">Powrót</string>
   <!--Ekran tworzenia reklamacji-->
   <string name="noComplaints">Brak reklamacji</string>
-	<string name="complaintCreate">Utwórz reklamację</string>
+  <string name="complaintCreate">Utwórz reklamację</string>
   <!--Ekran administratora & dodaj promocje/oferty-->
-	<string name="btnScanNFC">SKANUJ TAG</string>
-	<string name="comm"></string>
-	<string name="btnFromCamera">Zrób zdjęcie</string>
-	<string name="btnFromGallery">Wybierz zdjęcie</string>
-	<string name="warenty">Tekst gwarancji</string>
-	<string name="specs">Dane techniczne</string>
-	<string name="name">Nazwa przedmiotu</string>
-	<string name="add">Dodaj</string>
-	<string name="promotion">Dodaj ofertę</string>
-	<string name="txtPromo">Wpisz opis oferty</string>
-	<string name="TitlePromo">Wpisz tytuł oferty</string>
-	<string name="PricePromo">Wpisz cenę oferty</string>
+  <string name="btnScanNFC">SKANUJ TAG</string>
+  <string name="comm"></string>
+  <string name="btnFromCamera">Zrób zdjęcie</string>
+  <string name="btnFromGallery">Wybierz zdjęcie</string>
+  <string name="warenty">Tekst gwarancji</string>
+  <string name="specs">Dane techniczne</string>
+  <string name="name">Nazwa przedmiotu</string>
+  <string name="add">Dodaj</string>
+  <string name="promotion">Dodaj ofertę</string>
+  <string name="txtPromo">Wpisz opis oferty</string>
+  <string name="TitlePromo">Wpisz tytuł oferty</string>
+  <string name="PricePromo">Wpisz cenę oferty</string>
   <string name="madeBy">Złożony przez</string>
   <!--Ekran alertu wylogowania-->
   <string name="logoutAlert">Wyloguj</string>
   <string name="logoutAlertMsg">Czy na pewno chcesz się wylogować?</string>
   <!--Fragment ComplaintCreate.cs-->
-	<string name="noPermissions">Brak uprawnień.</string>
-	<string name="dataError">Błąd danych</string>
-	<string name="addCorrect">Dodaj wszystkie dane poprawnie.</string>
-	<string name="noInternetConnection">Brak internetu</string>
-	<string name="checkConnection">Sprawdź swoje połączenie.</string>
-	<string name="OKbutton">OK</string>
-	<string name="complaintCorrect">Reklamacja dodana poprawnie</string>
-	<string name="complaintMessage">Reklamacja została dodana poprawnie, sprawdź jej status klikając na liste reklamacji.</string>
-	<string name="deleteImageTitle">Czy usunąć zdjęcie?</string>
+  <string name="noPermissions">Brak uprawnień.</string>
+  <string name="dataError">Błąd danych</string>
+  <string name="photoError">Brak zdjęcia</string>
+  <string name="photoErrorMsg">Do złożenia reklamacji wymagane jest zdjęcie uszkodzonego przedmiotu.</string>
+  <string name="addCorrect">Dodaj wszystkie dane poprawnie.</string>
+  <string name="noInternetConnection">Brak internetu</string>
+  <string name="checkConnection">Sprawdź swoje połączenie.</string>
+  <string name="OKbutton">OK</string>
+  <string name="complaintCorrect">Reklamacja dodana poprawnie</string>
+  <string name="complaintMessage">Reklamacja została dodana poprawnie, sprawdź jej status klikając na liste reklamacji.</string>
+  <string name="deleteImageTitle">Czy usunąć zdjęcie?</string>
   <string name="deleteImageMsg">Czy na pewno chcesz usunąć to zdjęcie?</string>
+  <string name="photoReplaceTitle">Dodaj zdjęcia</string>
+  <string name="photoReplaceMsg">Dodac zdjęcia czy zastąpić obecne?</string>
+  <string name="photoReplaceAdd">Dodaj nowe zdjęcia</string>
+  <string name="photoReplaceCamera">Zastąp nowym z aparatu</string>
+  <string name="photoReplaceGalery">Zastąp zdjęciem z galerii</string>
+  <string name="tooManyPhotosSelected">Za dużo zdjęć zostało wybrane, nie wszystkie zostały dodane.</string>
+  <string name="tooManyPhotos">Zgłoszenie, nie może mieć więcej niż pięć zdjęć.</string>
   <!--Fragment Dialog_SignUp.cs-->
-	<string name="loginInUse">Login zajęty</string>
-	<string name="loginOther">Podany login istnieje w bazie danych. Podaj inny.</string>
-	<string name="accountCreated">Konto utworzone</string>
-	<string name="accountCreatedMessage">Utworzone konto o loginie </string>
-	<string name="registerError">Błąd rejestracji</string>
-	<string name="registerErrorMessage">Popraw lub zmień dane, aby zarejestrować się poprawnie.</string>
+  <string name="loginInUse">Login zajęty</string>
+  <string name="loginOther">Podany login istnieje w bazie danych. Podaj inny.</string>
+  <string name="accountCreated">Konto utworzone</string>
+  <string name="accountCreatedMessage">Utworzone konto o loginie </string>
+  <string name="registerError">Błąd rejestracji</string>
+  <string name="registerErrorMessage">Popraw lub zmień dane, aby zarejestrować się poprawnie.</string>
   <!--Admin.cs-->
-	<string name="furnitureExists">Taki mebel już istnieje.</string>
-	<string name="overwrite">Czy chcesz go nadpisać?</string>
-	<string name="yes">Tak</string>
-	<string name="no">Nie</string>
-	<string name="added">Dodano pomyślnie</string>
-	<string name="addCorrectData">Dodaj wszystkie dane poprawnie.</string>
-	<string name="errorReadNFC">Błąd odczytu NFC</string>
-	<string name="errorNFC">Błąd NFC</string>
-	<string name="scanON">Kliknij SKANUJ TAG, by rozpocząć</string>
+  <string name="furnitureExists">Taki mebel już istnieje.</string>
+  <string name="overwrite">Czy chcesz go nadpisać?</string>
+  <string name="yes">Tak</string>
+  <string name="no">Nie</string>
+  <string name="added">Dodano pomyślnie</string>
+  <string name="addCorrectData">Dodaj wszystkie dane poprawnie.</string>
+  <string name="errorReadNFC">Błąd odczytu NFC</string>
+  <string name="errorNFC">Błąd NFC</string>
+  <string name="scanON">Kliknij SKANUJ TAG, by rozpocząć</string>
   <!--ComplaintListViewAdapter.cs-->
-	<string name="complaintNr">Reklamacja nr: </string>
+  <string name="complaintNr">Reklamacja nr: </string>
   <!--Login.cs-->
-	<string name="noNFC">Brak NFC</string>
-	<string name="noSupport">To urządzenie nie wspiera komunikacji NFC.</string>
-	<string name="exit">Wyjdź z programu</string>
-	<string name="loginError">Błąd logowania</string>
-	<string name="correctLogin">Podane dane logowania są niepoprawne.</string>
-	<string name="emptyLogin">Nie podano danych logowania lub dane są błędne.</string>
+  <string name="noNFC">Brak NFC</string>
+  <string name="noSupport">To urządzenie nie wspiera komunikacji NFC.</string>
+  <string name="exit">Wyjdź z programu</string>
+  <string name="loginError">Błąd logowania</string>
+  <string name="correctLogin">Podane dane logowania są niepoprawne.</string>
+  <string name="emptyLogin">Nie podano danych logowania lub dane są błędne.</string>
   <!--MainActivity.cs-->
-	<string name="loginDone">Zalogowano pomyślnie!</string>
-	<string name="offNFC">NFC jest wyłączone</string>
-	<string name="exitQuestion">Czy chcesz wyjść z programu?</string>
-	<string name="settingsEnter">Wejdź do ustawień</string>
-	<string name="refreshNFC">Odśwież stan NFC</string>
-	<string name="noFurnitureID">Mebel o podanym ID nie istnieje w naszej bazie.</string>
-	<string name="errorReadTagNFC">Błąd wczytywania tagu NFC. Zbliż poprawny tag.</string>
+  <string name="loginDone">Zalogowano pomyślnie!</string>
+  <string name="offNFC">NFC jest wyłączone</string>
+  <string name="exitQuestion">Czy chcesz wyjść z programu?</string>
+  <string name="settingsEnter">Wejdź do ustawień</string>
+  <string name="refreshNFC">Odśwież stan NFC</string>
+  <string name="noFurnitureID">Mebel o podanym ID nie istnieje w naszej bazie.</string>
+  <string name="errorReadTagNFC">Błąd wczytywania tagu NFC. Zbliż poprawny tag.</string>
   <!--offer.xml-->
-	<string name="offerTitle">Tytuł oferty</string>
-	<string name="offerPhotoDesc">Zdjęcie oferty</string>
-	<string name="offerDesc">Opis oferty</string>
-	<string name="offerPrice">Cena oferty</string>
-	<string name="addToCart">Dodaj do koszyka</string>
+  <string name="offerTitle">Tytuł oferty</string>
+  <string name="offerPhotoDesc">Zdjęcie oferty</string>
+  <string name="offerDesc">Opis oferty</string>
+  <string name="offerPrice">Cena oferty</string>
+  <string name="addToCart">Dodaj do koszyka</string>
   <string name="removeFromCart">Usuń z koszyka</string>
   <string name="addedToCart">Dodano do koszyka</string>
   <string name="errorAmmount">Błędna ilość sztuk, zmień jeszcze raz.</string>
@@ -116,7 +125,7 @@
   <string name="removedFromCart">Usunięto z koszyka.</string>
   <string name="submitOrder">Złóż zamówienie</string>
   <!--OfferFragmets.cs-->
-	<string name="priceTxt">Cena: </string>
+  <string name="priceTxt">Cena: </string>
   <!--furniture_menu-->
   <string name="prevOrders">Moje zakupy</string>
   <string name="cart">Koszyk</string>

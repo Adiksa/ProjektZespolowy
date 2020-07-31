@@ -1,68 +1,68 @@
-
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
+    <com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager
+        android:id="@+id/horizontal_viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        app:icvp_scroll_duration="250"
+        app:icvp_center_page_scale_offset="30dp"
+        app:icvp_min_page_scale_offset="5dp"
+        app:icvp_max_page_scale="0.8"
+        app:icvp_min_page_scale="0.5"
+        app:icvp_medium_scaled="false"
+        android:layout_alignParentTop="true"/>
   <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="250dp"
       android:orientation="horizontal"
-      android:weightSum="20">
+      android:weightSum="20"
+      android:layout_below="@id/horizontal_viewpager">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="10">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:minHeight="200dp"
-            android:minWidth="200dp"
-            android:layout_centerHorizontal="true"
-            android:id="@+id/imageComplaintProgress" 
-            android:adjustViewBounds="true"
-            />
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/imageComplaintProgress">
-        <TextView
-            android:text="@string/ComProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="10sp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/ComProgresComplaint"
-            />
-        </ScrollView>
+            <ScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_centerHorizontal="true">
+                <TextView
+                    android:text="@string/ComProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="10sp"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:id="@+id/ComProgresComplaint"/>
+            </ScrollView>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="10">
-        <TextView
-            android:text="@string/ComProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="5dp"
-            android:textSize="20sp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:id="@+id/ComProgress" />
-        <ListView
-            android:minWidth="25px"
-            android:minHeight="50px"
-            android:layout_marginLeft="2dp"
-            android:layout_marginTop="2dp"
-			android:overScrollMode="always"
-			android:layout_below="@id/ComProgress"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:id="@+id/listProgress" />
+            <TextView
+                android:text="@string/ComProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="5dp"
+                android:textSize="20sp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/ComProgress" />
+            <ListView
+                android:minWidth="25px"
+                android:minHeight="50px"
+                android:layout_marginLeft="2dp"
+                android:layout_marginTop="2dp"
+			    android:overScrollMode="always"
+			    android:layout_below="@id/ComProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:id="@+id/listProgress" />
         </RelativeLayout> 
    </LinearLayout>
 </RelativeLayout>

@@ -87,7 +87,7 @@ namespace ProjektZespolowy.Fragments
             {
                 OnOfferChange();
             }
-            UnlockGridView(this, EventArgs.Empty);
+            if(fav==false) UnlockGridView(this, EventArgs.Empty);
         }
 
         private void ComponentsLocalizer()

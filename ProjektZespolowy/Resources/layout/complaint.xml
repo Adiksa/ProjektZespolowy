@@ -26,7 +26,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/imageLayout"
-        android:layout_below="@id/problemDesc">
+        android:layout_below="@id/problemDesc"
+        android:paddingVertical="5dp">
         <RelativeLayout
             android:layout_width="50dp"
             android:layout_height="match_parent"
@@ -41,8 +42,9 @@
                 android:text="\uf104"
                 android:layout_centerVertical="true"
                 android:fontFamily="@font/fontawesome"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/leftBtn"/>
+                android:textSize="50dp"
+                android:id="@+id/leftBtn"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="50dp"
@@ -57,20 +59,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="\uf105"
-                android:textSize="20sp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:fontFamily="@font/fontawesome"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/rightBtn"/>
+                android:textSize="50dp"
+                android:id="@+id/rightBtn"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="\uf1f8"
                 android:fontFamily="@font/fontawesome"
-                android:textSize="20sp"
+                android:textSize="30dp"
                 android:layout_alignParentBottom="true"
-                android:id="@+id/complaintImageDelete"/>
+                android:id="@+id/complaintImageDelete"
+                android:background="?attr/selectableItemBackgroundBorderless"/>
         </RelativeLayout>
         <ImageView
             android:src="@drawable/ic6b_192x192"
@@ -113,4 +116,10 @@
       android:layout_toRightOf="@id/btn1Complaint"
       android:id="@+id/btn2Complaint" />
   </RelativeLayout>
+  <ProgressBar
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:id="@+id/progressBarComplaintCreate"
+      android:visibility="invisible"/>
 </RelativeLayout>

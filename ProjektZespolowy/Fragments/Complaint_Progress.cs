@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Com.Gigamole.Infinitecycleviewpager;
 
 namespace ProjektZespolowy.Fragments
 {
@@ -17,7 +18,7 @@ namespace ProjektZespolowy.Fragments
         private View view;
         private ListView listProgress;
         public Complaint complaint;
-        private ImageView complaintImage;
+        private HorizontalInfiniteCycleViewPager complaintImages;
         private TextView complaintText;
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -36,7 +37,7 @@ namespace ProjektZespolowy.Fragments
                 ComplaintProgressListViewAdapter adapter = new ComplaintProgressListViewAdapter(this.Activity, complaint.complaintProgress);
                 listProgress.Adapter = adapter;
             }
-            complaintImage.SetImageBitmap(complaint.convertBase64ToBitmap(complaint.photo));
+            complaintImages.Adapter = new InfiniteCycleAdapter(complaint.photo, this.Activity);
             complaintText.Text = complaint.description;
             return view;
         }
@@ -51,7 +52,7 @@ namespace ProjektZespolowy.Fragments
         private void ComponentsLocalizer()
         {
             listProgress = view.FindViewById<ListView>(Resource.Id.listProgress);
-            complaintImage = view.FindViewById<ImageView>(Resource.Id.imageComplaintProgress);
+            complaintImages = view.FindViewById<HorizontalInfiniteCycleViewPager>(Resource.Id.horizontal_viewpager);
             complaintText = view.FindViewById<TextView>(Resource.Id.ComProgresComplaint);
         }
 

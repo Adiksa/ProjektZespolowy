@@ -48,7 +48,7 @@ namespace ProjektZespolowy
             TextView id = row.FindViewById<TextView>(Resource.Id.textComplaintId);
             id.Text = "Reklamacja nr: "+mlist[position].id;
             ImageView photo = row.FindViewById<ImageView>(Resource.Id.imageComplaint);
-            photo.SetImageBitmap(mlist[position].convertBase64ToBitmap(mlist[position].photo));
+            photo.SetImageBitmap(Complaint.convertBase64ToBitmap(mlist[position].photo[0]));
 
             return row;
         }
